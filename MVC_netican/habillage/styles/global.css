@@ -1,0 +1,30 @@
+body, html{
+    font-family: 'Roboto','Poppins', sans-serif;
+}
+
+.mainTittle{
+    color: #4E5D6A;
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-bottom: 100px;
+}
+
+.bg-personnal{
+    background-color: #F0F4F8;
+}
+
+.mainInfo{
+    background-color: #F0F4F8;
+    border-radius: 25px;
+}
+
+.actionButton{
+    font-size: 1.2em;
+    font-weight: 300;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.infoTable{
+    float: left;
+}
