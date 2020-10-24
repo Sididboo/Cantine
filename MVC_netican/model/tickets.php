@@ -1,6 +1,6 @@
 <?php
 
-  include_once './server/accesBDD.php';
+  include_once 'accesBDD.php';
 
   include_once 'categoriesTickets.php';
   include_once 'commerces.php';
@@ -111,7 +111,7 @@
     // Méthode Upload
     public function upload()
     {
-      $target_dir = "../images/";
+      $target_dir = "../server/imgs_tickets/";
       $target_file = $target_dir . basename($_FILES["file"]["name"]);
       $uploadOk = 1;
       $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));

@@ -1,6 +1,6 @@
 <?php
 
-  include_once './server/accesBDD.php';
+  include_once 'accesBDD.php';
 
   include_once 'pays.php';
   include_once 'marques.php';

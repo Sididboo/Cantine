@@ -1,6 +1,6 @@
 <?php
 
-  include_once '../server/accesBDD.php';
+  include_once 'accesBDD.php';
 
   include_once 'plats.php';
   include_once 'ingredients.php';
@@ -60,7 +60,7 @@
       $data = $result->fetch();
 
       $leIngredient = new Ingredients();
-      $leIngredient->retrieve($row['IDINGREDIENT']);
+      $leIngredient->retrieve($data['IDINGREDIENT']);
 
       $lePlat = new Plats();
       $lePlat->retrieve($data['IDPLAT']);

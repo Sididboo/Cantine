@@ -3,9 +3,9 @@
 
     include './server/session.php';
 
-    include_once './modele/categoriesTickets.php';
-    include_once './modele/commerces.php';
-    include_once './modele/tickets.php';
+    include_once 'modele/categoriesTickets.php';
+    include_once 'modele/commerces.php';
+    include_once 'modele/tickets.php';
 
     // liste catégories tickets
     $listCategoriesTickets = array();
