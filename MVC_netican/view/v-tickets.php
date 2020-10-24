@@ -20,7 +20,7 @@
         <!-- Header -->
         <?php include './header.html'; ?>
 
-        <div class="container">
+        <div class="container-fluid">
 
             <h3 class="text-center font-weight-bold py-3">Insertion des tickets</h3>
 
