@@ -20,7 +20,7 @@
     <?php include './header.html'; ?>
 
     <!-- Contained -->
-    <div class="bg-dark">
+    <div class="bg-light">
         <img class="mx-auto d-block" src="./habillage/images/23154-ARS.jpg" alt="école d'Ars">
     </div>
 </body>
