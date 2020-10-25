@@ -62,12 +62,16 @@
 
   <!-- Forms for table -->
   <div class="container">
-    <form>
+
+    <form id="regForm" action="POST">
+
       <h2>Création d'un plat</h2>
+
       <div class="form-group">
         <label for="namePlat">Nom du plat</label>
-        <input type="text" class="form-control" id="namePlat" placeholder="Enter name for plat">
+        <input type="text" class="form-control" id="namePlat" placeholder="Enter name">
       </div>
+
       <div class="form-group">
         <label for="getCategorie">Catégorie</label>
         <select class="form-control" id="getCategorie">
@@ -78,9 +82,10 @@
           }
           ?>
         </select>
+
         <div class="form-group">
           <label for="getIngredient">Catégorie ingrédient</label>
-          <select class="form-control" id="getIngredient">
+          <select class="form-control" id="getCatIngredient">
             <?php
             for ($i = 0; $i < count($tableStockIng); $i++) {
               echo "<option>" . $tableStockIng[$i]->get_nom() . "</option>";
@@ -88,6 +93,17 @@
             ?>
           </select>
         </div>
+        
+        <div class="form-group">
+          <label for="getIngredient">Ingrédient</label>
+          <select class="form-control" id="getIngredient">
+            <?php
+            for ($i = 0; $i < count($tableIng); $i++) {
+              echo "<option>". $tableIng[$i]->get_nom()."</option>";
+            }
+            ?>
+        </div>
+
       </div>
     </form>
   </div>

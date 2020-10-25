@@ -83,14 +83,9 @@ La dernière étapes est de push notre commit sur GitHub, pour cela il nous suff
 
 ![INFO](Capture5.PNG)
 
-<<<<<<< HEAD
-1. **Utilisation des actions présente sur VSCode**
-=======
 2. **Utilisation des actions présente sur VSCode**
->>>>>>> 315cc120d32e2696c9e1c9d348756c80e18b7e17
 
 ![INFO](Capture6.PNG)
-
 
 Nom | Description
 --|--
@@ -99,10 +94,8 @@ Push | Met à jour les références distantes ainsi que les objets associés
 Clone | Clone un dépôt dans un nouveau répertoire
 Checkout | Bascule sur une autre branche ou restaure des fichiers de l’arbre de travail
 Commit | Enregistre des instantanés de fichiers de façon permanente dans l’historique des versions
-Change | Inconnu pour l'instant
+Change | Inconnu pour l'instant*
 Pull, Push | Rapatrier et intégrer un autre dépôt ou une branche locale / Met à jour les références distantes ainsi que les objets associés
 Branch | Liste, crée, ou supprime des branches
 Remote | Gère un ensemble de dépôts (« distants ») dont vous suivez les branches.
 Stash | Remettre en ordre tout les fichiers
-
-## *Ceci n'est qu'un aperçu des commandes utiles pour l'utilisation de GIT*
