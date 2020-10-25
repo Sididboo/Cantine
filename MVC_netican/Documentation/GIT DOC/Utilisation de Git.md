@@ -83,7 +83,11 @@ La dernière étapes est de push notre commit sur GitHub, pour cela il nous suff
 
 ![INFO](Capture5.PNG)
 
+<<<<<<< HEAD
 1. **Utilisation des actions présente sur VSCode**
+=======
+2. **Utilisation des actions présente sur VSCode**
+>>>>>>> 315cc120d32e2696c9e1c9d348756c80e18b7e17
 
 ![INFO](Capture6.PNG)
 
