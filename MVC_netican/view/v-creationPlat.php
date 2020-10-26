@@ -14,6 +14,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
   </script>
   <script src="https://kit.fontawesome.com/ce45170c32.js" crossorigin="anonymous"></script>
+  <script src="view/js/xhr_object.js"></script>
+  <script src="view/js/v-creationPlat_search.js"></script>
 
   <title>Document</title>
 </head>
@@ -63,7 +65,7 @@
   <!-- Forms for table -->
   <div class="container">
 
-    <form id="regForm" action="POST">
+    <form action="" method="POST">
 
       <h2>Création d'un plat</h2>
 
@@ -85,10 +87,10 @@
 
         <div class="form-group">
           <label for="getIngredient">Catégorie ingrédient</label>
-          <select class="form-control" id="getCatIngredient">
+          <select class="form-control" id="catIngredient" onchange="search()">
             <?php
             for ($i = 0; $i < count($tableStockIng); $i++) {
-              echo "<option>" . $tableStockIng[$i]->get_nom() . "</option>";
+              echo "<option value=".$tableStockIng[$i]->get_id().">" . $tableStockIng[$i]->get_nom() . "</option>";
             }
             ?>
           </select>
@@ -96,12 +98,9 @@
         
         <div class="form-group">
           <label for="getIngredient">Ingrédient</label>
-          <select class="form-control" id="getIngredient">
-            <?php
-            for ($i = 0; $i < count($tableIng); $i++) {
-              echo "<option>". $tableIng[$i]->get_nom()."</option>";
-            }
-            ?>
+          <select class="form-control" id="ingredient">
+            <option value="">Message à changer pour indiquer quil faut d'abord choisir la cat ingre</option>
+          </select>
         </div>
 
       </div>

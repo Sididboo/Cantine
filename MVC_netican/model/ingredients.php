@@ -48,6 +48,30 @@
       return $listIngredients;
     }
 
+    // Méthode findAllByCat
+    public function findAllByCat($idCategorie)
+    {
+      $bdd = BDD::getBDD();
+
+      $listIngredients = array();
+
+      // Requête SQL
+      $sql = "SELECT i.IDINGREDIENT, i.IDSOUSCATEGORIEINGREDIENT, i.NOMINGREDIENT FROM ingredients AS i INNER JOIN souscategoriesingredients AS sci ON i.IDSOUSCATEGORIEINGREDIENT = sci.IDSOUSCATEGORIEINGREDIENT INNER JOIN categoriesingredients AS ci ON sci.IDCATEGORIEINGREDIENT = ci.IDCATEGORIEINGREDIENT WHERE ci.IDCATEGORIEINGREDIENT = '".$idCategorie."' ORDER BY NOMINGREDIENT";
+      // On execute la requête
+      $result = $bdd->query($sql);
+
+      while ($row = $result->fetch()) 
+      {
+        $laSousCategorie = new SousCategoriesIngredients();
+        $laSousCategorie->retrieve($row['IDSOUSCATEGORIEINGREDIENT']);
+
+        $leIngredient = new Ingredients($row['IDINGREDIENT'], $laSousCategorie, $row['NOMINGREDIENT']);
+        array_push($listIngredients, $leIngredient);
+      }
+
+      return $listIngredients;
+    }
+
     // Méthode retrieve
     public function retrieve($id)
     {
