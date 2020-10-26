@@ -1,7 +1,7 @@
 <?php
-    include_once '../modele/tickets.php';
-    include_once '../modele/categoriesTickets.php';
-    include_once '../modele/commerces.php';
+    include_once '../model/tickets.php';
+    include_once '../model/categoriesTickets.php';
+    include_once '../model/commerces.php';
 
     $date = $_REQUEST['date'];
 

@@ -12,8 +12,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/390bd29166.js"></script>
-    <script src="vue/js/xhr_object.js"></script>
-    <script src="vue/js/v-tickets_add.js"></script>
+    <script src="view/js/xhr_object.js"></script>
+    <script src="view/js/v-tickets_add.js"></script>
   </head>
     <body>
         
