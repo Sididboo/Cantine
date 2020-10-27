@@ -1,27 +1,28 @@
 function addTicket()
 {   
-    var fields = true;
+    var fields = false;
 
     var date = document.getElementById("date");
     var categorie = document.getElementById("categorie");
     var commerce = document.getElementById("commerce");
-    var file = document.getElementById("file").name;
 
-    if (!commerce.checkValidity()) 
-    {
-        document.getElementById("erreur").innerHTML = "Veuillez renseigner le nom du commerce.";
-        fields = false;
-    }
-    if (!categorie.checkValidity()) 
-    {
-        document.getElementById("erreur").innerHTML = "Veuillez renseigner la catégorie du ticket.";
-        fields = false;
-    }
+    // On vérifie que les champs sont complétés.
     if (!date.checkValidity()) 
     {
         document.getElementById("erreur").innerHTML = "Veuillez renseigner la date.";
-        fields = false;
     }
+        else if (!categorie.checkValidity()) 
+        {
+            document.getElementById("erreur").innerHTML = "Veuillez renseigner la catégorie du ticket.";
+        }
+            else if (!commerce.checkValidity()) 
+            {
+                document.getElementById("erreur").innerHTML = "Veuillez renseigner le nom du commerce.";
+            }
+                else
+                {
+                    fields = true;
+                }
     
 
     if (fields) 
@@ -41,15 +42,7 @@ function addTicket()
 
         xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        var data = "date=" + date.value + "&categorie=" + categorie.options[categorie.selectedIndex].value + "&commerce=" + commerce.options[commerce.selectedIndex].value;
-        if (file.value == "") 
-        {
-            data += "&file=NULL";
-        }
-            else
-            {
-                data += "&file=" + file.value;
-            }
+        var data = "date=" + date.value + "&categorie=" + categorie.options[categorie.selectedIndex].value + "&commerce=" + commerce.options[commerce.selectedIndex].value + "&file=" + null;
         xhr_object.send(data);
     }
 }

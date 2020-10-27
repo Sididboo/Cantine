@@ -13,8 +13,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/390bd29166.js"></script>
+
     <script src="view/js/xhr_object.js"></script>
+
     <script src="view/js/v-tickets_add.js"></script>
+    <script src="view/js/v-tickets_del.js"></script>
   </head>
     <body>
         
@@ -30,7 +33,7 @@
                 <div class="col-md-4 bg-light">
 
                 <!--form-->
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data" id="form">
                     <!--title-->
                     <h4 class="pt-3 text-center font-weight-bold">Formulaire</h4>
 
@@ -76,12 +79,6 @@
                             <a href="./index.php?action=addCommerce"><button type="button" class="btn"><i class="fas fa-folder-plus"></i></button></a>
                         </div>
 
-                        <!-- Importation du fichier Photo du ticket de caisse -->
-                        <div class="custom-file">
-                            <label class="custom-file-label font-weight-bold">* Pièce Jointe</label>
-                            <input class="custom-file-input" type="file" name="file" id="file">
-                        </div>
-
                         <div class="pt-3 text-center">
                             <p class="text-danger">* champs obligatoires</p>
                             <!-- Buttons -->
@@ -119,9 +116,29 @@
                                         <td><?php echo $listTickets[$i]->get_dateTicket(); ?></td>
                                         <td><?php echo $listTickets[$i]->get_leCommerce()->get_nom(); ?></td>
                                         <td><?php echo $listTickets[$i]->get_laCategorie()->get_nom(); ?></td>
-                                        <td><?php echo $listTickets[$i]->get_pieceJointe(); ?></td>
                                         <td>
-                                            <button class="btn btn-primary" onclick="deleteTicket('<?php echo $listTickets[$i]->get_id(); ?>', '<?php echo $listTickets[$i]->get_pieceJointe(); ?>')"><i class="fas fa-trash"></i> Supprimer</button>
+                                            <?php 
+                                                if($listTickets[$i]->get_pieceJointe() != NULL)
+                                                {
+                                                    echo $listTickets[$i]->get_pieceJointe();
+                                                }
+                                                    else
+                                                    {
+                                                        ?>
+                                                            <form action="constroller/a-tickets_upload.php" method="POST" enctype="multipart/form-data">
+                                                                <div>
+                                                                    <input type="file" name="file" id="file"/>
+                                                                </div>
+                                                                <div>
+                                                                    <input type="submit" name="submit" value="Upload"/>
+                                                                </div>
+                                                            </form>
+                                                        <?php
+                                                    }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary" onclick="delTicket('<?php echo $listTickets[$i]->get_id(); ?>')"><i class="fas fa-trash"></i> Supprimer</button>
                                             <a href="./index.php?action=articles&idTicket=<?php echo $listTickets[$i]->get_id(); ?>"><button class="btn btn-secondary"><i class="fas fa-plus"></i> Ajouter articles</button></a>
                                         </td>
                                     </tr>

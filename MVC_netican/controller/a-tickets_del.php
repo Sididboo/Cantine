@@ -1,19 +1,16 @@
 <?php
     include_once '../model/tickets.php';
-    include_once '../model/categoriesTickets.php';
-    include_once '../model/commerces.php';
 
-    $date = $_REQUEST['date'];
+    $leTicket = new Tickets();
+    $leTicket->retrieve($_REQUEST['idTicket']);
 
-    $laCategorie = new CategoriesTickets();
-    $laCategorie->retrieve($_REQUEST['categorie']);
+    /*// Sélection du fichier à supprimer
+    $path = "../server/imgs_tickets/" . $leTicket->get_pieceJointe();
 
-    $leCommerce = new Commerces();
-    $leCommerce->retrieve($_REQUEST['commerce']);
+    // Suppresion du fichier
+    unlink($path);*/
 
-    $leTicket = new Tickets('', $laCategorie, $leCommerce, $date, NULL);
-    
-    $leTicket->create();
+    $leTicket->delete();
 
     $listTickets = array();
     $listTickets = $leTicket->findAll();
