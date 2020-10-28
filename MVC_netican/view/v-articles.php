@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--CSS-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="stylesheet" href="habillage/styles/css-header.css">
-        <!--JS-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-        <script src="https://kit.fontawesome.com/390bd29166.js"></script>
+      <title>Netican/articles</title>
 
-        <script src="v-js-articles_codeBarre.js"></script>
-        <script src="v-js-cats_sousCats_ingredients.js"></script>
-        <script src="v-js-sousCats_ingredients.js"></script>
-        <script src="v-js-articles_table.js"></script>
-        <script src="v-js-articles_remove.js"></script>
-        <script src="v-js-articles_add.js"></script>
+      <!--CSS-->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <link rel="stylesheet" href="habillage/styles/css-header.css">
+      <!--JS-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+      <script src="https://kit.fontawesome.com/390bd29166.js"></script>
+
+      <script src="view/js/xhr_object.js"></script>
+
+      <script src="view/js/v-articles_codeBarre.js"></script>
+      <script src="v-js-cats_sousCats_ingredients.js"></script>
+      <script src="v-js-sousCats_ingredients.js"></script>
+      <script src="v-js-articles_remove.js"></script>
+      <script src="v-js-articles_add.js"></script>
     </head>
-    <body onload="table()">
+    <body>
 
     <!-- Header -->
     <?php include './header.html'; ?>
@@ -45,16 +48,8 @@
                 <div>
                   <!-- Code-barre -->
                   <label class="font-weight-bold">Code-barre :</label>
-                  <input class="form-control" type="text" id="code" name="code" placeholder="Code-barre" onchange="foundCodeBarre()"
-                    <?php 
-                        if (isset($_REQUEST['saveCode']))
-                        {
-                            ?>
-                                value="<?php echo $_REQUEST['saveCode'];?>">
-                            <?php
-                        }
-                    ?>
-                    <!-- End code-barre -->
+                  <input class="form-control" type="text" id="code" name="code" placeholder="Code-barre" onchange="codeBarre()"/> 
+                  <!-- End code-barre -->
                 </div>
                 <div>
                   <!-- Catégories -->
@@ -62,12 +57,12 @@
                   <select class="form-control" id="categories" name="categories" onchange="foundSousCategories()" required>
                     <option value="">Choisir une catégorie</option>
                     <?php
-                        for ($i=0; $i < count($listCategoriesIngredients); $i++) 
-                        { 
+                      for ($i=0; $i < count($listCategoriesIngredients); $i++) 
+                      { 
                     ?>
-                            <option value="<?php echo $listCategoriesIngredients[$i]->get_id(); ?>"><?php echo $listCategoriesIngredients[$i]->get_nom(); ?></option>
+                        <option value="<?php echo $listCategoriesIngredients[$i]->get_id(); ?>"><?php echo $listCategoriesIngredients[$i]->get_nom(); ?></option>
                     <?php
-                        }
+                      }
                     ?>
                   </select>
                   <!-- End catégories -->
@@ -209,6 +204,23 @@
                   </tr>
                 </thead>
                 <tbody id="tbody">
+                  <?php
+                    for ($i=0; $i < count($listProduitsAchetes); $i++) 
+                    { 
+                      ?>
+                        <tr>
+                          <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_leIngredient()->get_nom(); ?></td>
+                          <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_laMarque()->get_nom(); ?></td>
+                          <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_lePays()->get_nom(); ?></td>
+                          <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_leTypeConditionnement()->get_nom(); ?></td>
+                          <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_quantiteConditionnement(); ?></td>
+                          <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_laUnite()->get_nom(); ?></td>
+                          <td><?php echo $listProduitsAchetes[$i]->get_datePeremption(); ?></td>
+                          <td><button type="button" onclick="delArticle(<?php echo $listProduitsAchetes[$i]->get_id(); ?>)"><i class="fas fa-trash"></i>Supprimer</button></td>
+                        </tr>
+                      <?php
+                    }
+                  ?>
                 </tbody>
               </table>
             </div>

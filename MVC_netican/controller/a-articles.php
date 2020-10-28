@@ -4,12 +4,12 @@
 
     include './server/session.php';
 
-    include_once './modele/produitsAchetes.php';
-    include_once './modele/categoriesIngredients.php';
-    include_once './modele/marques.php';
-    include_once './modele/pays.php';
-    include_once './modele/typesConditionnements.php';
-    include_once './modele/unites.php';
+    include_once 'model/produitsAchetes.php';
+    include_once 'model/categoriesIngredients.php';
+    include_once 'model/marques.php';
+    include_once 'model/pays.php';
+    include_once 'model/typesConditionnements.php';
+    include_once 'model/unites.php';
 
     $etat;
 

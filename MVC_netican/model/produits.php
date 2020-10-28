@@ -108,6 +108,44 @@
         $this->_prod_quantiteConditionnement = $data['QUANTITECONDITIONNEMENT'];
     }
 
+    // Méthode retrieve by code-barre
+    public function retrieveByCodeBarre($codeBarre)
+    {
+      $bdd = BDD::getBDD();
+
+      // Requête
+      $sql = "SELECT * FROM produits WHERE CODEBARRE='".$codeBarre."'";
+      // On execute la requête
+      $result = $bdd->query($sql);
+      // On récupère les données dans un tableau
+      $data = $result->fetch();
+
+      $this->_prod_id = $data['IDPRODUIT'];
+
+      $lePays = new Pays();
+      $lePays->retrieve($data['IDPAYS']);
+      $this->_prod_lePays = $lePays;
+
+      $laMarque = new Marques();
+      $laMarque->retrieve($data['IDMARQUE']);
+      $this->_prod_laMarque = $laMarque;
+
+      $laUnite = new Unites();
+      $laUnite->retrieve($data['IDUNITE']);
+      $this->_prod_laUnite = $laUnite;
+
+      $leTypeConditionnement = new TypesConditionnements();
+      $leTypeConditionnement->retrieve($data['IDTYPECONDITIONNEMENT']);
+      $this->_prod_leTypeConditionnement = $leTypeConditionnement;
+
+      $leIngredient = new Ingredients();
+      $leIngredient->retrieve($data['IDINGREDIENT']);
+      $this->_prod_leIngredient = $leIngredient;
+
+      $this->_prod_codeBarre = $data['CODEBARRE'];
+      $this->_prod_quantiteConditionnement = $data['QUANTITECONDITIONNEMENT'];
+    }
+
     // Méthode create
     public function create()
     {
