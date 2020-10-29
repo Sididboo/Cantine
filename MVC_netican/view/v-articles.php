@@ -19,8 +19,7 @@
       <script src="view/js/xhr_object.js"></script>
 
       <script src="view/js/v-articles_codeBarre.js"></script>
-      <script src="v-js-cats_sousCats_ingredients.js"></script>
-      <script src="v-js-sousCats_ingredients.js"></script>
+      <script src="view/js/v-articles_search.js"></script>
       <script src="v-js-articles_remove.js"></script>
       <script src="v-js-articles_add.js"></script>
     </head>
@@ -54,7 +53,7 @@
                 <div>
                   <!-- Catégories -->
                   <label class="font-weight-bold">* Catégorie de l'article :</label>
-                  <select class="form-control" id="categories" name="categories" onchange="foundSousCategories()" required>
+                  <select class="form-control" id="categories" name="categories" onchange="searchSousCategories()" required>
                     <option value="">Choisir une catégorie</option>
                     <?php
                       for ($i=0; $i < count($listCategoriesIngredients); $i++) 
@@ -70,7 +69,7 @@
                 <div>
                   <!-- Sous-catégories -->
                   <label class="font-weight-bold">* Sous catégorie de l'article :</label>
-                  <select class="form-control" id="sousCategories" name="sousCategories" onchange="foundIngredients()" required>
+                  <select class="form-control" id="sousCategories" name="sousCategories" onchange="searchIngredients()" required>
                   </select>
                   <!-- End sous-catégories -->
                 </div>

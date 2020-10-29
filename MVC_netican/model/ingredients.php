@@ -72,6 +72,30 @@
       return $listIngredients;
     }
 
+    // Méthode findAllBySousCat
+    public function findAllBySousCat($idSousCategorie)
+    {
+      $bdd = BDD::getBDD();
+
+      $listIngredients = array();
+
+      // Requête SQL
+      $sql = "SELECT * FROM ingredients NATURAL JOIN souscategoriesingredients WHERE IDSOUSCATEGORIEINGREDIENT= '".$idSousCategorie."' ORDER BY NOMINGREDIENT";
+      // On execute la requête
+      $result = $bdd->query($sql);
+
+      while ($row = $result->fetch()) 
+      {
+        $laSousCategorie = new SousCategoriesIngredients();
+        $laSousCategorie->retrieve($row['IDSOUSCATEGORIEINGREDIENT']);
+
+        $leIngredient = new Ingredients($row['IDINGREDIENT'], $laSousCategorie, $row['NOMINGREDIENT']);
+        array_push($listIngredients, $leIngredient);
+      }
+
+      return $listIngredients;
+    }
+
     // Méthode retrieve
     public function retrieve($id)
     {

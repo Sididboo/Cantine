@@ -1,4 +1,4 @@
-<?php
+ <?php
 
   include_once 'accesBDD.php';
 
@@ -31,6 +31,30 @@
 
       // Requête SQL
       $sql = "SELECT * FROM souscategoriesingredients ORDER BY NOMSOUSCATEGORIEINGREDIENT";
+      // On execute la requête
+      $result = $bdd->query($sql);
+
+      while ($row = $result->fetch()) 
+      {
+        $laCategorie = new CategoriesIngredients();
+        $laCategorie->retrieve($row['IDCATEGORIEINGREDIENT']);
+
+        $laSousCategorie = new SousCategoriesIngredients($row['IDSOUSCATEGORIEINGREDIENT'], $laCategorie, $row['NOMSOUSCATEGORIEINGREDIENT']);
+        array_push($listSousCategories, $laSousCategorie);
+      }
+
+      return $listSousCategories;
+    }
+
+    // Méthode findAllByCat
+    public function findAllByCat($idCategorie)
+    {
+      $bdd = BDD::getBDD();
+
+      $listSousCategories = array();
+
+      // Requête SQL
+      $sql = "SELECT * FROM souscategoriesingredients NATURAL JOIN categoriesingredients WHERE IDCATEGORIEINGREDIENT = '".$idCategorie."' ORDER BY NOMSOUSCATEGORIEINGREDIENT";
       // On execute la requête
       $result = $bdd->query($sql);
 

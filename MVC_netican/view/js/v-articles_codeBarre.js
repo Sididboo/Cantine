@@ -17,27 +17,20 @@ function codeBarre()
     if (xhr_object.readyState == 4)
     {
       var result = xhr_object.responseText;
-
-      if (result != "" && result != null)
+      if (result.length > 1)
       {
         var table = [];
         table = result.split(";");
 
-        code.innerHTML = table[0];
-        categories.innerHTML = table[1];
-        sousCategories.innerHTML = table[2];
-        ingredients.innerHTML = table[3];
-        marques.innerHTML = table[4];
-        pays.innerHTML = table[5];
-        typesC.value = table[6];
+        categories.innerHTML = table[0];
+        sousCategories.innerHTML = table[1];
+        ingredients.innerHTML = table[2];
+        marques.innerHTML = table[3];
+        pays.innerHTML = table[4];
+        typesC.value = table[5];
         quantiteC.readOnly = true;
-        unites.innerHTML = table[7];
+        unites.innerHTML = table[6];
       }
-        /*else
-        {
-          var code = code;
-          window.location.href= "../contained/insertionArticles.php"+ "?saveCode=" + code.value;
-        }*/
     }
   }
 
