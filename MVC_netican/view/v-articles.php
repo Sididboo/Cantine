@@ -22,6 +22,7 @@
       <script src="view/ajax/v-articles_search.js"></script>
       <script src="view/ajax/v-articles_del.js"></script>
       <script src="view/ajax/v-articles_add.js"></script>
+      <script src="view/ajax/v-articles_ingredient.js"></script>
     </head>
     <body>
 
@@ -79,8 +80,39 @@
                   <select class="form-control col-xs-2" id="ingredients" name="ingredients" required>
                   </select>
                   <span class="text-danger">Si l'article n'existe pas : </span>
-                  <a href="./index.php?action=addIngredient"><button class="btn" type="button"><i class="fas fa-folder-plus"></i></button></a>
+                  <button class="btn" type="button" onclick="openPopupIngredient()"><i class="fas fa-folder-plus"></i></button>
                   <!-- End ingrédients -->
+
+                  <!-- Popup Ingredient -->
+                  <div id="popupIngredient"  style="display: none;">
+                    <div>
+                      <p>Avant d'ajouter un nouvel ingredient, pensez à bien vérifier s'il n'existe pas déjà.</p>
+                    </div>
+                    <div>
+                      <select class="form-control" name="popupCategories" id="popupCategories" onchange="popupSearchSousCategories()">
+                        <option>Choisissez une catégorie</option>
+                        <?php
+                          for ($i=0; $i < count($listCategoriesIngredients); $i++) 
+                          { 
+                        ?>
+                            <option value="<?php echo $listCategoriesIngredients[$i]->get_id(); ?>"><?php echo $listCategoriesIngredients[$i]->get_nom(); ?></option>
+                        <?php
+                          }
+                        ?>
+                      </select>
+                    </div>
+                    <div>
+                      <select class="form-control" name="popupSousCategories" id="popupSousCategories">
+                      </select>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control" name="ingredient" id="ingredient" placeholder="Nouvel ingredient..."/>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary" onclick="addIngredient()">Valider</button>
+                        <button type="button" class="btn btn-secondary" onclick="closePopupIngredient()">Fermer</button>
+                    </div>
+                  </div>
                 </div>
                 <div>
                   <!-- Marque -->

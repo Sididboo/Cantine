@@ -71,8 +71,6 @@
                                 </div>
                                 <div>
                                     <button type="button" class="btn btn-primary" onclick="addCategorie()">Valider</button>
-                                </div>
-                                <div>
                                     <button type="button" class="btn btn-secondary" onclick="closePopupCategorie()">Fermer</button>
                                 </div>
                             </div>
@@ -100,8 +98,6 @@
                                 </div>
                                 <div>
                                     <button type="button" class="btn btn-primary" onclick="addCommerce()">Valider</button>
-                                </div>
-                                <div>
                                     <button type="button" class="btn btn-secondary" onclick="closePopupCommerce()">Fermer</button>
                                 </div>
                             </div>
