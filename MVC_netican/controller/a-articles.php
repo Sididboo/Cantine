@@ -15,6 +15,8 @@
 
     if (isset($_REQUEST['idTicket']) && isLogged()) 
     {
+        $_SESSION['idTicket'] = $_REQUEST['idTicket'];
+
         $produitsAchetes = new ProduitsAchetes();
         $listProduitsAchetes = array();
         $listProduitsAchetes = $produitsAchetes->findBy($_REQUEST['idTicket']);

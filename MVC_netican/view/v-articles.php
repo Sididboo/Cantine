@@ -20,8 +20,8 @@
 
       <script src="view/js/v-articles_codeBarre.js"></script>
       <script src="view/js/v-articles_search.js"></script>
-      <script src="v-js-articles_remove.js"></script>
-      <script src="v-js-articles_add.js"></script>
+      <script src="view/js/v-articles_del.js"></script>
+      <script src="view/js/v-articles_add.js"></script>
     </head>
     <body>
 
@@ -178,8 +178,8 @@
                 <div class="pt-3 text-center">
                   <p class="text-danger">* champs obligatoires</p>
                   <!-- Buttons -->
-                  <input class="btn btn-secondary" type="submit" value="Quitter" onclick="remove()" formnovalidate>
-                  <input class="btn btn-primary" type="submit" value="Ajouter" onclick="add()">
+                  <input class="btn btn-secondary" type="submit" value="Quitter" onclick="delArticle()" formnovalidate>
+                  <input class="btn btn-primary" type="submit" value="Ajouter" onclick="addArticle()">
                   <!-- End buttons -->
                 </div>
               </div>

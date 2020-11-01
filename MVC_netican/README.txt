@@ -10,3 +10,6 @@ Problème à résoudre :
         Uploader l'image en AJAX
             - Problème 
                 Erreur venant le l'object FormData, "undefined index : file" dès que l'on souhaite récupérer "$_FILES['file']" dans le controller "a-tickets_upload.php".
+
+Missions :
+    - Design à faire sur toutes les pages pour la personne qui souhaite le faire.
