@@ -1,32 +1,32 @@
-function openPopupCommerce()
+function openPopupMarque()
 {
-    document.getElementById('popupCommerce').style.display = "block";
+    document.getElementById('popupMarque').style.display = "block";
 }
 
-function closePopupCommerce()
+function closePopupMarque()
 {
-    document.getElementById('popupCommerce').style.display = "none";
+    document.getElementById('popupMarque').style.display = "none";
 }
 
-function addCommerce()
+function addMarque()
 {
-        var commerces = document.getElementById("commerces");
-        var commerce = document.getElementById("commerce");
+        var marques = document.getElementById("marques");
+        var marque = document.getElementById("marque");
 
-        xhr_object.open("POST","controller/a-tickets_commerce.php", true);
+        xhr_object.open("POST","controller/a-articles_marque.php", true);
 
         xhr_object.onreadystatechange = function()
         {
             if (xhr_object.readyState == 4)
             {
                 var result = xhr_object.responseText;
-                commerces.innerHTML = result;
-                closePopupCommerce();
+                marques.innerHTML = result;
+                closePopupMarque();
             }  
         }
 
         xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        var data = "commerce=" + commerce.value;
+        var data = "marque=" + marque.value;
         xhr_object.send(data);
 }

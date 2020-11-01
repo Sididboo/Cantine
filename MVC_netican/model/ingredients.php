@@ -117,6 +117,27 @@
       $this->_ingr_nom = $data['NOMINGREDIENT'];
     }
 
+    // Méthode retrieve
+    public function retrieveByName($name)
+    {
+      $bdd = BDD::getBDD();
+
+      // Requête SQL
+      $sql = "SELECT * FROM ingredients WHERE NOMINGREDIENT='".$name."'";
+      // On execute la requête
+      $result = $bdd->query($sql);
+      // On récup le résultat dans un tableau
+      $data = $result->fetch();
+
+      // Traitements
+      $laSousCategorie = new SousCategoriesIngredients();
+      $laSousCategorie->retrieve($data['IDSOUSCATEGORIEINGREDIENT']);
+
+      $this->_ingr_id = $data['IDINGREDIENT'];
+      $this->_ingr_laSousCategorie = $laSousCategorie;
+      $this->_ingr_nom = $data['NOMINGREDIENT'];
+    }
+
     // Méthode create
     public function create()
     {

@@ -41,12 +41,29 @@
     }
 
     // Méthode retrieve
-    public function retrieve($idMarque)
+    public function retrieve($id)
     {
       $bdd = BDD::getBDD();
 
       // Requête SQL
-      $sql = "SELECT * FROM marques WHERE IDMARQUE='".$idMarque."'";
+      $sql = "SELECT * FROM marques WHERE IDMARQUE='".$id."'";
+      // On execute la requête
+      $result = $bdd->query($sql);
+      // On récup le résultat dans un tableau
+      $data = $result->fetch();
+
+      // Traitements
+      $this->_marq_id = $data['IDMARQUE'];
+      $this->_marq_nom = $data['MARQUE'];
+    }
+
+    // Méthode retrieve
+    public function retrieveByName($name)
+    {
+      $bdd = BDD::getBDD();
+
+      // Requête SQL
+      $sql = "SELECT * FROM marques WHERE NOMMARQUE='".$name."'";
       // On execute la requête
       $result = $bdd->query($sql);
       // On récup le résultat dans un tableau

@@ -23,6 +23,7 @@
       <script src="view/ajax/v-articles_del.js"></script>
       <script src="view/ajax/v-articles_add.js"></script>
       <script src="view/ajax/v-articles_ingredient.js"></script>
+      <script src="view/ajax/v-articles_marque.js"></script>
     </head>
     <body>
 
@@ -129,7 +130,21 @@
                     ?>
                   </select>
                   <span class="text-danger">Si la marque n'existe pas : </span>
-                  <a href="./index.php?action=addMarque"><button class="btn" type="button"><i class="fas fa-folder-plus"></i></button></a>
+                  <button class="btn" type="button" onclick="openPopupMarque()"><i class="fas fa-folder-plus"></i></button>
+
+                  <!-- Popup Marque -->
+                  <div id="popupMarque"  style="display: none;">
+                    <div>
+                      <p>Avant d'ajouter une nouvelle marque, pensez à bien vérifier s'elle n'existe pas déjà.</p>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control" name="marque" id="marque" placeholder="Nouvelle marque..."/>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary" onclick="addMarque()">Valider</button>
+                        <button type="button" class="btn btn-secondary" onclick="closePopupMarque()">Fermer</button>
+                    </div>
+                  </div>
                   <!-- End marque -->
                 </div>
                 <div>
