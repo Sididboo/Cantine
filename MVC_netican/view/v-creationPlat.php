@@ -90,12 +90,12 @@
           <select class="form-control" id="catIngredient" onchange="search()">
             <?php
             for ($i = 0; $i < count($tableStockIng); $i++) {
-              echo "<option value=".$tableStockIng[$i]->get_id().">" . $tableStockIng[$i]->get_nom() . "</option>";
+              echo "<option value=" . $tableStockIng[$i]->get_id() . ">" . $tableStockIng[$i]->get_nom() . "</option>";
             }
             ?>
           </select>
         </div>
-        
+
         <div class="form-group">
           <label for="getIngredient">Ingrédient</label>
           <select class="form-control" id="ingredient">
