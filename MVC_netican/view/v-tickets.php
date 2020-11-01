@@ -14,10 +14,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/390bd29166.js"></script>
 
-    <script src="view/js/xhr_object.js"></script>
+    <script src="view/ajax/xhr_object.js"></script>
 
-    <script src="view/js/v-tickets_add.js"></script>
-    <script src="view/js/v-tickets_del.js"></script>
+    <script src="view/ajax/v-tickets_add.js"></script>
+    <script src="view/ajax/v-tickets_del.js"></script>
+    <script src="view/ajax/v-tickets_categorie"></script>
+    <script src="view/ajax/v-tickets_commerce"></script>
   </head>
     <body>
         
