@@ -3,7 +3,7 @@ function addTicket()
     var fields = false;
 
     var date = document.getElementById("date");
-    var categorie = document.getElementById("categorie");
+    var categories = document.getElementById("categories");
     var commerce = document.getElementById("commerce");
 
     // On vérifie que les champs sont complétés.
@@ -11,7 +11,7 @@ function addTicket()
     {
         document.getElementById("erreur").innerHTML = "Veuillez renseigner la date.";
     }
-        else if (!categorie.checkValidity()) 
+        else if (!categories.checkValidity()) 
         {
             document.getElementById("erreur").innerHTML = "Veuillez renseigner la catégorie du ticket.";
         }
@@ -42,7 +42,7 @@ function addTicket()
 
         xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        var data = "date=" + date.value + "&categorie=" + categorie.options[categorie.selectedIndex].value + "&commerce=" + commerce.options[commerce.selectedIndex].value + "&file=" + null;
+        var data = "date=" + date.value + "&categorie=" + categories.options[categories.selectedIndex].value + "&commerce=" + commerces.options[commerces.selectedIndex].value + "&file=" + null;
         xhr_object.send(data);
     }
 }

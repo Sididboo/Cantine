@@ -23,7 +23,7 @@
       $listCategories = array();
 
       // Requête SQL
-      $sql = "SELECT * FROM categoriestickets";
+      $sql = "SELECT * FROM categoriestickets ORDER BY NOMCATEGORIETICKET";
       // On execute la requête
       $result = $bdd->query($sql);
 

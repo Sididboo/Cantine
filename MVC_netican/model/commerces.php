@@ -24,7 +24,7 @@
       $listCommerces = array();
 
       // Requête SQL
-      $sql = "SELECT * FROM commerces";
+      $sql = "SELECT * FROM commerces ORDER BY NOMCOMMERCE";
       // On execute la requête
       $result = $bdd->query($sql);
 

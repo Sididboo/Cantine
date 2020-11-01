@@ -1,12 +1,17 @@
-function categorie()
+function openPopupCategorie()
 {
-    var categorie = prompt("Quelle catégorie voulez vous rajouter ?");
+    document.getElementById('popupCategorie').style.display = "block";
+}
 
-    var valid = window.confirm("Etes-vous sûr ? \n "+categorie);
+function closePopupCategorie()
+{
+    document.getElementById('popupCategorie').style.display = "none";
+}
 
-    if (valid) 
-    {
+function addCategorie()
+{
         var categories = document.getElementById("categories");
+        var categorie = document.getElementById("categorie");
 
         xhr_object.open("POST","controller/a-tickets_categorie.php", true);
 
@@ -16,16 +21,12 @@ function categorie()
             {
                 var result = xhr_object.responseText;
                 categories.innerHTML = result;
+                closePopupCategorie();
             }  
         }
 
         xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        var data = "categorie=" + categorie;
+        var data = "categorie=" + categorie.value;
         xhr_object.send(data);
-    }
-        else
-        {
-            return;
-        }
 }

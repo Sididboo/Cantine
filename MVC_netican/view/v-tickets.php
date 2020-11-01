@@ -18,8 +18,8 @@
 
     <script src="view/ajax/v-tickets_add.js"></script>
     <script src="view/ajax/v-tickets_del.js"></script>
-    <script src="view/ajax/v-tickets_categorie"></script>
-    <script src="view/ajax/v-tickets_commerce"></script>
+    <script src="view/ajax/v-tickets_categorie.js"></script>
+    <script src="view/ajax/v-tickets_commerce.js"></script>
   </head>
     <body>
         
@@ -52,7 +52,7 @@
                         <!-- Gestion du menu déroulant pour le choix de la marque -->
                         <div class="pt-4">
                             <label class="font-weight-bold">* Catégorie</label>
-                            <select class="form-control" name="categorie" id="categorie" required>
+                            <select class="form-control" name="categories" id="categories" required>
                                 <option value="">Choisir une catégorie de ticket</option>
                                 <?php
                                     for ($i=0; $i < count($listCategoriesTickets); $i++) 
@@ -62,13 +62,26 @@
                                 ?>
                             </select>
                             <span class="text-danger">Si la catégorie du ticket n'existe pas : </span>
-                            <a href="./index.php?action=addCatTicket"><button type="button" class="btn"><i class="fas fa-folder-plus"></i></button></a>
+                            <button type="button" class="btn" onclick="openPopupCategorie()"><i class="fas fa-folder-plus"></i></button>
+
+                            <!-- Popup Catégorie -->
+                            <div id="popupCategorie"  style="display: none;">
+                                <div>
+                                    <input type="text" class="form-control w-50" name="categorie" id="categorie" placeholder="Nouvelle catégorie..."/>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-primary" onclick="addCategorie()">Valider</button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-secondary" onclick="closePopupCategorie()">Fermer</button>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Gestion du menu déroulant pour le choix du commerce -->
                         <div class="py-4">
                             <label class="font-weight-bold">* Commerce</label>
-                            <select class="form-control" name="commerce" id="commerce" required>
+                            <select class="form-control" name="commerces" id="commerces" required>
                                 <option value="">Choisir un commerce</option>
                                 <?php
                                     for ($i=0; $i < count($listCommerces); $i++) 
@@ -78,7 +91,20 @@
                                 ?>
                             </select>
                             <span class="text-danger">Si le commerce n'existe pas : </span>
-                            <a href="./index.php?action=addCommerce"><button type="button" class="btn"><i class="fas fa-folder-plus"></i></button></a>
+                            <button type="button" class="btn" onclick="openPopupCommerce()"><i class="fas fa-folder-plus"></i></button>
+
+                            <!-- Popup Commerce -->
+                            <div id="popupCommerce"  style="display: none;">
+                                <div>
+                                    <input type="text" class="form-control w-50" name="commerce" id="commerce" placeholder="Nouveau commerce..."/>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-primary" onclick="addCommerce()">Valider</button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-secondary" onclick="closePopupCommerce()">Fermer</button>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="pt-3 text-center">
