@@ -152,18 +152,18 @@
       $bdd = BDD::getBDD();
 
       $sql = "INSERT INTO produits (IDPAYS, IDMARQUE, IDUNITE, IDTYPECONDITIONNEMENT, IDINGREDIENT, CODEBARRE, QUANTITECONDITIONNEMENT)
-        VALUES (";
+        VALUES ('".$this->_prod_lePays->get_id()."',";
 
-      if (empty($this->_prod_lePays->get_id())) 
+      if (empty($this->_prod_laMarque->get_id())) 
       {
-        $sql += "NULL";
+        $sql += "NULL,";
       }
         else
         {
-          $sql += "'".$this->_prod_lePays->get_id()."'";
+          $sql += "'".$this->_prod_laMarque->get_id()."',";
         }
       // Requête SQL
-       $sql += ",'".$this->_prod_laUnite->get_id()."','".$this->_prod_leTypeConditionnement->get_id()."','".$this->_prod_leIngredient->get_id()."','".$this->_prod_codeBarre."','".$this->_prod_quantiteConditionnement."')";
+       $sql += "'".$this->_prod_laUnite->get_id()."','".$this->_prod_leTypeConditionnement->get_id()."','".$this->_prod_leIngredient->get_id()."','".$this->_prod_codeBarre."','".$this->_prod_quantiteConditionnement."')";
       // On execute la requête
       $bdd->exec($sql);
     }
