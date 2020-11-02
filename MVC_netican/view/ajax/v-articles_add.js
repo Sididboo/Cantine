@@ -3,6 +3,8 @@ function addArticle()
     var fields = true;
 
     var code = document.getElementById("code");
+    var categories = document.getElementById("categories");
+    var sousCategories = document.getElementById("sousCategories");
     var ingredients = document.getElementById("ingredients");
     var marques = document.getElementById("marques");
     var pays = document.getElementById("pays");
@@ -14,30 +16,39 @@ function addArticle()
 
     var tbody = document.getElementById("tbody");
 
+    // Vérifications des champs du formulaire obligatoires
     switch (true) 
     {
-        case !ingredients.checkValidity():
-            document.getElementById("erreur").innerHTML = "Veuillez sélectionner un ingredient. Vous pouvez affiner votre recherche d'ingrédients avec la sélection de la catégorie et de la sous catégorie.";
+        case categories.value == "0":
+            document.getElementById("erreur").innerHTML = "Veuillez sélectionner la catégorie de l'article.";
             fields = false;
             break;
-        case !pays.checkValidity():
+        case sousCategories.value == "0":
+            document.getElementById("erreur").innerHTML = "Veuillez sélectionner la sous-catégorie de l'article.";
+            fields = false;
+            break;
+        case ingredients.value == "0":
+            document.getElementById("erreur").innerHTML = "Veuillez sélectionner un article.";
+            fields = false;
+            break;
+        case pays.value == "0":
             document.getElementById("erreur").innerHTML = "Veuillez sélectionner un pays.";
             fields = false;
             break;
-        case !typesC.checkValidity():
+        case typesC.value == "0":
             document.getElementById("erreur").innerHTML = "Veuillez sélectionner un type de conditionnement.";
             fields = false;
             break;
-        case !quantiteC.checkValidity():
-            document.getElementById("erreur").innerHTML = "Veuillez indiquer la quantité de votre article";
+        case quantiteC.value < 0.1:
+            document.getElementById("erreur").innerHTML = "Veuillez indiquer la quantité de votre article (minimum 0.1)";
             fields = false;
             break;
-        case !unites.checkValidity():
+        case unites.value == "0":
             document.getElementById("erreur").innerHTML = "Veuillez sélectionner l'unité de la quantité de l'article.";
             fields = false;
             break;
-        case !nbArticles.checkValidity():
-            document.getElementById("erreur").innerHTML = "Veuillez indiquer le nombre acheté concernant cet article.";
+        case nbArticles.value < 1:
+            document.getElementById("erreur").innerHTML = "Veuillez indiquer le nombre acheté concernant cet article (minimum 1).";
             fields = false;
             break;
         case !dateP.checkValidity():
@@ -62,12 +73,12 @@ function addArticle()
         xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         
         var data = "code=" + code.value;
-            data += "&ingredient=" + ingredients.options[ingredients.selectedIndex].value;
-            data += "&marques=" + marques.options[marques.selectedIndex].value;
-            data += "&pays=" + pays.options[pays.selectedIndex].value;
-            data += "&typeC=" + typesC.options[typesC.selectedIndex].value;
+            data += "&ingredient=" + ingredients.value;
+            data += "&marque=" + marques.value;
+            data += "&pays=" + pays.value;
+            data += "&typeC=" + typesC.value;
             data += "&quantiteC=" + quantiteC.value;
-            data += "&unite=" + unites.options[unites.selectedIndex].value;
+            data += "&unite=" + unites.value;
             data += "&nbArticles=" + nbArticles.value;
             data += "&dateP=" + dateP.value;
 

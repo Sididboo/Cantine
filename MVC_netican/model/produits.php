@@ -154,16 +154,16 @@
       $sql = "INSERT INTO produits (IDPAYS, IDMARQUE, IDUNITE, IDTYPECONDITIONNEMENT, IDINGREDIENT, CODEBARRE, QUANTITECONDITIONNEMENT)
         VALUES (";
 
-      if (empty($this->_proa_lePays->get_id())) 
+      if (empty($this->_prod_lePays->get_id())) 
       {
         $sql += "NULL";
       }
         else
         {
-          $sql += "'".$this->_proa_lePays->get_id()."'";
+          $sql += "'".$this->_prod_lePays->get_id()."'";
         }
       // Requête SQL
-       $sql += ",'".$this->_proa_laUnite->get_id()."','".$this->_proa_leTypeConditionnement->get_id()."','".$this->_proa_leIngredient->get_id()."','".$this->_proa_codeBarre."','".$this->_prod_quantiteConditionnement."')";
+       $sql += ",'".$this->_prod_laUnite->get_id()."','".$this->_prod_leTypeConditionnement->get_id()."','".$this->_prod_leIngredient->get_id()."','".$this->_prod_codeBarre."','".$this->_prod_quantiteConditionnement."')";
       // On execute la requête
       $bdd->exec($sql);
     }

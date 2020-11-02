@@ -12,4 +12,8 @@
     echo $leProduit->get_leTypeConditionnement()->get_nom();
     echo $leProduit->get_quantiteConditionnement();
     echo $leProduit->get_laUnite()->get_nom();
+
+    /*
+        Risque changer, si résolution du problème "Code-Barre".
+    */
 ?>

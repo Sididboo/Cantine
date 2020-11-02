@@ -19,7 +19,7 @@
 
         $produitsAchetes = new ProduitsAchetes();
         $listProduitsAchetes = array();
-        $listProduitsAchetes = $produitsAchetes->findBy($_REQUEST['idTicket']);
+        $listProduitsAchetes = $produitsAchetes->findByTicket($_REQUEST['idTicket']);
 
         $categoriesIngredients = new CategoriesIngredients();
         $listCategoriesIngredients = array();

@@ -58,7 +58,7 @@
       return $listProduitsAchetes;
     }
 
-    public function findBy($idTicket)
+    public function findByTicket($idTicket)
     {
       $bdd = BDD::getBDD();
 

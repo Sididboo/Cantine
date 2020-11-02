@@ -55,8 +55,8 @@
                 <div>
                   <!-- Catégories -->
                   <label class="font-weight-bold">* Catégorie de l'article :</label>
-                  <select class="form-control" id="categories" name="categories" onchange="searchSousCategories()" required>
-                    <option value="">Choisir une catégorie</option>
+                  <select class="form-control" id="categories" name="categories" onchange="searchSousCategories()">
+                    <option value="0">Choisir une catégorie</option>
                     <?php
                       for ($i=0; $i < count($listCategoriesIngredients); $i++) 
                       { 
@@ -71,14 +71,14 @@
                 <div>
                   <!-- Sous-catégories -->
                   <label class="font-weight-bold">* Sous catégorie de l'article :</label>
-                  <select class="form-control" id="sousCategories" name="sousCategories" onchange="searchIngredients()" required disabled>
+                  <select class="form-control" id="sousCategories" name="sousCategories" onchange="searchIngredients()" disabled>
                   </select>
                   <!-- End sous-catégories -->
                 </div>
                 <div>
                   <!-- Ingrédients -->
                   <label class="font-weight-bold">* Nom de l'article :</label>
-                  <select class="form-control col-xs-2" id="ingredients" name="ingredients" required disabled>
+                  <select class="form-control col-xs-2" id="ingredients" name="ingredients" disabled>
                   </select>
                   <span class="text-danger">Si l'article n'existe pas : </span>
                   <button class="btn" type="button" onclick="openPopupIngredient()"><i class="fas fa-folder-plus"></i></button>
@@ -175,7 +175,7 @@
                 <div>
                   <!-- Type conditionnement -->
                   <label class="font-weight-bold">* Type de conditionnement :</label>
-                  <select class="form-control" id="typesC" name="typesC" required>
+                  <select class="form-control" id="typesC" name="typesC">
                     <option value="">Choisir le type de conditionnement</option>
                     <?php
                         for ($i=0; $i < count($listTypesConditionnements); $i++) 
@@ -191,13 +191,13 @@
                 <div>
                   <!-- Quantite conditionnement -->
                   <label class="font-weight-bold">* Quantité de conditionnement :</label>
-                  <input class="form-control" type="number" id="quantiteC" name="quantiteC" placeholder="Quantité de l'article" step="0.1" required>
+                  <input class="form-control" type="number" id="quantiteC" name="quantiteC" placeholder="Quantité de l'article" step="0.1">
                   <!-- End quantite conditionnement -->
                 </div>
                 <div>
                   <!-- Unite -->
                   <label class="font-weight-bold">* Unité de la quantité :</label>
-                  <select class="form-control" id="unites" name="unites" required>
+                  <select class="form-control" id="unites" name="unites">
                     <option value="">Choisir une unité</option>
                     <?php
                         for ($i=0; $i < count($listUnites); $i++) 
@@ -213,7 +213,7 @@
                 <div>
                   <!-- Nombre d'articles -->
                   <label class="font-weight-bold">* Nombre d'articles :</label>
-                  <input class="form-control validate" type="number" id="nbArticles" name="nbArticles" value="1" min="1" required>
+                  <input class="form-control validate" type="number" id="nbArticles" name="nbArticles" value="1" min="1">
                   <!-- End nombre d'articles -->
                 </div>
                 <div>
@@ -225,8 +225,8 @@
                 <div class="pt-3 text-center">
                   <p class="text-danger">* champs obligatoires</p>
                   <!-- Buttons -->
-                  <input class="btn btn-secondary" type="submit" value="Quitter" onclick="delArticle()" formnovalidate>
-                  <input class="btn btn-primary" type="submit" value="Ajouter" onclick="addArticle()">
+                  <button class="btn btn-secondary" type="button" onclick="delArticle()" formnovalidate>Quitter</button>
+                  <button class="btn btn-primary" type="button" onclick="addArticle()">Ajouter</button>
                   <!-- End buttons -->
                 </div>
               </div>
