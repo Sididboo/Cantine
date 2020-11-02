@@ -71,14 +71,14 @@
                 <div>
                   <!-- Sous-catégories -->
                   <label class="font-weight-bold">* Sous catégorie de l'article :</label>
-                  <select class="form-control" id="sousCategories" name="sousCategories" onchange="searchIngredients()" required>
+                  <select class="form-control" id="sousCategories" name="sousCategories" onchange="searchIngredients()" required disabled>
                   </select>
                   <!-- End sous-catégories -->
                 </div>
                 <div>
                   <!-- Ingrédients -->
                   <label class="font-weight-bold">* Nom de l'article :</label>
-                  <select class="form-control col-xs-2" id="ingredients" name="ingredients" required>
+                  <select class="form-control col-xs-2" id="ingredients" name="ingredients" required disabled>
                   </select>
                   <span class="text-danger">Si l'article n'existe pas : </span>
                   <button class="btn" type="button" onclick="openPopupIngredient()"><i class="fas fa-folder-plus"></i></button>

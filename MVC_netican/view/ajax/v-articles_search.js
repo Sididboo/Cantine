@@ -2,6 +2,7 @@ function searchSousCategories()
 {
     var categories = document.getElementById("categories");
     var sousCategories = document.getElementById("sousCategories");
+    var ingredients = document.getElementById("ingredients");
 
     xhr_object.open("POST","controller/a-articles_search.php", true);
 
@@ -11,6 +12,11 @@ function searchSousCategories()
         {
             var result = xhr_object.responseText;
             sousCategories.innerHTML = result;
+
+            sousCategories.disabled = false;
+            ingredients.disabled = true;
+
+            ingredients.innerHTML = "<option></option>";
         }
     }
 
@@ -34,6 +40,7 @@ function searchIngredients()
         {
             var result = xhr_object.responseText;
             ingredients.innerHTML = result;
+            ingredients.disabled = false;
         }
     }
 
