@@ -63,7 +63,7 @@
       $bdd = BDD::getBDD();
 
       // Requête SQL
-      $sql = "SELECT * FROM marques WHERE NOMMARQUE='".$name."'";
+      $sql = "SELECT * FROM marques WHERE MARQUE='".$name."'";
       // On execute la requête
       $result = $bdd->query($sql);
       // On récup le résultat dans un tableau
