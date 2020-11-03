@@ -17,6 +17,7 @@ function codeBarre()
     if (xhr_object.readyState == 4)
     {
       var result = xhr_object.responseText;
+      console.log(result);
       if (result.length > 1)
       {
         var table = [];

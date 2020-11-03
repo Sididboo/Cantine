@@ -37,6 +37,6 @@ function addIngredient()
 
         xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        var data = "ingredient=" + ingredient.value + "&sousCategories=" + SousCategories.options[SousCategories.selectedIndex].value;
+        var data = "ingredient=" + ingredient.value + "&sousCategorie=" + SousCategories.value;
         xhr_object.send(data);
 }
