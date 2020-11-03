@@ -68,6 +68,9 @@
                             <!-- Popup Catégorie -->
                             <div id="popupCategorie"  style="display: none;">
                                 <div>
+                                    <p>Avant d'ajouter une nouvelle catégorie, pensez à bien vérifier s'elle n'existe pas déjà.</p>
+                                </div>
+                                <div>
                                     <input type="text" class="form-control w-50" name="categorie" id="categorie" placeholder="Nouvelle catégorie..."/>
                                 </div>
                                 <div>
@@ -94,6 +97,9 @@
 
                             <!-- Popup Commerce -->
                             <div id="popupCommerce"  style="display: none;">
+                                <div>
+                                    <p>Avant d'ajouter un nouveau commerce, pensez à bien vérifier s'il n'existe pas déjà.</p>
+                                </div>
                                 <div>
                                     <input type="text" class="form-control w-50" name="commerce" id="commerce" placeholder="Nouveau commerce..."/>
                                 </div>
@@ -147,19 +153,17 @@
                                                 {
                                                     echo $listTickets[$i]->get_pieceJointe();
                                                 }
-                                                    else
-                                                    {
-                                                        ?>
-                                                            
-                                                                <div>
-                                                                    <input type="file" name="file" id="file"/>
-                                                                </div>
-                                                                <div>
-                                                                    <button type="button" name="upload" onclick="upload(<?php echo $listTickets[$i]->get_id(); ?>)">Upload</button>
-                                                                </div>
-                                                            
-                                                        <?php
-                                                    }
+                                                else
+                                                {
+                                                    ?>
+                                                        <div>
+                                                            <input type="file" name="file" id="file"/>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" name="upload" onclick="upload(<?php echo $listTickets[$i]->get_id(); ?>)">Upload</button>
+                                                        </div>
+                                                    <?php
+                                                }
                                             ?>
                                         </td>
                                         <td>

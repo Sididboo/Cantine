@@ -51,6 +51,21 @@
       $this->_catt_nom = $data['NOMCATEGORIETICKET'];
     }
 
+    // Méthode retrieveByName
+    public function retrieveByName($name)
+    {
+      $bdd = BDD::getBDD();
+      // Requête SQL
+      $sql = "SELECT * FROM categoriestickets WHERE NOMCATEGORIETICKET='".$name."'";
+      // On execute la requête
+      $result = $bdd->query($sql);
+      // On récupère les données dans un tableau
+      $data = $result->fetch();
+      // On renseigne les attributs
+      $this->_catt_id = $data['IDCATEGORIETICKET'];
+      $this->_catt_nom = $data['NOMCATEGORIETICKET'];
+    }
+
     // Méthode create
     public function create()
     {

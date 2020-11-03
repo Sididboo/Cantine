@@ -9,12 +9,19 @@ function delTicket(idTicket)
         if (xhr_object.readyState == 4)
         {
             var result = xhr_object.responseText;
-            tbody.innerHTML = result;
+            if (result == 0) 
+            {
+                alert("Des articles sont rattachés à ce ticket, veuillez d'abord les supprimer");
+            }
+            else
+            {
+                tbody.innerHTML = result;
+            }
         }  
     }
 
     xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    var data = "idTicket=" + idTicket + "&file=" + file;
+    var data = "idTicket=" + idTicket;
     xhr_object.send(data);
 }

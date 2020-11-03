@@ -5,15 +5,33 @@
 
         $listCategoriesTickets = array();
 
-        $laCategorieTicket = new CategoriesTickets("", $_REQUEST['categorie']);
+        // Vérification si catégorie existe
+        $laCategorieTicket = new CategoriesTickets();
+        $laCategorieTicket->retrieveByName($_REQUEST['categorie']);
 
-        $laCategorieTicket->create();
+        if ($laCategorieTicket->get_id() == 0) 
+        {
+            $laCategorieTicket = new CategoriesTickets("", $_REQUEST['categorie']);
+            $laCategorieTicket->create();
+        }
 
+        // Affichage balises option
         $listCategoriesTickets = $laCategorieTicket->findAll();
         
         for ($i=0; $i < count($listCategoriesTickets); $i++) 
-        { 
-            echo '<option value="'.$listCategoriesTickets[$i]->get_id().'">'.$listCategoriesTickets[$i]->get_nom().'</option>';
+        {
+            if ($listCategoriesTickets[$i]->get_nom() == $_REQUEST['categorie']) 
+            {
+                ?>
+                    <option value="<?php echo $listCategoriesTickets[$i]->get_id(); ?>" selected><?php echo $listCategoriesTickets[$i]->get_nom(); ?></option>
+                <?php
+            }
+            else
+            {
+                ?>
+                    <option value="<?php echo $listCategoriesTickets[$i]->get_id(); ?>"><?php echo $listCategoriesTickets[$i]->get_nom(); ?></option>
+                <?php
+            }
         }
     }
 ?>

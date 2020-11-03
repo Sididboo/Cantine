@@ -52,6 +52,21 @@
       $this->_comm_nom = $data['NOMCOMMERCE'];
     }
 
+    // Méthode retrieveByName
+    public function retrieveByName($name)
+    {
+      $bdd = BDD::getBDD();
+      // Requête SQL
+      $sql = "SELECT * FROM commerces WHERE NOMCOMMERCE='".$name."'";
+      // On execute la requête
+      $result = $bdd->query($sql);
+      // On récup les résultats dans un tableau
+      $data = $result->fetch();
+      // On renseigne les attributs
+      $this->_comm_id = $data['IDCOMMERCE'];
+      $this->_comm_nom = $data['NOMCOMMERCE'];
+    }
+
     // Méthode create
     public function create()
     {
