@@ -20,7 +20,7 @@ function codeBarre()
 
       var table = [];
       table = result.split(";");
-
+      console.log(table[8]);
       if (table[8] == "1")
       {
         categories.innerHTML = table[0];
@@ -46,10 +46,6 @@ function codeBarre()
 
         unites.innerHTML = table[7];
         unites.disabled = true;
-      }
-      else if(categories.disabled = true)
-      {
-        
       }
     }
   }

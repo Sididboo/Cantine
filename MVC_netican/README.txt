@@ -24,4 +24,6 @@ Missions :
 Questions pour la cantinière :
     - Êtes-vous la seule qui utilisera l'application web ?
         - Enjeux -> création des utilisateurs à l'avance.
+    - Avez-vous une liste des catégories de ticket ?
+        - Enjeux -> création à l'avance des catégories tickets.
     - 
