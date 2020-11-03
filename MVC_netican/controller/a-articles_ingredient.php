@@ -1,5 +1,5 @@
 <?php
-    if (isset($_REQUEST['ingredient']) && isset($_REQUEST['sousCategories'])) 
+    if (isset($_REQUEST['ingredient']) && isset($_REQUEST['sousCategorie'])) 
     {
         include_once '../model/ingredients.php';
         include_once '../model/sousCategoriesIngredients.php';
