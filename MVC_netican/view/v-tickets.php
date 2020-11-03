@@ -20,6 +20,7 @@
     <script src="view/ajax/v-tickets_del.js"></script>
     <script src="view/ajax/v-tickets_categorie.js"></script>
     <script src="view/ajax/v-tickets_commerce.js"></script>
+    <script src="view/ajax/v-tickets_upload.js"></script>
   </head>
     <body>
         
@@ -149,14 +150,14 @@
                                                     else
                                                     {
                                                         ?>
-                                                            <form action="constroller/a-tickets_upload.php" method="POST" enctype="multipart/form-data">
+                                                            
                                                                 <div>
                                                                     <input type="file" name="file" id="file"/>
                                                                 </div>
                                                                 <div>
-                                                                    <input type="submit" name="submit" value="Upload"/>
+                                                                    <button type="button" name="upload" onclick="upload(<?php echo $listTickets[$i]->get_id(); ?>)">Upload</button>
                                                                 </div>
-                                                            </form>
+                                                            
                                                         <?php
                                                     }
                                             ?>
