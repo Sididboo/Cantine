@@ -73,3 +73,24 @@ function popupSearchSousCategories()
 
     xhr_object.send(data);
 }
+
+function searchPlats()
+{
+
+  var catsPlats = document.getElementById('catsPlats');
+  var plats = document.getElementById('plats');
+
+  xhr_object.open("POST","../php/script_categoriesPlats_plats.php", true);
+
+  xhr_object.onreadystatechange = function()
+  {
+    if (xhr_object.readyState == 4)
+    {
+      plats.innerHTML = xhr_object.responseText;
+    }
+  }
+
+  xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  var data = "catPlat=" + catsPlats.options[catsPlats.selectedIndex].value;
+  xhr_object.send(data);
+}
