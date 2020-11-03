@@ -17,19 +17,39 @@ function codeBarre()
     if (xhr_object.readyState == 4)
     {
       var result = xhr_object.responseText;
-      if (result.length > 1)
-      {
-        var table = [];
-        table = result.split(";");
 
+      var table = [];
+      table = result.split(";");
+
+      if (table[8] == "1")
+      {
         categories.innerHTML = table[0];
+        categories.disabled = true;
+
         sousCategories.innerHTML = table[1];
+        sousCategories.disabled = true;
+
         ingredients.innerHTML = table[2];
+        ingredients.disabled = true;
+
         marques.innerHTML = table[3];
+        marques.disabled = true;
+
         pays.innerHTML = table[4];
-        typesC.value = table[5];
+        pays.disabled = true;
+
+        typesC.innerHTML = table[5];
+        typesC.disabled = true;
+
+        quantiteC.value = table[6];
         quantiteC.readOnly = true;
-        unites.innerHTML = table[6];
+
+        unites.innerHTML = table[7];
+        unites.disabled = true;
+      }
+      else if(categories.disabled = true)
+      {
+        
       }
     }
   }

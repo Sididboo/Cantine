@@ -13,8 +13,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/390bd29166.js"></script>
-    <script src="view/js/xhr_object.js"></script>
-    <script src="view/js/v-menu_add.js"></script>
+    <script src="view/ajax/xhr_object.js"></script>
+    <script src="view/ajax/v-search.js"></script>
   </head>
     <body>
         
@@ -51,7 +51,7 @@
                         <!-- Gestion du menu déroulant pour le choix de la catégorie du plat  -->
                         <div class="pt-4">
                             <label class="font-weight-bold">Catégorie du plat</label>
-                            <select class="form-control" name="categoriePlat" id="categoriePlat" required>
+                            <select class="form-control" name="categoriePlat" id="categoriePlat" onchange="searchPlats()" required>
                                 <option value="">Choisir une catégorie du plat</option>
                                 <?php
                                     for ($i=0; $i < count($listCategoriesPlats); $i++) 
@@ -63,7 +63,7 @@
                             <span class="text-danger">Si la catégorie du plat n'existe pas : </span>
                             <a href="./index.php?action=AddCatPlat"><button type="button" class="btn"><i class="fas fa-folder-plus"></i></button></a>
                         </div>
-                        <!-- Gestion du menu déroulant pour le choix du commerce -->
+                        <!-- Gestion du menu déroulant pour le choix du plat -->
                         <div class="py-4">
                             <label class="font-weight-bold">Plat </label>
                             <select class="form-control" name="plat" id="plat" required>

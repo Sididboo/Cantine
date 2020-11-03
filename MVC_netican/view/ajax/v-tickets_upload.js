@@ -1,4 +1,4 @@
-function upload() 
+function upload(idTicket) 
 {
     var file = document.getElementById("file");
     var tbody = document.getElementById("tbody");
@@ -10,14 +10,14 @@ function upload()
         if (xhr_object.readyState == 4)
         {
             var result = xhr_object.responseText;
+            console.log(result);
             tbody.innerHTML = result;
         }  
     }
 
-    xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
     var formData = new FormData();
     formData.append("file", file.files[0]);
+    formData.append("idTicket", idTicket);
 
     console.log(file.files[0]);
     // exemple de ce qui m'affiche dans les logs :

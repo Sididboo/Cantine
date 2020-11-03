@@ -66,10 +66,10 @@
                 $leProduitAchete->create();
             }
 
-            $listProduitAchete = array();
+            $listProduitsAchetes = array();
 
-            $listProduitAchete = $leProduitAchete->findByTicket($_SESSION['idTicket']);
-            for ($i=0; $i < count($listProduitAchete); $i++) 
+            $listProduitsAchetes = $leProduitAchete->findByTicket($_SESSION['idTicket']);
+            for ($i=0; $i < count($listProduitsAchetes); $i++) 
             { 
                 echo '<tr>';
                     echo '<td>'.$listProduitsAchetes[$i]->get_leProduit()->get_leIngredient()->get_nom().'</td>';

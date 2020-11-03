@@ -1,14 +1,16 @@
 <?php
-    /*var_dump($_POST);
-
-    var_dump($_POST['filename']);
-    if (isset($_POST['file'])) 
+    if (isset($_FILES['file']) && isset($_REQUEST['idTicket'])) 
     {
         include_once '../model/tickets.php';
 
         $file = $_FILES['file']['name'];
 
         move_uploaded_file($_FILES['file']["tmp_name"], "../server/imgs_tickets/" . $file);
+
+        $leTicket = new Tickets();
+        $leTicket->retrieve($_REQUEST['idTicket']);
+
+        $leTicket->update($file);
 
         $listTickets = array();
         $listTickets = $leTicket->findAll();
@@ -35,5 +37,5 @@
                 echo '</td>';
             echo '</tr>';
         }
-    }*/
+    }
 ?>

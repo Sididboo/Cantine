@@ -4,7 +4,7 @@ function searchSousCategories()
     var sousCategories = document.getElementById("sousCategories");
     var ingredients = document.getElementById("ingredients");
 
-    xhr_object.open("POST","controller/a-articles_search.php", true);
+    xhr_object.open("POST","controller/a-search.php", true);
 
     xhr_object.onreadystatechange = function()
     {
@@ -32,7 +32,7 @@ function searchIngredients()
     var sousCategories = document.getElementById("sousCategories");
     var ingredients = document.getElementById("ingredients");
 
-    xhr_object.open("POST","controller/a-articles_search.php", true);
+    xhr_object.open("POST","controller/a-search.php", true);
 
     xhr_object.onreadystatechange = function()
     {
@@ -56,7 +56,7 @@ function popupSearchSousCategories()
     var categories = document.getElementById("popupCategories");
     var sousCategories = document.getElementById("popupSousCategories");
 
-    xhr_object.open("POST","controller/a-articles_search.php", true);
+    xhr_object.open("POST","controller/a-search.php", true);
 
     xhr_object.onreadystatechange = function()
     {
@@ -77,10 +77,10 @@ function popupSearchSousCategories()
 function searchPlats()
 {
 
-  var catsPlats = document.getElementById('catsPlats');
-  var plats = document.getElementById('plats');
+  var catsPlats = document.getElementById('categoriePlat');
+  var plats = document.getElementById('plat');
 
-  xhr_object.open("POST","../php/script_categoriesPlats_plats.php", true);
+  xhr_object.open("POST","controller/a-search.php", true);
 
   xhr_object.onreadystatechange = function()
   {
@@ -91,6 +91,6 @@ function searchPlats()
   }
 
   xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  var data = "catPlat=" + catsPlats.options[catsPlats.selectedIndex].value;
+  var data = "categoriePlat=" + categoriePlat.options[catsPlats.selectedIndex].value;
   xhr_object.send(data);
 }
