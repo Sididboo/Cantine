@@ -23,7 +23,7 @@
 
         <div class="container-fluid">
 
-            <h3 class="text-center font-weight-bold py-3">Insertion des tickets</h3>
+            <h3 class="text-center font-weight-bold py-3">Insertion du menu</h3>
 
             <div class="row p-4">
 
