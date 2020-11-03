@@ -23,7 +23,7 @@
 
         <div class="container-fluid">
 
-            <h3 class="text-center font-weight-bold py-3">Insertion du menu</h3>
+            <h3 class="text-center font-weight-bold py-3">Insertion du menu journalier </h3>
 
             <div class="row p-4">
 
@@ -48,7 +48,7 @@
                             <label class="font-weight-bold">nombre de convives :</label>
                             <input class="form-control" type="number" name="nbConvives" id="nbConvives" required/>
                         </div>
-                        <!-- Gestion du menu déroulant pour le choix de la marque -->
+                        <!-- Gestion du menu déroulant pour le choix de la catégorie du plat  -->
                         <div class="pt-4">
                             <label class="font-weight-bold">Catégorie du plat</label>
                             <select class="form-control" name="categoriePlat" id="categoriePlat" required>
@@ -68,12 +68,13 @@
                             <label class="font-weight-bold">Plat </label>
                             <select class="form-control" name="plat" id="plat" required>
                                 <option value="">Choisir un plat : </option>
-                                <?php
+                                    <?php
                                     for ($i=0; $i < count($listPlats); $i++) 
                                     { 
                                         echo '<option value="' . $listPlats[$i]->get_id() . '">' . $listPlats[$i]->get_nom() . '</option>';
                                     }
-                                ?>
+                                    ?>
+                                
                             </select>
                             <span class="text-danger">Si le plat n'existe pas : </span>
                             <a href="./index.php?action=addPlat"><button type="button" class="btn"><i class="fas fa-folder-plus"></i></button></a>
