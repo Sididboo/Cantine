@@ -14,8 +14,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
   </script>
   <script src="https://kit.fontawesome.com/ce45170c32.js" crossorigin="anonymous"></script>
+
+  <!-- Script Ajax -->
   <script src="view/js/xhr_object.js"></script>
-  <script src="view/js/v-creationPlat_search.js"></script>
+  <script src="view/ajax/v-search.js"></script>
+
 
   <title>Document</title>
 </head>
@@ -74,36 +77,50 @@
         <input type="text" class="form-control" id="namePlat" placeholder="Enter name">
       </div>
 
+      <!-- Catégories -->
+
       <div class="form-group">
         <label for="getCategorie">Catégorie</label>
-        <select class="form-control" id="getCategorie">
+        <select class="form-control" id="getCategorie" onchange="">
+          <option value="0">Choisir une catégorie</option>
           <?php
-
-          for ($i = 0; $i < count($tableStock); $i++) {
-            echo "<option>" . $tableStock[$i]->get_nom() . "</option>";
+          for ($i = 0; $i < count($listCategories); $i++) {
+          ?>
+            <option value="<?php echo $listCategories[$i]->get_id(); ?>"><?php echo $listCategories[$i]->get_nom(); ?> </option>
+          <?php
           }
           ?>
         </select>
-
-        <div class="form-group">
-          <label for="getIngredient">Catégorie ingrédient</label>
-          <select class="form-control" id="catIngredient" onchange="search()">
-            <?php
-            for ($i = 0; $i < count($tableStockIng); $i++) {
-              echo "<option value=" . $tableStockIng[$i]->get_id() . ">" . $tableStockIng[$i]->get_nom() . "</option>";
-            }
-            ?>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="getIngredient">Ingrédient</label>
-          <select class="form-control" id="ingredient">
-            <option value="">Message à changer pour indiquer quil faut d'abord choisir la cat ingre</option>
-          </select>
-        </div>
-
       </div>
+
+      <!-- End Catégories -->
+
+      <!-- CatégorieIngrédient -->
+
+      <div class="form-group">
+        <label for="getIngredient">Catégorie ingrédient</label>
+        <select class="form-control" id="catIngredient" onchange="">
+          <option value="0">Choisir une catégorie d'ingrédient</option>
+          <?php
+          for ($i = 0; $i < count($listCategoriesIngredient); $i++) {
+          ?>
+            <option value="<?php echo $listCategoriesIngredient[$i]->get_id(); ?>"> <?php echo $listCategoriesIngredient[$i]->get_nom(); ?></option>
+          <?php
+          }
+          ?>
+        </select>
+      </div>
+
+      <!-- End CatégoriesIngrédient-->
+
+
+      <div class="form-group">
+        <label for="getSousIngredient">Sous catégorie ingrédient</label>
+        <select class="form-control" id="sousIngredient">
+          <option value="">Message à changer pour indiquer quil faut d'abord choisir la cat ingre</option>
+        </select>
+      </div>
+      
     </form>
   </div>
 </body>

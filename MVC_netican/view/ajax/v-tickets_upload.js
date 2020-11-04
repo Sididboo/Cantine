@@ -1,31 +1,41 @@
-function upload() 
+function upload(idTicket) 
 {
     var file = document.getElementById("file");
     var tbody = document.getElementById("tbody");
 
-    xhr_object.open("POST","controller/a-tickets_upload.php", true);
-
-    xhr_object.onreadystatechange = function()
+    if (file.files[0] !== undefined) 
     {
-        if (xhr_object.readyState == 4)
+        xhr_object.open("POST","controller/a-tickets_upload.php", true);
+
+        xhr_object.onreadystatechange = function()
         {
-            var result = xhr_object.responseText;
-            tbody.innerHTML = result;
-        }  
+            if (xhr_object.readyState == 4)
+            {
+                var result = xhr_object.responseText;
+                switch (result) {
+                    case "1":
+                        alert("Ce fichier n'est pas une image.");
+                        break;
+                    case "2":
+                        alert("Ce fichier existe déjà.");
+                        break;
+                    case "3":
+                        alert("Ce fichier est trop volumineux");
+                        break;
+                    case "4":
+                        alert("Seuls les fichiers aux formats suivants sont acceptés : jpg, png et jpeg.");
+                        break;
+                    default:
+                        tbody.innerHTML = result;
+                        break;
+                }
+            }  
+        }
+
+        var formData = new FormData();
+        formData.append("file", file.files[0]);
+        formData.append("idTicket", idTicket);
+
+        xhr_object.send(formData);
     }
-
-    xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    var formData = new FormData();
-    formData.append("file", file.files[0]);
-
-    console.log(file.files[0]);
-    // exemple de ce qui m'affiche dans les logs :
-    /*
-        File {name: "next.png", lastModified: 1599994572369, 
-        lastModifiedDate: Sun Sep 13 2020 12:56:12 GMT+0200 (heure d’été d’Europe centrale), 
-        webkitRelativePath: "", size: 1251, …}
-    */
-
-    xhr_object.send(formData);
 }

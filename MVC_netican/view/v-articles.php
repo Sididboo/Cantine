@@ -192,7 +192,7 @@
                 <div>
                   <!-- Quantite conditionnement -->
                   <label class="font-weight-bold">* Quantité de conditionnement :</label>
-                  <input class="form-control" type="number" id="quantiteC" name="quantiteC" placeholder="Quantité de l'article" step="0.1">
+                  <input class="form-control" type="number" id="quantiteC" name="quantiteC" placeholder="Quantité de l'article" step="0.1" min="0.1">
                   <!-- End quantite conditionnement -->
                 </div>
                 <div>

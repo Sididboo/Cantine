@@ -98,6 +98,16 @@
       $bdd->exec($sql);
     }
 
+    // Méthode Update
+    public function update($pieceJointe)
+    {
+      $bdd = BDD::getBDD();
+      // Requête SQL
+      $sql = "UPDATE tickets SET PIECEJOINTE='".$pieceJointe."' WHERE IDTICKET='".$this->_tick_id."'";
+      // Execution de la requête
+      $result = $bdd->query($sql);
+    }
+
     // Getter and Setter
     public function get_id()
     {
