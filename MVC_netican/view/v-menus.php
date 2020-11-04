@@ -67,7 +67,7 @@
                         <div class="py-4">
                             <label class="font-weight-bold">Plat </label>
                             <select class="form-control" name="plat" id="plat" required>
-                                <option value="">Choisir un plat : </option>
+                                <option value="">Choisissez le plat : </option>
                                     <?php
                                     for ($i=0; $i < count($listPlats); $i++) 
                                     { 
