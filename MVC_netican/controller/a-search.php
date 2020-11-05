@@ -37,4 +37,20 @@
             echo '<option value="'.$listIngredients[$i]->get_id().'">'.$listIngredients[$i]->get_nom().'</option>';
         }
     }
+
+    if (isset($_REQUEST['categoriePlat'])) 
+    {
+        include_once '../model/plats.php';
+
+        $listPlats = array();
+
+        $lePlat = new Plats();
+        $listPlats = $lePlat->findAllByCat($_REQUEST['categoriePlat']);
+
+        echo '<option value="0">Choisissez le plat</option>';
+        for ($i=0; $i < count($listPlats); $i++) 
+        { 
+            echo '<option value="'.$listPlats[$i]->get_id().'">'.$listPlats[$i]->get_nom().'</option>';
+        }
+    }
 ?>

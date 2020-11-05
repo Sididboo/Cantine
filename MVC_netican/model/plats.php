@@ -51,6 +51,30 @@
       return $listPlats;
     }
 
+     // Méthode findAllByCat
+     public function findAllByCat($categorie)
+     {
+       $bdd = BDD::getBDD();
+ 
+       $listPlats = array();
+ 
+       // Requête SQL
+       $sql = "SELECT * FROM plats WHERE IDCATEGORIEPLAT = '". $categorie ."' ORDER BY NOMPLAT";
+       // On execute la requête
+       $result = $bdd->query($sql);
+ 
+       while ($row = $result->fetch())
+       {
+         $laCategorie = new CategoriesPlats();
+         $laCategorie->retrieve($row['IDCATEGORIEPLAT']);
+ 
+         $lePLat = new Plats($row['IDPLAT'], $laCategorie, $row['NOMPLAT'], $row['NBPERSONNE']);
+         array_push($listPlats, $lePLat);
+       }
+ 
+       return $listPlats;
+     }
+
     // Méthode retrieve
     public function retrieve($id)
     {

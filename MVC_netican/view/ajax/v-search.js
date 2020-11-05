@@ -81,7 +81,7 @@ function popupSearchSousCategories()
 function searchPlats()
 {
 
-  var catsPlats = document.getElementById('categoriePlat');
+  var categoriePlat = document.getElementById('categoriePlat');
   var plats = document.getElementById('plat');
 
   xhr_object.open("POST","controller/a-search.php", true);
@@ -95,6 +95,6 @@ function searchPlats()
   }
 
   xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  var data = "categoriePlat=" + categoriePlat.options[catsPlats.selectedIndex].value;
+  var data = "categoriePlat=" + categoriePlat.value;
   xhr_object.send(data);
 }
