@@ -1,7 +1,17 @@
 <?php
 
-include "model/ingredients.php";
+if (isset($_REQUEST['categoriePlat'])) {
+    # code...
+    include_once '../model/categoriesPlats.php';
 
-$Idingredient = new Ingredients();
+    $listCategoriePlat = array();
+
+    $lesCategoriePlat = new CategoriesPlats();
+    $listCategoriePlat = 
+}
+
+
+
+
 
 ?>

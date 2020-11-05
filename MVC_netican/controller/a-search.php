@@ -1,4 +1,10 @@
 <?php
+// Find plat
+    if (isset($_REQUEST[''])) {
+        # code...
+    }
+
+// Find categorieIngredient
     if (isset($_REQUEST['categorie'])) 
     {
         include_once '../model/sousCategoriesIngredients.php';
@@ -15,6 +21,7 @@
         }
     }
 
+// Find ingredient
     if (isset($_REQUEST['sousCategorie'])) 
     {
         include_once '../model/ingredients.php';

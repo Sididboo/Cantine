@@ -77,12 +77,12 @@
         <input type="text" class="form-control" id="namePlat" placeholder="Enter name">
       </div>
 
-      <!-- Catégories -->
+      <!-- Catégories Plat -->
 
       <div class="form-group">
-        <label for="getCategorie">Catégorie</label>
-        <select class="form-control" id="getCategorie" onchange="">
-          <option value="0">Choisir une catégorie</option>
+        <label for="getCategorie">Catégorie de plat</label>
+        <select class="form-control" id="categoriesPlat" onchange="searchSousCategories()">
+          <option value="0">Choisir une catégorie de plat</option>
           <?php
           for ($i = 0; $i < count($listCategories); $i++) {
           ?>
@@ -93,13 +93,13 @@
         </select>
       </div>
 
-      <!-- End Catégories -->
+      <!-- End Catégories Plat -->
 
       <!-- CatégorieIngrédient -->
 
       <div class="form-group">
         <label for="getIngredient">Catégorie ingrédient</label>
-        <select class="form-control" id="catIngredient" onchange="">
+        <select class="form-control" id="ingredients" onchange="">
           <option value="0">Choisir une catégorie d'ingrédient</option>
           <?php
           for ($i = 0; $i < count($listCategoriesIngredient); $i++) {
@@ -120,7 +120,7 @@
           <option value="">Message à changer pour indiquer quil faut d'abord choisir la cat ingre</option>
         </select>
       </div>
-      
+
     </form>
   </div>
 </body>

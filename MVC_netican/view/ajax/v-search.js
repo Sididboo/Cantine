@@ -1,3 +1,4 @@
+// Function for Categorie Ingrédient
 function searchSousCategories()
 {
     var categories = document.getElementById("categories");
@@ -73,6 +74,9 @@ function popupSearchSousCategories()
 
     xhr_object.send(data);
 }
+
+// Function forPlat
+
 
 function searchPlats()
 {
