@@ -17,6 +17,7 @@
     <script src="view/ajax/v-menus_categorie.js"></script>
     <script src="view/ajax/xhr_object.js"></script>
     <script src="view/ajax/v-search.js"></script>
+   
   </head>
     <body>
         
@@ -65,16 +66,17 @@
                             <span class="text-danger">Si la catégorie du plat n'existe pas : </span>
                             <button type="button" class="btn" onclick="openPopupCategoriePlat()"><i class="fas fa-folder-plus"></i></button>
                              <!-- Popup Catégorie -->
-                             <div id="popupCategorie"  style="display: none;">
+                             <div id="popupCategoriePlat"  style="display: none;">
                                 <div>
                                     <p>Avant d'ajouter une nouvelle catégorie, pensez à bien vérifier s'elle n'existe pas déjà.</p>
                                 </div>
                                 <div>
-                                    <input type="text" class="form-control w-50" name="categoriePlat" id="categoriePlat" placeholder="Nouvelle catégorie..."/>
+                                    <input type="text" class="form-control w-50" name="categoriePlat" id="categoriePlat" placeholder="Saisir la nouvelle catégorie..."/>
+                                <br>
                                 </div>
                                 <div>
                                     <button type="button" class="btn btn-primary" onclick="addCategoriePlat()">Valider</button>
-                                    <button type="button" class="btn btn-secondary" onclick="closePopupCategoriPlat()">Fermer</button>
+                                    <button type="button" class="btn btn-secondary" onclick="closePopupCategoriePlat()">Fermer</button>
                                 </div>
                             </div>
                         </div>
@@ -89,10 +91,8 @@
                                         echo '<option value="' . $listPlats[$i]->get_id() . '">' . $listPlats[$i]->get_nom() . '</option>';
                                     }
                                     ?>
-                                
-                            </select>
-                            <span class="text-danger">Si le plat n'existe pas : </span>
-                            <a href="./index.php?action=addPlat"><button type="button" class="btn"><i class="fas fa-folder-plus"></i></button></a>
+                            </select>  
+                            <span class="text-danger"><a href="./index.php?action=creationPlat">Cliquez ici, si le plat n'existe pas</a></span>
                         </div>
 
                         <div class="pt-3 text-center">
