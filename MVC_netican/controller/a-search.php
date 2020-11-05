@@ -1,7 +1,7 @@
 <?php
 // Find plat
     if (isset($_REQUEST[''])) {
-        # code...
+        
     }
 
 // Find categorieIngredient

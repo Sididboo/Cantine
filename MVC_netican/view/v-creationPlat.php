@@ -16,7 +16,7 @@
   <script src="https://kit.fontawesome.com/ce45170c32.js" crossorigin="anonymous"></script>
 
   <!-- Script Ajax -->
-  <script src="view/js/xhr_object.js"></script>
+  <script src="view/ajax/xhr_object.js"></script>
   <script src="view/ajax/v-search.js"></script>
 
 
@@ -81,12 +81,12 @@
 
       <div class="form-group">
         <label for="getCategorie">Catégorie de plat</label>
-        <select class="form-control" id="categoriesPlat" onchange="searchSousCategories()">
+        <select class="form-control" id="categoriesPlat" onchange="">
           <option value="0">Choisir une catégorie de plat</option>
           <?php
-          for ($i = 0; $i < count($listCategories); $i++) {
+          for ($i = 0; $i < count($tableStock); $i++) {
           ?>
-            <option value="<?php echo $listCategories[$i]->get_id(); ?>"><?php echo $listCategories[$i]->get_nom(); ?> </option>
+            <option value="<?php echo $tableStock[$i]->get_id(); ?>"><?php echo $tableStock[$i]->get_nom(); ?> </option>
           <?php
           }
           ?>
@@ -99,12 +99,12 @@
 
       <div class="form-group">
         <label for="getIngredient">Catégorie ingrédient</label>
-        <select class="form-control" id="ingredients" onchange="">
+        <select class="form-control" id="ingredients" onchange="searchSousCategories()">
           <option value="0">Choisir une catégorie d'ingrédient</option>
           <?php
-          for ($i = 0; $i < count($listCategoriesIngredient); $i++) {
+          for ($i = 0; $i < count($tableStockIng); $i++) {
           ?>
-            <option value="<?php echo $listCategoriesIngredient[$i]->get_id(); ?>"> <?php echo $listCategoriesIngredient[$i]->get_nom(); ?></option>
+            <option value="<?php echo $tableStockIng[$i]->get_id(); ?>"> <?php echo $tableStockIng[$i]->get_nom(); ?></option>
           <?php
           }
           ?>
@@ -116,7 +116,7 @@
 
       <div class="form-group">
         <label for="getSousIngredient">Sous catégorie ingrédient</label>
-        <select class="form-control" id="sousIngredient">
+        <select class="form-control" id="sousCategories" name="sousCategories" onchange="searchIngredients()" disabled>
           <option value="">Message à changer pour indiquer quil faut d'abord choisir la cat ingre</option>
         </select>
       </div>
