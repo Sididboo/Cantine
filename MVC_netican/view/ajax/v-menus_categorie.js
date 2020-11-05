@@ -1,17 +1,17 @@
 function openPopupCategoriePlat()
 {
-    document.getElementById('popupCategorie').style.display = "block";
+    document.getElementById('popupCategoriePlat').style.display = "block";
 }
 
 function closePopupCategoriePlat()
 {
-    document.getElementById('popupCategorie').style.display = "none";
+    document.getElementById('popupCategoriePlat').style.display = "none";
 }
 
 function addCategoriePlat()
 {
-        var categories = document.getElementById("categories");
-        var categorie = document.getElementById("categorie");
+        var categories = document.getElementById("categoriesPlat");
+        var categorie = document.getElementById("categoriePlat");
 
         xhr_object.open("POST","controller/a-menus_categorie.php", true);
 
