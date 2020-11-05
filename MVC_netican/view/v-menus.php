@@ -13,6 +13,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/390bd29166.js"></script>
+
+    <script src="view/ajax/v-menus_categorie.js"></script>
     <script src="view/ajax/xhr_object.js"></script>
     <script src="view/ajax/v-search.js"></script>
   </head>
@@ -61,7 +63,20 @@
                                 ?>
                             </select>
                             <span class="text-danger">Si la catégorie du plat n'existe pas : </span>
-                            <a href="./index.php?action=AddCatPlat"><button type="button" class="btn"><i class="fas fa-folder-plus"></i></button></a>
+                            <button type="button" class="btn" onclick="openPopupCategoriePlat()"><i class="fas fa-folder-plus"></i></button>
+                             <!-- Popup Catégorie -->
+                             <div id="popupCategorie"  style="display: none;">
+                                <div>
+                                    <p>Avant d'ajouter une nouvelle catégorie, pensez à bien vérifier s'elle n'existe pas déjà.</p>
+                                </div>
+                                <div>
+                                    <input type="text" class="form-control w-50" name="categoriePlat" id="categoriePlat" placeholder="Nouvelle catégorie..."/>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-primary" onclick="addCategoriePlat()">Valider</button>
+                                    <button type="button" class="btn btn-secondary" onclick="closePopupCategoriPlat()">Fermer</button>
+                                </div>
+                            </div>
                         </div>
                         <!-- Gestion du menu déroulant pour le choix du plat -->
                         <div class="py-4">
@@ -79,6 +94,7 @@
                             <span class="text-danger">Si le plat n'existe pas : </span>
                             <a href="./index.php?action=addPlat"><button type="button" class="btn"><i class="fas fa-folder-plus"></i></button></a>
                         </div>
+
                         <div class="pt-3 text-center">
                             <!-- Buttons -->
                             <input class="btn btn-primary" type="button" value="Ajouter" onclick="addMenus()">
