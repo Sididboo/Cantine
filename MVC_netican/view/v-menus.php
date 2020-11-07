@@ -54,7 +54,7 @@
                         <!-- Gestion du menu déroulant pour le choix de la catégorie du plat  -->
                         <div class="pt-4">
                             <label class="font-weight-bold">Catégorie du plat</label>
-                            <select class="form-control" name="categoriePlat" id="categoriePlat" onchange="searchPlats()" required>
+                            <select class="form-control" name="categoriesPlat" id="categoriesPlat" onchange="searchPlats()" required>
                                 <option value="">Choisir une catégorie du plat</option>
                                 <?php
                                     for ($i=0; $i < count($listCategoriesPlats); $i++) 
@@ -84,7 +84,6 @@
                         <div class="py-4">
                             <label class="font-weight-bold">Plat </label>
                             <select class="form-control" name="plat" id="plat" required>
-                                <option value="">Choisissez le plat : </option>
                                     <?php
                                     for ($i=0; $i < count($listPlats); $i++) 
                                     { 

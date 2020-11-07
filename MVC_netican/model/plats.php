@@ -44,8 +44,8 @@
         $laCategorie = new CategoriesPlats();
         $laCategorie->retrieve($row['IDCATEGORIEPLAT']);
 
-        $lePLat = new Plats($row['IDPLAT'], $laCategorie, $row['NOMPLAT'], $row['NBPERSONNE']);
-        array_push($listPlats, $lePLat);
+        $lePlat = new Plats($row['IDPLAT'], $laCategorie, $row['NOMPLAT'], $row['NBPERSONNE']);
+        array_push($listPlats, $lePlat);
       }
 
       return $listPlats;
@@ -68,8 +68,8 @@
          $laCategorie = new CategoriesPlats();
          $laCategorie->retrieve($row['IDCATEGORIEPLAT']);
  
-         $lePLat = new Plats($row['IDPLAT'], $laCategorie, $row['NOMPLAT'], $row['NBPERSONNE']);
-         array_push($listPlats, $lePLat);
+         $lePlat = new Plats($row['IDPLAT'], $laCategorie, $row['NOMPLAT'], $row['NBPERSONNE']);
+         array_push($listPlats, $lePlat);
        }
  
        return $listPlats;

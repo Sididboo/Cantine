@@ -7,11 +7,11 @@
 
         // Vérification si catégorie existe
         $listCategoriesPlats = new CategoriesPlats();
-        $listCategoriesPlats->retrieveByName($_REQUEST['categorie']);
+        $listCategoriesPlats->retrieveByName($_REQUEST['categoriesPlats']);
 
         if ($laCategoriePlat->get_id() == 0) 
         {
-            $listCategoriesPlats = new CategoriePlat("", $_REQUEST['categorie']);
+            $listCategoriesPlats = new CategoriePlat("", $_REQUEST['categoriesPlats']);
             $listCategoriesPlats->create();
         }
 
@@ -20,7 +20,7 @@
         
         for ($i=0; $i < count($listCategoriesPlats); $i++) 
         {
-            if ($listCategoriesPlats[$i]->get_nom() == $_REQUEST['categorie']) 
+            if ($listCategoriesPlats[$i]->get_nom() == $_REQUEST['categoriesPlats']) 
             {
                 ?>
                     <option value="<?php echo $listCategoriesPlats[$i]->get_id(); ?>" selected><?php echo $listCategoriesPlats[$i]->get_nom(); ?></option>

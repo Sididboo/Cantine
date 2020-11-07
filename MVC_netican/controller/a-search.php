@@ -37,7 +37,7 @@
             echo '<option value="'.$listIngredients[$i]->get_id().'">'.$listIngredients[$i]->get_nom().'</option>';
         }
     }
-
+// Find Plat
     if (isset($_REQUEST['categoriePlat'])) 
     {
         include_once '../model/plats.php';
