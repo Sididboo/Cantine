@@ -98,8 +98,8 @@
       <!-- CatégorieIngrédient -->
 
       <div class="form-group">
-        <label for="getIngredient">Catégorie ingrédient</label>
-        <select class="form-control" id="ingredients" onchange="searchSousCategories()">
+        <label>Catégorie ingrédient</label>
+        <select class="form-control" id="categories" name="categories" onchange="searchSousCategories()">
           <option value="0">Choisir une catégorie d'ingrédient</option>
           <?php
           for ($i = 0; $i < count($tableStockIng); $i++) {
@@ -115,7 +115,7 @@
 
 
       <div class="form-group">
-        <label for="getSousIngredient">Sous catégorie ingrédient</label>
+        <label>Sous catégorie ingrédient</label>
         <select class="form-control" id="sousCategories" name="sousCategories" onchange="searchIngredients()" disabled>
           <option value="">Message à changer pour indiquer quil faut d'abord choisir la cat ingre</option>
         </select>
