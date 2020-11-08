@@ -18,6 +18,7 @@
   <!-- Script Ajax -->
   <script src="view/ajax/xhr_object.js"></script>
   <script src="view/ajax/v-search.js"></script>
+  <script src="view/ajax/v-creationPlat_add.js"></script>
 
 
   <title>Document</title>
@@ -61,6 +62,8 @@
             <th scope="col">Ingrédient</th>
           </tr>
         </thead>
+        <tbody id="mainContent">
+        </tbody>
       </table>
     </div>
   </div>
@@ -121,6 +124,38 @@
         </select>
       </div>
 
+      <!-- Ingredients -->
+
+    <div class="form-group">
+      <label>Ingrédient</label>
+      <select class="form-control" id="ingredients" name="ingredients" disabled>
+      </select>
+    </div>
+
+    <!-- End Ingredients -->
+
+    <!-- Button for push ingredient in tableShowIng -->
+
+    <button type="button" onclick="addIng()" formnovalidate>Valider</button>
+
+    <!-- Table for show ingredient -->
+
+    <div class="table-responsive IngSelected">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th class="col">Ingrédient</th>
+            <th class="col"></th>
+          </tr>
+        </thead>
+        <tbody id="tableShowIng">
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- End table -->
+
+    <button type="submit">Valider</button>
     </form>
   </div>
 </body>
