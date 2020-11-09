@@ -14,10 +14,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/390bd29166.js"></script>
 
-    <script src="view/ajax/v-menus_categorie.js"></script>
     <script src="view/ajax/xhr_object.js"></script>
+
+    <script src="view/ajax/v-menus_categorie.js"></script>
     <script src="view/ajax/v-search.js"></script>
-   
+    <script src="view/ajax/v-menus_add.js"></script>
   </head>
     <body>
         
@@ -44,7 +45,7 @@
 
                         <div class="cell_date pt-2">
                             <label class="font-weight-bold">Date du service :</label>
-                            <input class="form-control" type="date" name="dateService" id="dateService" required/>
+                            <input class="form-control" type="date" name="dateMenu" id="dateMenu" required/>
                         </div>
 
                         <div class="cell_date pt-2">
@@ -112,7 +113,6 @@
                         <tr>
                             <th>Date du service</th>
                             <th>Nombre de convives</th>
-                            <th>Catégorie du plat</th>
                             <th>Plat</th>
                             <th>Actions</th>
                         </tr>
@@ -125,14 +125,10 @@
                             { 
                                 ?>
                                     <tr>
-                                        <td><?php echo $listMenus[$i]->get_dateMenu(); ?></td>
-                                        <td><?php echo $listMenus[$i]->get_nbConvives();?></td>
-                                        <td><?php echo $listMenus[$i]->get_lePlat()->get_nom(); ?></td>
+                                        <td><?php echo $listMenus[$i]->get_dateMenus(); ?></td>
+                                        <td><?php echo $listMenus[$i]->get_nbConvives(); ?></td>
                                         <td><?php echo $listMenus[$i]->get_laCategorie()->get_nom(); ?></td>
-                                     <!--   <td>
-                                            <button class="btn btn-primary" onclick="deleteTicket('<?php echo $listTickets[$i]->get_id(); ?>', '<?php echo $listTickets[$i]->get_pieceJointe(); ?>')"><i class="fas fa-trash"></i> Supprimer</button>
-                                            <a href="./index.php?action=articles&idTicket=<?php echo $listTickets[$i]->get_id(); ?>"><button class="btn btn-secondary"><i class="fas fa-plus"></i> Ajouter articles</button></a>
-                                        </td> -->
+                                        <td><?php echo $listMenus[$i]->get_lePlat()->get_nom(); ?></td>
                                     </tr>
                                 <?php
                             }
@@ -147,4 +143,5 @@
         </div>
         <!--End container_fluid-->
     </body>
+
 </html>
