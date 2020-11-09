@@ -72,9 +72,9 @@
                                     <p>Avant d'ajouter une nouvelle catégorie, pensez à bien vérifier s'elle n'existe pas déjà.</p>
                                 </div>
                                 <div>
-                                    <input type="text" class="form-control w-50" name="categoriePlat" id="categoriePlat" placeholder="Saisir la nouvelle catégorie..."/>
-                                <br>
+                                    <input type="text" class="form-control w-80" name="categoriePlat" id="categoriePlat" placeholder="Saisir le nom de la nouvelle catégorie"/>
                                 </div>
+                                <br>
                                 <div>
                                     <button type="button" class="btn btn-primary" onclick="addCategoriePlat()">Valider</button>
                                     <button type="button" class="btn btn-secondary" onclick="closePopupCategoriePlat()">Fermer</button>
