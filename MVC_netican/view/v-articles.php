@@ -92,7 +92,7 @@
                     </div>
                     <div>
                       <select class="form-control" name="popupCategories" id="popupCategories" onchange="popupSearchSousCategories()">
-                        <option>Choisissez une catégorie</option>
+                        <option value="0">Choisissez une catégorie</option>
                         <?php
                           for ($i=0; $i < count($listCategoriesIngredients); $i++) 
                           { 
@@ -120,7 +120,7 @@
                   <!-- Marque -->
                   <label class="font-weight-bold">Marque :</label>
                   <select class="form-control" id="marques" name="marques">
-                    <option value="">Choisir la marque</option>
+                    <option value="0">Choisir la marque</option>
                     <?php
                         for ($i=0; $i < count($listMarques); $i++) 
                         { 
@@ -177,7 +177,7 @@
                   <!-- Type conditionnement -->
                   <label class="font-weight-bold">* Type de conditionnement :</label>
                   <select class="form-control" id="typesC" name="typesC">
-                    <option value="">Choisir le type de conditionnement</option>
+                    <option value="0">Choisir le type de conditionnement</option>
                     <?php
                         for ($i=0; $i < count($listTypesConditionnements); $i++) 
                         { 
@@ -199,7 +199,7 @@
                   <!-- Unite -->
                   <label class="font-weight-bold">* Unité de la quantité :</label>
                   <select class="form-control" id="unites" name="unites">
-                    <option value="">Choisir une unité</option>
+                    <option value="0">Choisir une unité</option>
                     <?php
                         for ($i=0; $i < count($listUnites); $i++) 
                         { 

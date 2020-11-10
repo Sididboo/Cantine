@@ -31,8 +31,8 @@
       // Traitements
       while ($row = $result->fetch())
       {
-        $laUnite = new Unites($row['IDPAYS'], $row['PAYS']);
-        array_push($listPays, $laUnite);
+        $lePays = new Pays($row['IDPAYS'], $row['PAYS']);
+        array_push($listPays, $lePays);
       }
 
       return $listPays;

@@ -66,7 +66,6 @@ function addArticle()
             if (xhr_object.readyState == 4)
             {
                 var result = xhr_object.responseText;
-                console.log(result);
                 tbody.innerHTML = result;
             }
         }

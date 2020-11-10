@@ -20,7 +20,7 @@ function codeBarre()
 
       var table = [];
       table = result.split(";");
-      console.log(table[8]);
+
       if (table[8] == "1")
       {
         categories.innerHTML = table[0];
@@ -46,6 +46,32 @@ function codeBarre()
 
         unites.innerHTML = table[7];
         unites.disabled = true;
+      }
+      else if (categories.disabled)
+      {
+        categories.innerHTML = table[8]
+        categories.disabled = false;
+         
+        sousCategories.innerHTML = '<option value="0"></option>';
+        sousCategories.disabled = true;
+
+        ingredients.innerHTML = '<option value="0"></option>';
+        ingredients.disabled = true;
+
+        marques.innerHTML = table[9];
+        marques.disabled = false;
+
+        pays.innerHTML = table[10];
+        pays.disabled = false;
+
+        typesC.innerHTML = table[11];
+        typesC.disabled = false;
+
+        quantiteC.value = 0.1;
+        quantiteC.readOnly = false;
+
+        unites.innerHTML = table[12];
+        unites.disabled = false;
       }
     }
   }

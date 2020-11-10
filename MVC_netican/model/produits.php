@@ -165,7 +165,6 @@
       // Requête SQL
        $sql .= "'".$this->_prod_laUnite->get_id()."','".$this->_prod_leTypeConditionnement->get_id()."','".$this->_prod_leIngredient->get_id()."','".$this->_prod_codeBarre."','".$this->_prod_quantiteConditionnement."')";
       // On execute la requête
-      echo 'SQL :'.$sql;
       $bdd->exec($sql);
     }
 
