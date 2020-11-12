@@ -36,7 +36,11 @@
         if (strlen($leProduit->get_id()) > 0) 
         {
             $leProduitAchete = new ProduitsAchetes("", $leTicket, $leProduit, $leTicket->get_dateTicket(), $_REQUEST['dateP'], "", "");
-            $leProduitAchete->create();
+            
+            for ($i=1; $i<=$_REQUEST['nbArticles']; $i++) 
+            { 
+                $leProduitAchete->create();
+            }
         }
             else 
             {
@@ -63,7 +67,11 @@
                 $leProduit->retrieveByCodeBarre($_REQUEST['code']);
 
                 $leProduitAchete = new ProduitsAchetes("", $leTicket, $leProduit, $leTicket->get_dateTicket(), $_REQUEST['dateP'], "", "");
-                $leProduitAchete->create();
+
+                for ($i=1; $i<=$_REQUEST['nbArticles']; $i++) 
+                { 
+                    $leProduitAchete->create();
+                }
             }
 
             $listProduitsAchetes = array();

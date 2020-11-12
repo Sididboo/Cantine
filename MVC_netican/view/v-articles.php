@@ -247,6 +247,7 @@
                     <th>Quantité conditionnement</th>
                     <th>Unité</th>
                     <th>Date péremption</th>
+                    <th>Stock/Date péremption</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -263,6 +264,7 @@
                           <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_quantiteConditionnement(); ?></td>
                           <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_laUnite()->get_nom(); ?></td>
                           <td><?php echo $listProduitsAchetes[$i]->get_datePeremption(); ?></td>
+                          <td></td>
                           <td><button type="button" onclick="delArticle(<?php echo $listProduitsAchetes[$i]->get_id(); ?>)"><i class="fas fa-trash"></i>Supprimer</button></td>
                         </tr>
                       <?php

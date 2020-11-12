@@ -117,6 +117,19 @@
       $bdd->exec($sql);
     }
 
+    public function findMax()
+    {
+      $bdd = BDD::getBDD();
+      // Requête SQL
+      $sql = "SELECT MAX(IDPLAT) AS last FROM plats";
+      // On execute la requête
+      $result = $bdd->query($sql);
+
+      $data = $result->fetch();
+
+      return $data['last'];
+    }
+
     public function get_id()
     {
       return $this->_plat_id;
