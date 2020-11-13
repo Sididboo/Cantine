@@ -62,7 +62,6 @@
             <th scope="col">Ingrédient</th>
           </tr>
         </thead>
-        <tbody id="mainContent">
         </tbody>
       </table>
     </div>
@@ -78,6 +77,19 @@
       <div class="form-group">
         <label for="namePlat">Nom du plat</label>
         <input type="text" class="form-control" id="namePlat" placeholder="Enter name">
+          <div class="input-group">
+
+              <button type="button" class="quantity-left-minus" data-type="minus" data-field="">
+              <i class="fas fa-minus"></i>
+              </button>
+
+            <input type="text" id="quantity" name="quantity" class="form-control input-number" value="0" min="1" max="100">
+
+              <button type="button" class="quantity-right-plus" data-type="plus" data-field="">
+              <i class="fas fa-plus"></i>
+              </button>
+
+          </div>
       </div>
 
       <!-- Catégories Plat -->
@@ -126,36 +138,36 @@
 
       <!-- Ingredients -->
 
-    <div class="form-group">
-      <label>Ingrédient</label>
-      <select class="form-control" id="ingredients" name="ingredients" disabled>
-      </select>
-    </div>
+      <div class="form-group">
+        <label>Ingrédient</label>
+        <select class="form-control" id="ingredients" name="ingredients" disabled>
+        </select>
+      </div>
 
-    <!-- End Ingredients -->
+      <!-- End Ingredients -->
 
-    <!-- Button for push ingredient in tableShowIng -->
+      <!-- Button for push ingredient in tableShowIng -->
 
-    <button type="button" onclick="addIng()" formnovalidate>Valider</button>
+      <button type="button" onclick="addIng()" formnovalidate>Valider</button>
 
-    <!-- Table for show ingredient -->
+      <!-- Table for show ingredient -->
 
-    <div class="table-responsive IngSelected">
-      <table class="table table-borderless">
-        <thead>
-          <tr>
-            <th class="col">Ingrédient</th>
-            <th class="col"></th>
-          </tr>
-        </thead>
-        <tbody id="tableShowIng">
-        </tbody>
-      </table>
-    </div>
-    
-    <!-- End table -->
+      <div class="table-responsive IngSelected">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th class="col">Ingrédient</th>
+              <th class="col"></th>
+            </tr>
+          </thead>
+          <tbody id="tableShowIng">
+          </tbody>
+        </table>
+      </div>
 
-    <button type="submit">Valider</button>
+      <!-- End table -->
+
+      <button type="submit">Valider</button>
     </form>
   </div>
 </body>
