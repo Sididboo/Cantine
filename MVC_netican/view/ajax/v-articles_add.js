@@ -1,6 +1,7 @@
 function addArticle()
 {
     var fields = true;
+    var erreur = document.getElementById("erreur");
 
     var code = document.getElementById("code");
     var categories = document.getElementById("categories");
@@ -20,45 +21,47 @@ function addArticle()
     switch (true) 
     {
         case categories.value == "0":
-            document.getElementById("erreur").innerHTML = "Veuillez sélectionner la catégorie de l'article.";
+            erreur.innerHTML = "Veuillez sélectionner la catégorie de l'article.";
             fields = false;
             break;
         case sousCategories.value == "0":
-            document.getElementById("erreur").innerHTML = "Veuillez sélectionner la sous-catégorie de l'article.";
+            erreur.innerHTML = "Veuillez sélectionner la sous-catégorie de l'article.";
             fields = false;
             break;
         case ingredients.value == "0":
-            document.getElementById("erreur").innerHTML = "Veuillez sélectionner un article.";
+            erreur.innerHTML = "Veuillez sélectionner un article.";
             fields = false;
             break;
         case pays.value == "0":
-            document.getElementById("erreur").innerHTML = "Veuillez sélectionner un pays.";
+            erreur.innerHTML = "Veuillez sélectionner un pays.";
             fields = false;
             break;
         case typesC.value == "0":
-            document.getElementById("erreur").innerHTML = "Veuillez sélectionner un type de conditionnement.";
+            erreur.innerHTML = "Veuillez sélectionner un type de conditionnement.";
             fields = false;
             break;
         case quantiteC.value < 0.1:
-            document.getElementById("erreur").innerHTML = "Veuillez indiquer la quantité de votre article (minimum 0.1)";
+            erreur.innerHTML = "Veuillez indiquer la quantité de votre article (minimum 0.1)";
             fields = false;
             break;
         case unites.value == "0":
-            document.getElementById("erreur").innerHTML = "Veuillez sélectionner l'unité de la quantité de l'article.";
+            erreur.innerHTML = "Veuillez sélectionner l'unité de la quantité de l'article.";
             fields = false;
             break;
         case nbArticles.value < 1:
-            document.getElementById("erreur").innerHTML = "Veuillez indiquer le nombre acheté concernant cet article (minimum 1).";
+            erreur.innerHTML = "Veuillez indiquer le nombre acheté concernant cet article (minimum 1).";
             fields = false;
             break;
         case !dateP.checkValidity():
-            document.getElementById("erreur").innerHTML = "Veuillez sélectionner la date de Péremption (Si elle n'est pas indiqué sur l'article, veuillez mettre une date que vous pensez être la dernière à respecter).";
+            erreur.innerHTML = "Veuillez sélectionner la date de Péremption (Si elle n'est pas indiqué sur l'article, veuillez mettre une date que vous pensez être la dernière à respecter).";
             fields = false;
             break;
     }
 
     if (fields) 
     {
+        erreur.innerHTML = "";
+
         xhr_object.open("POST","controller/a-articles_add.php", true);
 
         xhr_object.onreadystatechange = function()
