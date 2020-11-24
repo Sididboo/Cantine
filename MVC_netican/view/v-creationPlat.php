@@ -76,7 +76,7 @@
 
       <div class="form-group">
         <label for="namePlat">Nom du plat</label>
-        <input type="text" class="form-control" id="namePlat" placeholder="Enter name">
+        <input type="text" class="form-control" name="namePlats" placeholder="Enter name">
           <div class="input-group">
 
               <button type="button" class="quantity-left-minus" data-type="minus" data-field="">
@@ -96,7 +96,7 @@
 
       <div class="form-group">
         <label for="getCategorie">Catégorie de plat</label>
-        <select class="form-control" id="categoriesPlat" onchange="">
+        <select class="form-control" id="categoriesPlat" name='categoriesPlat' onchange="">
           <option value="0">Choisir une catégorie de plat</option>
           <?php
           for ($i = 0; $i < count($tableStock); $i++) {
