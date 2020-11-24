@@ -81,7 +81,7 @@
       $bdd = BDD::getBDD();
 
       // Requête SQL
-      $sql = "SELECT * FROM plats WHERE IDPLAT=".$id;
+      $sql = "SELECT * FROM plats WHERE IDPLAT='".$id."'";
       // On execute la requête
       $result = $bdd->query($sql);
       // On récup les résultats dans un tableau
@@ -149,6 +149,8 @@
     {
       return $this->_plat_nbPersonne;
     }
+
+    
   }
 
 ?>

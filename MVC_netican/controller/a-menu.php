@@ -6,6 +6,7 @@
     include_once 'model/categoriesPlats.php';
     include_once 'model/plats.php';
     include_once 'model/menus.php';
+    include_once 'model/contient.php';
 
     // liste catégories 
     $listCategoriesPlats = array();
@@ -17,11 +18,16 @@
     $categoriesPlats = new CategoriesPlats();
     $listCategoriesPlats = $categoriesPlats->findAll();
 
-    $plats= new Plats();
-    $listPlats = $plats->findAll();
+    // $plats= new Plats();
+    // $listPlats = $plats->findAll();
 
-    $menus = new Menus();
-    $listMenus = $menus->findAll();
+    // $menus = new Menus();
+    // $listMenus = $menus->findAll();
+
+    $contient = new Contient();
+    $listContenants = $contient->findAll();
+
+
 
     $etat;
 

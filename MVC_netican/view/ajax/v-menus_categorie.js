@@ -10,8 +10,8 @@ function closePopupCategoriePlat()
 
 function addCategoriePlat()
 {
-        var categories = document.getElementById("categoriePlat");
-        var categorie = document.getElementById("categoriesPlat");
+        var categories = document.getElementById("categoriesPlat");
+        var categorie = document.getElementById("categoriePlat");
 
         xhr_object.open("POST","controller/a-menus_categorie.php", true);
 
@@ -20,8 +20,9 @@ function addCategoriePlat()
             if (xhr_object.readyState == 4)
             {
                 var result = xhr_object.responseText;
+                console.log(result);
                 categories.innerHTML = result;
-                closePopupCategorie();
+                closePopupCategoriePlat();
             }  
         }
 
