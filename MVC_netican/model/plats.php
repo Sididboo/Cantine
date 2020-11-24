@@ -150,7 +150,6 @@
       return $this->_plat_nbPersonne;
     }
 
-    
   }
 
 ?>

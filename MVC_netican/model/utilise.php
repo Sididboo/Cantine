@@ -86,7 +86,7 @@
     {
       $bdd = BDD::getBDD();
       // Requête SQL
-      $sql = "DELETE FROM utilise WHERE IDINGREDIENT='".$this->_util_leIngredient->get_id()."' AND IDPLAT= '".$this->_util_lePlat->get_id()."'";
+      $sql = "DELETE FROM utilise WHERE IDINGREDIENT='". intval($this->_util_leIngredient->get_id()) ."' AND IDPLAT= '".$this->_util_lePlat->get_id()."'";
       // On execute la requête
       $bdd->exec($sql);
     }
