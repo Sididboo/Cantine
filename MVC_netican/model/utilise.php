@@ -72,7 +72,6 @@ class Utilise
     return $listUtilise;
   }
 
-
   // Méthode retrieve
   public function retrieve($idIngredient, $idPlat)
   {
@@ -96,31 +95,6 @@ class Utilise
     $this->_util_lePlat = $lePlat;
     $this->_util_dose = $data['DOSE'];
   }
-
-  // Méthode retrieveByIdPLat
-  /*public function retrieveByIdPlat($idPlat)
-  {
-    $bdd = BDD::getBDD();
-
-    // Requête SQL
-    $sql = "SELECT * FROM utilise WHERE IDPLAT=" . $idPlat;
-    // On execute la requête
-    $result = $bdd->query($sql);
-    // On récup les résultats dans un tableau
-    $data = $result->fetch();
-
-    $leIngredient = new Ingredients();
-    $leIngredient->retrieve($data['IDINGREDIENT']);
-
-    $lePlat = new Plats();
-    $lePlat->retrieve($data['IDPLAT']);
-
-    // Traitements
-    $this->_util_idIngredient = $leIngredient;
-    $this->_util_lePlat = $lePlat;
-    $this->_util_dose = $data['DOSE'];
-  }*/
-
 
   // Méthode create
   public function create()

@@ -9,7 +9,7 @@
     private $_catp_nom;
 
     // Constructeur
-    function __construct($id="", $nom="")
+    function __construct($id=0, $nom="")
     {
       $this->_catp_id = $id;
       $this->_catp_nom = $nom;
@@ -20,7 +20,7 @@
     {
       $bdd = BDD::getBDD();
 
-      $listCategories = array();
+      $listCategoriesPlats = array();
 
       // Requête SQL
       $sql = "SELECT * FROM categoriesplats";
@@ -30,10 +30,10 @@
       while ($row = $result->fetch())
       {
         $laCategorie = new CategoriesPlats($row['IDCATEGORIEPLAT'], $row['NOMCATEGORIEPLAT']);
-        array_push($listCategories, $laCategorie);
+        array_push($listCategoriesPlats, $laCategorie);
       }
 
-      return $listCategories;
+      return $listCategoriesPlats;
     }
 
     // Méthode retrieve
@@ -52,7 +52,20 @@
       $this->_catp_id = $data['IDCATEGORIEPLAT'];
       $this->_catp_nom = $data['NOMCATEGORIEPLAT'];
     }
-
+      // Méthode retrieveByName
+      public function retrieveByName($name)
+      {
+        $bdd = BDD::getBDD();
+        // Requête SQL
+        $sql = "SELECT * FROM categoriesplats WHERE NOMCATEGORIEPLAT='".$name."'";
+        // On execute la requête
+        $result = $bdd->query($sql);
+        // On récupère les données dans un tableau
+        $data = $result->fetch();
+        // On renseigne les attributs
+        $this->_catt_id = $data['IDCATEGORIEPLAT'];
+        $this->_catt_nom = $data['NOMCATEGORIEPLAT'];
+      }
     // Méthode create
     public function create()
     {

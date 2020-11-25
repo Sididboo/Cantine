@@ -1,32 +1,33 @@
 <?php
     include_once '../model/menus.php';
-    include_once '../model/categoriesPlats.php';
     include_once '../model/plats.php';
+    include_once '../model/contient.php';
 
-    $date = $_REQUEST['dateMenu'];
+    if (isset($_REQUEST['nbConvive']) && isset($_REQUEST['dateMenu']) &&  isset($_REQUEST['plat']) ) {
+        # code...
+        $lePlat = new Plats();
+        $lePlat->retrieve($_REQUEST['plat']);
+        
+        $leMenu = new Menus($_REQUEST['dateMenu'], $_REQUEST['nbConvive']);
+        $leMenu->create();
 
-    $laCategorie = new CategoriesPlats();
-    $laCategorie->retrieve($_REQUEST['categoriePlat']);
+        $contient = new Contient($leMenu,$lePlat);
+        $contient->create();
 
-    $lePlat = new Plats();
-    $lePlat->retrieve($_REQUEST['plats']);
+        $listContenants = $contient->findAll();
+
     
-    $leMenu = new Menus($dateMenu, $nbConvive);
-    $leMenu->create();
-
-    
-
-    $listMenus = array();
-    $listMenus = $leMenu->findAll();
-
-    for ($i=0; $i < count($listMenus); $i++) 
-    {
-        ?>
-            <tr>
-                <td><?php echo $listMenus[$i]->get_dateMenus(); ?></td>
-                <td><?php echo $listMenus[$i]->get_nbConvives(); ?></td>
-            </tr>
-        <?php
+        for ($i=0; $i < count($listContenants); $i++) 
+        {
+            ?>
+                <tr>
+                    <td><?php echo $listContenants[$i]->get_leMenu()->get_dateMenu(); ?></td>
+                    <td><?php echo $listContenants[$i]->get_leMenu()->get_nbConvive(); ?></td>
+                    <td><?php echo $listContenants[$i]->get_lePlat()->get_nom(); ?></td>
+                </tr>
+            <?php
+        }
     }
+
 
 ?>

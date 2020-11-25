@@ -20,6 +20,7 @@ function addCategorie()
             if (xhr_object.readyState == 4)
             {
                 var result = xhr_object.responseText;
+                console.log(result);
                 categories.innerHTML = result;
                 closePopupCategorie();
             }  
@@ -28,5 +29,6 @@ function addCategorie()
         xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
         var data = "categorie=" + categorie.value;
+        console.log(data);
         xhr_object.send(data);
 }

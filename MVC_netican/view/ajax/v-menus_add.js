@@ -3,7 +3,7 @@ function addMenus()
     var fields = false;
 
     var date = document.getElementById("dateMenu");
-    var categories = document.getElementById("categoriesPlat");
+    var nbConvives = document.getElementById("nbConvives");
     var plats = document.getElementById("plat");
 
     // On vérifie que les champs sont complétés.
@@ -11,11 +11,11 @@ function addMenus()
     {
         document.getElementById("erreur").innerHTML = "Veuillez renseigner la date.";
     }
-        else if (!categories.checkValidity()) 
+        else if (!nbConvives.checkValidity()) 
         {
-            document.getElementById("erreur").innerHTML = "Veuillez renseigner la catégorie du plat.";
+            document.getElementById("erreur").innerHTML = "Veuillez renseigner le nombre de convives.";
         }
-            else if (!commerce.checkValidity()) 
+            else if (!plats.checkValidity()) 
             {
                 document.getElementById("erreur").innerHTML = "Veuillez renseigner le plat.";
             }
@@ -42,7 +42,9 @@ function addMenus()
 
         xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        var data = "date=" + date.value + "&categoriePlat=" + categoriesPlat.options.value + "&plat=" + plat.options.value;
+        var data = "dateMenu=" + date.value + "&nbConvive=" + nbConvives.value + "&plat=" + plats.value;
+        console.log(data);
         xhr_object.send(data);
-    }
+
+        }
 }

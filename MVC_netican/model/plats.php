@@ -81,7 +81,7 @@
       $bdd = BDD::getBDD();
 
       // Requête SQL
-      $sql = "SELECT * FROM plats WHERE IDPLAT=".intval($id);
+      $sql = "SELECT * FROM plats WHERE IDPLAT='".$id."'";
       // On execute la requête
       $result = $bdd->query($sql);
       // On récup les résultats dans un tableau
@@ -91,7 +91,7 @@
       $laCategorie->retrieve($data['IDCATEGORIEPLAT']);
 
       // Traitements
-      $this->_plat_id = $data['IDPLAT'];
+      $this->_plat_idPlat = $data['IDPLAT'];
       $this->_plat_laCategorie = $laCategorie;
       $this->_plat_nom = $data['NOMPLAT'];
       $this->_plat_nbPersonne = $data['NBPERSONNE'];
@@ -149,6 +149,7 @@
     {
       return $this->_plat_nbPersonne;
     }
+
   }
 
 ?>

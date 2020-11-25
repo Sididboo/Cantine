@@ -72,7 +72,7 @@
                                     <p>Avant d'ajouter une nouvelle catégorie, pensez à bien vérifier s'elle n'existe pas déjà.</p>
                                 </div>
                                 <div>
-                                    <input type="text" class="form-control w-80" name="categoriePlat" id="categoriePlat" placeholder="Saisir le nom de la nouvelle catégorie"/>
+                                    <input type="text" class="form-control w-50" name="categoriePlat" id="categoriePlat" placeholder="Saisir nouvelle catégorie"/>
                                 </div>
                                 <br>
                                 <div>
@@ -105,7 +105,6 @@
                 </form>
                 <!--End form-->
             </div>
-
             <div class="col-md-8 table-responsive-md">
                 <!-- Tableau qui réference tout les tickets ajoutés dans la base de donnée -->
                 <table class="table table-bordered table-striped table-hover text-center">
@@ -121,14 +120,13 @@
                     <tbody id="tbody">
                         <!--Remplissage en PHP-->
                         <?php
-                            for ($i=0; $i < count($listMenus); $i++) 
+                            for ($i=0; $i < count($listContenants); $i++) 
                             { 
                                 ?>
                                     <tr>
-                                        <td><?php echo $listMenus[$i]->get_dateMenus(); ?></td>
-                                        <td><?php echo $listMenus[$i]->get_nbConvives(); ?></td>
-                                        <td><?php echo $listMenus[$i]->get_laCategorie()->get_nom(); ?></td>
-                                        <td><?php echo $listMenus[$i]->get_lePlat()->get_nom(); ?></td>
+                                        <td><?php echo $listContenants[$i]->get_leMenu()->get_dateMenu(); ?></td>
+                                        <td><?php echo $listContenants[$i]->get_leMenu()->get_nbConvive(); ?></td>
+                                        <td><?php echo $listContenants[$i]->get_lePlat()->get_nom(); ?></td>
                                     </tr>
                                 <?php
                             }
