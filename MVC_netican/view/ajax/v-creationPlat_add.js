@@ -13,8 +13,7 @@ function addIng() {
     cell1.innerHTML = "<input name='addIngredient[]' value=" + ingSelected.value + " type='hidden'>" + ingSelected.text + "</input>";
     cell2.innerHTML = "<input type='number' class='form-group' name='utilise[]'> "
     cell3.innerHTML = "<i class='fas fa-times fa-lg' onclick='delIng(this)'></i>";
-    console.log(dataIng);
-    
+    console.log(dataIng);    
 }
 
 function delIng(r) {

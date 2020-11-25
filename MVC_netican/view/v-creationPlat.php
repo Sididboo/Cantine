@@ -62,6 +62,23 @@
             <th scope="col">Ingrédient</th>
           </tr>
         </thead>
+        <tbody id="tableShow">
+          <?php
+
+          for ($i = 0; $i < count($selectLesPlats); $i++) {
+          ?>
+            <tr>
+              <td></td>
+              <td><?php echo $selectLesPlats[$i]->get_nom() ?></td>
+              <td>
+                <?php $mesUtilisation = $utilise->findAllByIdPlat($selectLesPlats[$i]->get_id());
+                    for ($j=0; $j < count($mesUtilisation); $j++) { 
+                      echo $mesUtilisation[$i]->get_leIngredient()->get_nom();
+                    }
+                ?></td>
+            <?php
+          }
+            ?>
         </tbody>
       </table>
     </div>
@@ -77,19 +94,19 @@
       <div class="form-group">
         <label for="namePlat">Nom du plat</label>
         <input type="text" class="form-control" name="namePlats" placeholder="Enter name">
-          <div class="input-group">
+        <div class="input-group">
 
-              <button type="button" class="quantity-left-minus" data-type="minus" data-field="">
-              <i class="fas fa-minus"></i>
-              </button>
+          <button type="button" class="quantity-left-minus" data-type="minus" data-field="">
+            <i class="fas fa-minus"></i>
+          </button>
 
-            <input type="text" id="quantity" name="quantity" class="form-control input-number" value="0" min="1" max="100">
+          <input type="text" id="quantity" name="quantity" class="form-control input-number" value="0" min="1" max="100">
 
-              <button type="button" class="quantity-right-plus" data-type="plus" data-field="">
-              <i class="fas fa-plus"></i>
-              </button>
+          <button type="button" class="quantity-right-plus" data-type="plus" data-field="">
+            <i class="fas fa-plus"></i>
+          </button>
 
-          </div>
+        </div>
       </div>
 
       <!-- Catégories Plat -->

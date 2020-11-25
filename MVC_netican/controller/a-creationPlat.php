@@ -17,6 +17,11 @@ $takeIngredient = new Ingredients();
 $tableIng = array();
 $tableIng = $takeIngredient->retrieve("getCatIngredient");
 
+$lesPlats = new Plats();
+$selectLesPlats = $lesPlats->findAll();
+
+$utilise = new Utilise();
+
 if (
   $_POST['namePlats'] &&
   $_POST['quantity'] &&
@@ -37,7 +42,7 @@ if (
   
   $PlatReturn = new Plats();
   $PlatReturn->retrieve($idNewPlat);
-  $PlatReturn->create();
+
   for ($i = 0; $i < count($_POST['addIngredient']); $i++) {
 
     $selectCatIng = new CategoriesIngredients();
@@ -47,7 +52,6 @@ if (
     $selectIngredient->retrieve($_POST['addIngredient'][$i], $newPlat->get_id());
 
     $utilisation = new Utilise($selectIngredient, $PlatReturn, $_POST['utilise'][$i]);
-   // echo $utilisation->get_leIngredient()->get_id();
     $utilisation->create();
   }
 
