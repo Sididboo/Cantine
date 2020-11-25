@@ -39,7 +39,10 @@
       $listProduitsAchetes = array();
 
       // Requête SQL
-      $sql = "SELECT * FROM produitsachetes";
+      $sql = "SELECT IDTICKET, IDPRODUIT, DATEACHAT, DATEPEREMPTION, DATEOUVERTURE, RESTE, COUNT(IDPRODUITACHETE) AS NB 
+              FROM produitsachetes 
+              GROUP BY IDTICKET, IDPRODUIT, DATEACHAT, DATEPEREMPTION, DATEOUVERTURE, RESTE 
+              ORDER BY IDPRODUITACHETE";
       // On execute la requête
       $result = $bdd->query($sql);
 
@@ -52,7 +55,8 @@
         $leProduit->retrieve($row['IDPRODUIT']);
 
         $leProduitAchete = new ProduitsAchetes($row['IDPRODUITACHETE'], $leTicket, $leProduit, $row['DATEACHAT'], $row['DATEPEREMPTION'], $row['DATEOUVERTURE'], $row['RESTE']);
-        array_push($listProduitsAchetes, $leProduitAchete);
+        
+        $listProduitsAchetes[$leProduitAchete] = $row['NB'];
       }
 
       return $listProduitsAchetes;

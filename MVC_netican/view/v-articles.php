@@ -226,7 +226,8 @@
                 <div class="pt-3 text-center">
                   <p class="text-danger">* champs obligatoires</p>
                   <!-- Buttons -->
-                  <button class="btn btn-secondary" type="button" onclick="delArticle()" formnovalidate>Quitter</button>
+                  <!-- window.history.back fait revenir sur la page précédemmente visité -->
+                  <button class="btn btn-secondary" type="button" onclick="window.history.back()">Quitter</button>
                   <button class="btn btn-primary" type="button" onclick="addArticle()">Ajouter</button>
                   <!-- End buttons -->
                 </div>
@@ -247,7 +248,6 @@
                     <th>Quantité conditionnement</th>
                     <th>Unité</th>
                     <th>Date péremption</th>
-                    <th>Stock/Date péremption</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -264,7 +264,6 @@
                           <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_quantiteConditionnement(); ?></td>
                           <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_laUnite()->get_nom(); ?></td>
                           <td><?php echo $listProduitsAchetes[$i]->get_datePeremption(); ?></td>
-                          <td></td>
                           <td><button type="button" onclick="delArticle(<?php echo $listProduitsAchetes[$i]->get_id(); ?>)"><i class="fas fa-trash"></i>Supprimer</button></td>
                         </tr>
                       <?php

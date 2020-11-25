@@ -15,7 +15,7 @@
         {
             $leTicket->delete();
         } // En cas d'erreur, on ne fait rien
-        catch (\Throwable $th) 
+        catch (Exception $e) 
         {
             echo '0';
             $isDelete = false;
