@@ -54,9 +54,10 @@
         $leProduit = new Produits();
         $leProduit->retrieve($row['IDPRODUIT']);
 
-        $leProduitAchete = new ProduitsAchetes($row['IDPRODUITACHETE'], $leTicket, $leProduit, $row['DATEACHAT'], $row['DATEPEREMPTION'], $row['DATEOUVERTURE'], $row['RESTE']);
+        $leProduitAchete = new ProduitsAchetes("", $leTicket, $leProduit, $row['DATEACHAT'], $row['DATEPEREMPTION'], $row['DATEOUVERTURE'], $row['RESTE']);
+        $values = array($leProduitAchete, $row['NB']);
         
-        $listProduitsAchetes[$leProduitAchete] = $row['NB'];
+        array_push($listProduitsAchetes, $values);
       }
 
       return $listProduitsAchetes;
