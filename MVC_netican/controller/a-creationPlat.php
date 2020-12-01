@@ -23,14 +23,14 @@ $selectLesPlats = $lesPlats->findAll();
 $utilise = new Utilise();
 
 if (
-  $_POST['namePlats'] &&
-  $_POST['quantity'] &&
-  $_POST['categoriesPlat'] &&
-  $_POST['categories'] &&
-  $_POST['sousCategories'] &&
-  $_POST['ingredients'] &&
-  $_POST['addIngredient'] &&
-  $_POST['utilise']
+  isset($_POST['namePlats']) &&
+  isset($_POST['quantity']) &&
+  isset($_POST['categoriesPlat']) &&
+  isset($_POST['categories']) &&
+  isset($_POST['sousCategories']) &&
+  isset($_POST['ingredients']) &&
+  isset($_POST['addIngredient']) &&
+  isset($_POST['utilise'])
 ) {
 
   $selectCatPlat = new CategoriesPlats($_POST['categoriesPlat']);

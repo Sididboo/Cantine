@@ -42,14 +42,14 @@
   <div class="container infoTable">
     <div class="container actionButton">
       <div class="row">
-        <div class="col-2" id="addSomething">
-          <a onclick="">Ajouter</a>
+        <div class="col-2">
+          <a id="addSomething" onclick="">Ajouter</a>
         </div>
-        <div class="col-2" id="modifySomething">
-          <a onclick="">Modifier</a>
+        <div class="col-2">
+          <a id="modifySomething" onclick="">Modifier</a>
         </div>
-        <div class="col-2" id="deleteSomething">
-          <a onclick="">Supprimer</a>
+        <div class="col-2">
+          <a id="deleteSomething" onclick="">Supprimer</a>
         </div>
       </div>
     </div>
@@ -72,9 +72,9 @@
               <td><?php echo $selectLesPlats[$i]->get_nom() ?></td>
               <td>
                 <?php $mesUtilisation = $utilise->findAllByIdPlat($selectLesPlats[$i]->get_id());
-                    for ($j=0; $j < count($mesUtilisation); $j++) { 
-                      echo $mesUtilisation[$i]->get_leIngredient()->get_nom();
-                    }
+                for ($j = 0; $j < count($mesUtilisation); $j++) {
+                  echo '<ul>' . $mesUtilisation[$j]->get_leIngredient()->get_nom() . '</ul>';
+                }
                 ?></td>
             <?php
           }
@@ -85,22 +85,22 @@
   </div>
 
   <!-- Forms for table -->
-  <div class="container">
+  <div class="container" id="divMyForm">
 
-    <form action="" method="POST">
+    <form id="myForm" action="" method="POST">
 
-      <h2>Création d'un plat</h2>
+      <h2>Création d'un plat <i id="closeForm" class="fas fa-times" style="float: right;"></i></h2>
 
       <div class="form-group">
         <label for="namePlat">Nom du plat</label>
-        <input type="text" class="form-control" name="namePlats" placeholder="Enter name">
+        <input type="text" class="form-control" name="namePlats" placeholder="Enter name" required>
         <div class="input-group">
 
           <button type="button" class="quantity-left-minus" data-type="minus" data-field="">
             <i class="fas fa-minus"></i>
           </button>
 
-          <input type="text" id="quantity" name="quantity" class="form-control input-number" value="0" min="1" max="100">
+          <input type="text" id="quantity" name="quantity" class="form-control input-number" value="" min="1" max="100" required>
 
           <button type="button" class="quantity-right-plus" data-type="plus" data-field="">
             <i class="fas fa-plus"></i>
@@ -113,7 +113,7 @@
 
       <div class="form-group">
         <label for="getCategorie">Catégorie de plat</label>
-        <select class="form-control" id="categoriesPlat" name='categoriesPlat' onchange="">
+        <select class="form-control" id="categoriesPlat" name='categoriesPlat' onchange="" required>
           <option value="0">Choisir une catégorie de plat</option>
           <?php
           for ($i = 0; $i < count($tableStock); $i++) {
@@ -131,7 +131,7 @@
 
       <div class="form-group">
         <label>Catégorie ingrédient</label>
-        <select class="form-control" id="categories" name="categories" onchange="searchSousCategories()">
+        <select class="form-control" id="categories" name="categories" onchange="searchSousCategories()" required>
           <option value="0">Choisir une catégorie d'ingrédient</option>
           <?php
           for ($i = 0; $i < count($tableStockIng); $i++) {
@@ -149,7 +149,7 @@
       <div class="form-group">
         <label>Sous catégorie ingrédient</label>
         <select class="form-control" id="sousCategories" name="sousCategories" onchange="searchIngredients()" disabled>
-          <option value="">Message à changer pour indiquer quil faut d'abord choisir la cat ingre</option>
+          <option value="0"></option>
         </select>
       </div>
 
@@ -158,6 +158,7 @@
       <div class="form-group">
         <label>Ingrédient</label>
         <select class="form-control" id="ingredients" name="ingredients" disabled>
+        <option value="0"></option>
         </select>
       </div>
 
@@ -165,7 +166,7 @@
 
       <!-- Button for push ingredient in tableShowIng -->
 
-      <button type="button" onclick="addIng()" formnovalidate>Valider</button>
+      <button type="button" id="bouton_add" onclick="validation()" formnovalidate>Valider</button>
 
       <!-- Table for show ingredient -->
 

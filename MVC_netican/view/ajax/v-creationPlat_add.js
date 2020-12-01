@@ -1,19 +1,40 @@
-function addIng() {
+function validation() {
+
+    var fields = true;
+    const formValid = document.getElementById("bouton_add");
     const categorie = document.getElementById("categories");
     const sousCat = document.getElementById("sousCategories");
     const ing = document.getElementById("ingredients");
     const dataIng = document.getElementById("tableShowIng");
     var ingSelected = ing.options[ing.selectedIndex];
 
-    var row = dataIng.insertRow(0);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
+    switch (true) {
+        case categorie.value == "0":
+            fields = false;
+            break;
+        case sousCat.value == "0":
+            fields = false;
+            break;
+        case ing.value == "0":
+            fields = false;
+            break;
+    }
 
-    cell1.innerHTML = "<input name='addIngredient[]' value=" + ingSelected.value + " type='hidden'>" + ingSelected.text + "</input>";
-    cell2.innerHTML = "<input type='number' class='form-group' name='utilise[]'> "
-    cell3.innerHTML = "<i class='fas fa-times fa-lg' onclick='delIng(this)'></i>";
-    console.log(dataIng);    
+    if (fields) {
+        var row = dataIng.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+
+        cell1.innerHTML = "<input name='addIngredient[]' value=" + ingSelected.value + " type='hidden'>" + ingSelected.text + "</input>";
+        cell2.innerHTML = "<input type='number' class='form-group' name='utilise[]' required> "
+        cell3.innerHTML = "<i class='fas fa-times fa-lg' onclick='delIng(this)'></i>";
+
+        console.log(categorie.value, sousCat.value, ing.value);
+
+    } else {
+        console.log("NOT WORKING", categorie.value, sousCat.value, ing.value, fields);
+    }
 }
 
 function delIng(r) {
@@ -22,9 +43,12 @@ function delIng(r) {
     console.log(r.parentNode.parentNode.rowIndex);
 }
 
+
+// More and less quantity
+
 $(document).ready(function () {
 
-    var quantitiy = 0;
+    var quantity = 0;
     $('.quantity-right-plus').click(function (e) {
 
         // Stop acting like a button
@@ -35,8 +59,6 @@ $(document).ready(function () {
         // If is not undefined
 
         $('#quantity').val(quantity + 1);
-
-
         // Increment
 
     });
@@ -57,19 +79,22 @@ $(document).ready(function () {
 
 });
 
-/* function validateForm(){
-    var ingredient = document.getElementById("tableShowIng");
-    xhr_object.open("POST", "controller/a-creationPlat_add.php", true);
+// Function for hide form
 
-    xhr_object.onreadystatechange = function(){
-        if (xhr_object.readyState == 4) {
-            var result = xhr_object.responseText;
-            console.log(result);
-            tbody.innerHTML = result;
-        }
-    }
+$(document).ready(function () {
+    // Hide div form
+    $('#divMyForm').hide();
 
-    xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // Show div form on click
+    $("#addSomething").on('click', function () {
+        $("#divMyForm").show();
+    });
 
-    var data
-} */
+    //Hide div form on click
+    $("#closeForm").on('click', function () {
+        $('#divMyForm').hide();
+    })
+
+    // Check validity input
+
+});
