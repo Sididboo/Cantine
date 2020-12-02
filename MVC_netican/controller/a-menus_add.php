@@ -21,9 +21,9 @@
         {
             ?>
                 <tr>
-                    <td><?php echo $listContenants[$i]->get_leMenu()->get_dateMenu(); ?></td>
-                    <td><?php echo $listContenants[$i]->get_leMenu()->get_nbConvive(); ?></td>
-                    <td><?php echo $listContenants[$i]->get_lePlat()->get_nom(); ?></td>
+                <td><?php echo $listContenants[$i]->get_leMenu()->get_dateMenu(); ?></td>
+                <td><?php echo $listContenants[$i]->get_leMenu()->get_nbConvive(); ?></td>
+                <td><?php echo $listContenants[$i]->get_lePlat()->get_nom(); ?></td>
                 </tr>
             <?php
         }
