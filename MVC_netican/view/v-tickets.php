@@ -1,133 +1,127 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--CSS-->
-    <link rel="stylesheet" href="./habillage/styles/css-header.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <!--JS-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/390bd29166.js"></script>
+        <title>Netican/tickets</title>
 
-    <script src="view/ajax/xhr_object.js"></script>
+        <!--CSS-->
+        <link rel="stylesheet" href="./habillage/styles/css-tickets.css">
 
-    <script src="view/ajax/v-tickets_add.js"></script>
-    <script src="view/ajax/v-tickets_del.js"></script>
-    <script src="view/ajax/v-tickets_categorie.js"></script>
-    <script src="view/ajax/v-tickets_commerce.js"></script>
-    <script src="view/ajax/v-tickets_upload.js"></script>
-  </head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <!--JS-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        
+        <script src="https://kit.fontawesome.com/ce45170c32.js" crossorigin="anonymous"></script>
+
+        <script src="view/ajax/xhr_object.js"></script>
+
+        <script src="view/ajax/v-tickets_add.js"></script>
+        <script src="view/ajax/v-tickets_del.js"></script>
+        <script src="view/ajax/v-tickets_categorie.js"></script>
+        <script src="view/ajax/v-tickets_commerce.js"></script>
+        <script src="view/ajax/v-tickets_upload.js"></script>
+    </head>
     <body>
         
         <!-- Header -->
         <?php include './header.html'; ?>
 
-        <div class="container-fluid">
+        <div class="containerTickets">
 
-            <h3 class="text-center font-weight-bold py-3">Insertion des tickets</h3>
+            <h1 class="title">Insertion des tickets</h1>
 
-            <div class="row p-4">
-
-                <div class="col-md-4 bg-light">
+            <div class="containerFormTab">
 
                 <!--form-->
-                <form action="" method="POST" enctype="multipart/form-data" id="form">
-                    <!--title-->
-                    <h4 class="pt-3 text-center font-weight-bold">Formulaire</h4>
+                <form class="formulaire" action="" method="POST" enctype="multipart/form-data" id="form">
+                    
+                    <h4 class="titleForm">Formulaire</h4>
 
                     <!-- Message erreur si champ non remplie -->
-                    <p class="text-warning" id="erreur"></p>
+                    <p class="error" id="erreur"></p>
 
-                    <div class="form-group">
-
-                        <div class="cell_date pt-2">
-                            <label class="font-weight-bold">* Date</label>
-                            <input class="form-control" type="date" name="date" id="date" required/>
-                        </div>
-
-                        <!-- Gestion du menu déroulant pour le choix de la marque -->
-                        <div class="pt-4">
-                            <label class="font-weight-bold">* Catégorie</label>
-                            <select class="form-control" name="categories" id="categories" required>
-                                <option value="">Choisir une catégorie de ticket</option>
-                                <?php
-                                    for ($i=0; $i < count($listCategoriesTickets); $i++) 
-                                    { 
-                                        echo '<option value="' . $listCategoriesTickets[$i]->get_id() . '">' . $listCategoriesTickets[$i]->get_nom() . '</option>';
-                                    }                    
-                                ?>
-                            </select>
-                            <span class="text-danger">Si la catégorie du ticket n'existe pas : </span>
-                            <button type="button" class="btn" onclick="openPopupCategorie()"><i class="fas fa-folder-plus"></i></button>
-
-                            <!-- Popup Catégorie -->
-                            <div id="popupCategorie"  style="display: none;">
-                                <div>
-                                    <p>Avant d'ajouter une nouvelle catégorie, pensez à bien vérifier s'elle n'existe pas déjà.</p>
-                                </div>
-                                <div>
-                                    <input type="text" class="form-control w-50" name="categorie" id="categorie" placeholder="Nouvelle catégorie..."/>
-                                </div>
-                                <div>
-                                    <button type="button" class="btn btn-primary" onclick="addCategorie()">Valider</button>
-                                    <button type="button" class="btn btn-secondary" onclick="closePopupCategorie()">Fermer</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Gestion du menu déroulant pour le choix du commerce -->
-                        <div class="py-4">
-                            <label class="font-weight-bold">* Commerce</label>
-                            <select class="form-control" name="commerces" id="commerces" required>
-                                <option value="">Choisir un commerce</option>
-                                <?php
-                                    for ($i=0; $i < count($listCommerces); $i++) 
-                                    { 
-                                        echo '<option value="' . $listCommerces[$i]->get_id() . '">' . $listCommerces[$i]->get_nom() . '</option>';
-                                    }
-                                ?>
-                            </select>
-                            <span class="text-danger">Si le commerce n'existe pas : </span>
-                            <button type="button" class="btn" onclick="openPopupCommerce()"><i class="fas fa-folder-plus"></i></button>
-
-                            <!-- Popup Commerce -->
-                            <div id="popupCommerce"  style="display: none;">
-                                <div>
-                                    <p>Avant d'ajouter un nouveau commerce, pensez à bien vérifier s'il n'existe pas déjà.</p>
-                                </div>
-                                <div>
-                                    <input type="text" class="form-control w-50" name="commerce" id="commerce" placeholder="Nouveau commerce..."/>
-                                </div>
-                                <div>
-                                    <button type="button" class="btn btn-primary" onclick="addCommerce()">Valider</button>
-                                    <button type="button" class="btn btn-secondary" onclick="closePopupCommerce()">Fermer</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="pt-3 text-center">
-                            <p class="text-danger">* champs obligatoires</p>
-                            <!-- Buttons -->
-                            <input class="btn btn-primary" type="button" value="Ajouter" onclick="addTicket()">
-                            <!-- End buttons -->
-                        </div>
-
+                    <div class="divForm">
+                        <label class="">Date *</label>
+                        <input class="field" type="date" name="date" id="date" required/>
                     </div>
-                    <!--End form-group-->
 
+                    <!-- Gestion du menu déroulant pour le choix de la marque -->
+                    <div class="divForm">
+                        <label class="">Catégorie *</label>
+                        <select class="field" name="categories" id="categories" required>
+                            <option value="">Choisir une catégorie de ticket</option>
+                            <?php
+                                for ($i=0; $i < count($listCategoriesTickets); $i++) 
+                                { 
+                                    echo '<option value="' . $listCategoriesTickets[$i]->get_id() . '">' . $listCategoriesTickets[$i]->get_nom() . '</option>';
+                                }                    
+                            ?>
+                        </select>
+                        <p class="">Si la catégorie du ticket n'existe pas : </p>
+                        <button class="itemAdd" type="button" onclick="openPopupCategorie()"><i class="fas fa-folder-plus"></i></button>
+
+                        <!-- Popup Catégorie -->
+                        <div id="popupCategorie"  style="display: none;">
+                            <div>
+                                <p>Avant d'ajouter une nouvelle catégorie, pensez à bien vérifier s'elle n'existe pas déjà.</p>
+                            </div>
+                            <div>
+                                <input class="field" type="text" name="categorie" id="categorie" placeholder="Nouvelle catégorie..."/>
+                            </div>
+                            <div>
+                                <button class="buttonItemExit" type="button" onclick="closePopupCategorie()">Fermer</button>
+                                <button class="buttonItemAdd" type="button" onclick="addCategorie()">Valider</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gestion du menu déroulant pour le choix du commerce -->
+                    <div class="divForm">
+                        <label class="">Commerce *</label>
+                        <select class="field" name="commerces" id="commerces" required>
+                            <option value="">Choisir un commerce</option>
+                            <?php
+                                for ($i=0; $i < count($listCommerces); $i++) 
+                                { 
+                                    echo '<option value="' . $listCommerces[$i]->get_id() . '">' . $listCommerces[$i]->get_nom() . '</option>';
+                                }
+                            ?>
+                        </select>
+                        <p class="">Si le commerce n'existe pas : </p>
+                        <button class="itemAdd" type="button" onclick="openPopupCommerce()"><i class="fas fa-folder-plus"></i></button>
+
+                        <!-- Popup Commerce -->
+                        <div id="popupCommerce"  style="display: none;">
+                            <div>
+                                <p>Avant d'ajouter un nouveau commerce, pensez à bien vérifier s'il n'existe pas déjà.</p>
+                            </div>
+                            <div>
+                                <input class="field" type="text" name="commerce" id="commerce" placeholder="Nouveau commerce..."/>
+                            </div>
+                            <div>
+                                <button class="buttonItemExit" type="button" onclick="closePopupCommerce()">Fermer</button>
+                                <button class="buttonItemAdd" type="button" onclick="addCommerce()">Valider</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <p class="">* champs obligatoires</p>
+                        <!-- Buttons -->
+                        <input class="buttonAdd" type="button" value="Ajouter" onclick="addTicket()">
+                        <!-- End buttons -->
+                    </div>
                 </form>
                 <!--End form-->
-            </div>
-
-            <div class="col-md-8 table-responsive-md">
+                
                 <!-- Tableau qui réference tout les tickets ajoutés dans la base de donnée -->
-                <table class="table table-bordered table-striped table-hover text-center">
-                    <thead class="thead-dark">
+                <table class="">
+                    <thead class="">
                         <tr>
                             <th>Date</th>
                             <th>Commerce</th>
@@ -157,18 +151,19 @@
                                                 {
                                                     ?>
                                                         <div>
-                                                            <input type="file" name="file" id="file"/>
+                                                            
+                                                            <input class="buttonFile" type="file" name="file" id="file"/>
                                                         </div>
                                                         <div>
-                                                            <button type="button" name="upload" onclick="upload(<?php echo $listTickets[$i]->get_id(); ?>)">Upload</button>
+                                                            <button class="buttonUpload" type="button" name="upload" onclick="upload(<?php echo $listTickets[$i]->get_id(); ?>)">Upload</button>
                                                         </div>
                                                     <?php
                                                 }
                                             ?>
                                         </td>
-                                        <td>
-                                            <button class="btn btn-primary" onclick="delTicket('<?php echo $listTickets[$i]->get_id(); ?>')"><i class="fas fa-trash"></i> Supprimer</button>
-                                            <a href="./index.php?action=articles&idTicket=<?php echo $listTickets[$i]->get_id(); ?>"><button class="btn btn-secondary"><i class="fas fa-plus"></i> Ajouter articles</button></a>
+                                        <td class="actions">
+                                            <button class="buttonItemExit" onclick="delTicket('<?php echo $listTickets[$i]->get_id(); ?>')"><i class="fas fa-trash"></i> Supprimer</button>
+                                            <a href="./index.php?action=articles&idTicket=<?php echo $listTickets[$i]->get_id(); ?>"><button class="buttonAddArticle"><i class="fas fa-plus"></i> Ajouter articles</button></a>
                                         </td>
                                     </tr>
                                 <?php
@@ -176,12 +171,7 @@
                         ?>
                     </tbody>
                 </table>
-            <!-- Fin de tableau -->
             </div>
-
-            </div>
-            <!--End row-->
         </div>
-        <!--End container_fluid-->
     </body>
 </html>

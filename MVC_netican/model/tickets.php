@@ -33,7 +33,7 @@
       $listTickets = array();
 
       // Requête SQL
-      $sql = "SELECT * FROM tickets";
+      $sql = "SELECT * FROM tickets ORDER BY IDTICKET DESC";
 
       //On execute la requête
       $result = $bdd->query($sql);

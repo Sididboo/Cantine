@@ -56,6 +56,7 @@ function popupSearchSousCategories()
 {
     var categories = document.getElementById("popupCategories");
     var sousCategories = document.getElementById("popupSousCategories");
+    var ingredient = document.getElementById("popupIngredient");
 
     xhr_object.open("POST","controller/a-search.php", true);
 
@@ -65,6 +66,8 @@ function popupSearchSousCategories()
         {
             var result = xhr_object.responseText;
             sousCategories.innerHTML = result;
+            sousCategories.disabled = false;
+            ingredient.disabled = false;
         }
     }
 
