@@ -38,4 +38,8 @@ function upload(idTicket)
 
         xhr_object.send(formData);
     }
+    else
+    {
+        alert("Aucun fichier sélectionné.");
+    }
 }

@@ -15,7 +15,7 @@
     private $_ingr_lesProduits = array();
 
     // Constructeur
-    public function __construct($id="", $laSousCategorie=null, $nom="")
+    public function __construct($id=0, $laSousCategorie=null, $nom="")
     {
       $this->_ingr_id = $id;
       $this->_ingr_laSousCategorie = $laSousCategorie;
@@ -123,7 +123,31 @@
       $bdd = BDD::getBDD();
 
       // Requête SQL
-      $sql = "SELECT * FROM ingredients WHERE NOMINGREDIENT='".$name."'";
+      $sql = "SELECT * FROM ingredients WHERE UCASE(NOMINGREDIENT)='".$name."'";
+      // On execute la requête
+      $result = $bdd->query($sql);
+      // On récup le résultat dans un tableau
+      $data = $result->fetch();
+
+      // Traitements
+      $laSousCategorie = new SousCategoriesIngredients();
+      $laSousCategorie->retrieve($data['IDSOUSCATEGORIEINGREDIENT']);
+
+      $this->_ingr_id = $data['IDINGREDIENT'];
+      $this->_ingr_laSousCategorie = $laSousCategorie;
+      $this->_ingr_nom = $data['NOMINGREDIENT'];
+    }
+
+    // Méthode retrieve
+    public function retrieveLast()
+    {
+      $bdd = BDD::getBDD();
+
+      // Requête SQL
+      $sql = 'SELECT *
+              FROM ingredients 
+              ORDER BY IDINGREDIENT DESC LIMIT 1';
+
       // On execute la requête
       $result = $bdd->query($sql);
       // On récup le résultat dans un tableau

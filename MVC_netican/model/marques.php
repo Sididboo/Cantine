@@ -10,7 +10,7 @@
     private $_marq_nom;
 
     // Constructeur
-    public function __construct($id="", $nom="")
+    public function __construct($id=0, $nom="")
     {
       $this->_marq_id = $id;
       $this->_marq_nom = $nom;
@@ -57,19 +57,36 @@
       $this->_marq_nom = $data['MARQUE'];
     }
 
-    // Méthode retrieve
-    public function retrieveByName($name)
+    // Méthode retrieveLast
+    public function retrieveLast()
     {
       $bdd = BDD::getBDD();
 
       // Requête SQL
-      $sql = "SELECT * FROM marques WHERE MARQUE='".$name."'";
+      $sql = "SELECT *
+              FROM marques 
+              ORDER BY IDMARQUE DESC LIMIT 1";
       // On execute la requête
       $result = $bdd->query($sql);
       // On récup le résultat dans un tableau
       $data = $result->fetch();
 
       // Traitements
+      $this->_marq_id = $data['IDMARQUE'];
+      $this->_marq_nom = $data['MARQUE'];
+    }
+
+    // Méthode retrieveByName
+    public function retrieveByName($name)
+    {
+      $bdd = BDD::getBDD();
+      // Requête SQL
+      $sql = "SELECT * FROM marques WHERE UCASE(MARQUE)='".$name."'";
+      // On execute la requête
+      $result = $bdd->query($sql);
+      // On récupère les données dans un tableau
+      $data = $result->fetch();
+      // On renseigne les attributs
       $this->_marq_id = $data['IDMARQUE'];
       $this->_marq_nom = $data['MARQUE'];
     }

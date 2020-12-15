@@ -2,19 +2,21 @@
 <html lang="fr">
     <head>
       <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <title>Netican/articles</title>
+      <title>Netican/Articles</title>
 
       <!--CSS-->
+      <link rel="stylesheet" href="./habillage/styles/css-articles.css">
+
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-      <link rel="stylesheet" href="habillage/styles/css-header.css">
+
       <!--JS-->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-      <script src="https://kit.fontawesome.com/390bd29166.js"></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      
+      <script src="https://kit.fontawesome.com/ce45170c32.js" crossorigin="anonymous"></script>
 
       <script src="view/ajax/xhr_object.js"></script>
 
@@ -31,32 +33,30 @@
     <!-- Header -->
     <?php include './header.html'; ?>
 
-    <div class="container_fluid">
-      <div class="container">
+    <div class="containerArticles">
 
-        <h3 class="text-center font-weight-bold py-2">Insertion des articles</h3>
+        <h1 class="title">Insertion des articles</h1>
 
-        <div class="row">
-          <div class="col-md-4 col-sm-12 bg-info">
+        <div class="containerFormTab">
             <!-- Formulaire -->
-            <form action="" method="post">
+            <form class="formulaire" action="" method="post">
 
-              <h4 class="text-center font-weight-bold">Formulaire</h4>
+              <h4 class="titleForm">Formulaire</h4>
 
               <!-- Message erreur si champ non remplie -->
-              <p class="text-warning" id="erreur"></p>
+              <p class="error" id="erreur"></p>
 
-              <div class="form-group">
-                <div>
+                <div class="divForm">
                   <!-- Code-barre -->
-                  <label class="font-weight-bold">Code-barre :</label>
-                  <input class="form-control" type="text" id="code" name="code" placeholder="Code-barre" onchange="codeBarre()"/> 
+                  <label class="">Code-barre :</label>
+                  <input class="field" type="text" id="code" name="code" placeholder="Code-barre" onchange="codeBarre()"/> 
                   <!-- End code-barre -->
                 </div>
-                <div>
+
+                <div class="divForm">
                   <!-- Catégories -->
-                  <label class="font-weight-bold">* Catégorie de l'article :</label>
-                  <select class="form-control" id="categories" name="categories" onchange="searchSousCategories()">
+                  <label class="">* Catégorie de l'article :</label>
+                  <select class="field" id="categories" name="categories" onchange="searchSousCategories()">
                     <option value="0">Choisir une catégorie</option>
                     <?php
                       for ($i=0; $i < count($listCategoriesIngredients); $i++) 
@@ -69,29 +69,35 @@
                   </select>
                   <!-- End catégories -->
                 </div>
-                <div>
+
+                <div class="divForm">
                   <!-- Sous-catégories -->
-                  <label class="font-weight-bold">* Sous catégorie de l'article :</label>
-                  <select class="form-control" id="sousCategories" name="sousCategories" onchange="searchIngredients()" disabled>
+                  <label class="">* Sous catégorie de l'article :</label>
+                  <select class="field" id="sousCategories" name="sousCategories" onchange="searchIngredients()" disabled>
                   </select>
                   <!-- End sous-catégories -->
                 </div>
-                <div>
+
+                <div class="divForm">
                   <!-- Ingrédients -->
-                  <label class="font-weight-bold">* Nom de l'article :</label>
-                  <select class="form-control col-xs-2" id="ingredients" name="ingredients" disabled>
+                  <label class="">* Nom de l'article :</label>
+                  <select class="field" id="ingredients" name="ingredients" disabled>
                   </select>
-                  <span class="text-danger">Si l'article n'existe pas : </span>
-                  <button class="btn" type="button" onclick="openPopupIngredient()"><i class="fas fa-folder-plus"></i></button>
+                  <p class="">Si l'article n'existe pas : </p>
+                  <button class="itemAdd" type="button" onclick="openPopupIngredient()"><i class="fas fa-folder-plus"></i></button>
                   <!-- End ingrédients -->
 
                   <!-- Popup Ingredient -->
-                  <div id="popupIngredient"  style="display: none;">
+                  <div id="popupIngredientAdd"  style="display: none;">
                     <div>
                       <p>Avant d'ajouter un nouvel ingredient, pensez à bien vérifier s'il n'existe pas déjà.</p>
                     </div>
+
+                    <!-- Message erreur si champ non remplie -->
+                    <p class="" id="popupErreur"></p>
+
                     <div>
-                      <select class="form-control" name="popupCategories" id="popupCategories" onchange="popupSearchSousCategories()">
+                      <select class="field" name="popupCategories" id="popupCategories" onchange="popupSearchSousCategories()">
                         <option value="0">Choisissez une catégorie</option>
                         <?php
                           for ($i=0; $i < count($listCategoriesIngredients); $i++) 
@@ -104,22 +110,24 @@
                       </select>
                     </div>
                     <div>
-                      <select class="form-control" name="popupSousCategories" id="popupSousCategories">
+                      <select class="field" name="popupSousCategories" id="popupSousCategories" disabled>
+                        <option value="0">Choisissez une sous-catégorie</option>
                       </select>
                     </div>
                     <div>
-                        <input type="text" class="form-control" name="ingredient" id="ingredient" placeholder="Nouvel ingredient..."/>
+                        <input class="field" type="text" name="popupIngredient" id="popupIngredient" placeholder="Nouvel ingredient..." disabled/>
                     </div>
                     <div>
-                        <button type="button" class="btn btn-primary" onclick="addIngredient()">Valider</button>
-                        <button type="button" class="btn btn-secondary" onclick="closePopupIngredient()">Fermer</button>
+                      <button class="buttonItemExit" type="button" onclick="closePopupIngredient()">Fermer</button>
+                      <button class="buttonItemAdd" type="button"  onclick="addIngredient()">Valider</button>
                     </div>
                   </div>
                 </div>
-                <div>
+
+                <div class="divForm">
                   <!-- Marque -->
-                  <label class="font-weight-bold">Marque :</label>
-                  <select class="form-control" id="marques" name="marques">
+                  <label class="">Marque :</label>
+                  <select class="field" id="marques" name="marques">
                     <option value="0">Choisir la marque</option>
                     <?php
                         for ($i=0; $i < count($listMarques); $i++) 
@@ -130,8 +138,8 @@
                         }
                     ?>
                   </select>
-                  <span class="text-danger">Si la marque n'existe pas : </span>
-                  <button class="btn" type="button" onclick="openPopupMarque()"><i class="fas fa-folder-plus"></i></button>
+                  <p class="">Si la marque n'existe pas : </p>
+                  <button class="itemAdd" type="button" onclick="openPopupMarque()"><i class="fas fa-folder-plus"></i></button>
 
                   <!-- Popup Marque -->
                   <div id="popupMarque"  style="display: none;">
@@ -139,19 +147,20 @@
                       <p>Avant d'ajouter une nouvelle marque, pensez à bien vérifier s'elle n'existe pas déjà.</p>
                     </div>
                     <div>
-                        <input type="text" class="form-control" name="marque" id="marque" placeholder="Nouvelle marque..."/>
+                        <input class="field" type="text" name="marque" id="marque" placeholder="Nouvelle marque..."/>
                     </div>
                     <div>
-                        <button type="button" class="btn btn-primary" onclick="addMarque()">Valider</button>
-                        <button type="button" class="btn btn-secondary" onclick="closePopupMarque()">Fermer</button>
+                        <button class="buttonItemExit" type="button" onclick="closePopupMarque()">Fermer</button>
+                        <button class="buttonItemAdd" type="button" onclick="addMarque()">Valider</button>
                     </div>
                   </div>
                   <!-- End marque -->
                 </div>
-                <div>
+
+                <div class="divForm">
                   <!-- Pays -->
-                  <label class="font-weight-bold">Provenance :</label>
-                  <select class="form-control" id="pays" name="pays">
+                  <label class="">Provenance :</label>
+                  <select class="field" id="pays" name="pays">
                     <?php
                         for ($i=0; $i < count($listPays); $i++) 
                         {
@@ -173,10 +182,11 @@
                   </select>
                   <!-- End pays -->
                 </div>
-                <div>
+
+                <div class="divForm">
                   <!-- Type conditionnement -->
-                  <label class="font-weight-bold">* Type de conditionnement :</label>
-                  <select class="form-control" id="typesC" name="typesC">
+                  <label class="">* Type de conditionnement :</label>
+                  <select class="field" id="typesC" name="typesC">
                     <option value="0">Choisir le type de conditionnement</option>
                     <?php
                         for ($i=0; $i < count($listTypesConditionnements); $i++) 
@@ -189,16 +199,18 @@
                   </select>
                   <!-- End type conditionnement -->
                 </div>
-                <div>
+
+                <div class="divForm">
                   <!-- Quantite conditionnement -->
-                  <label class="font-weight-bold">* Quantité de conditionnement :</label>
-                  <input class="form-control" type="number" id="quantiteC" name="quantiteC" placeholder="Quantité de l'article" step="0.1" min="0.1">
+                  <label class="">* Quantité de conditionnement :</label>
+                  <input class="field" type="number" id="quantiteC" name="quantiteC" placeholder="Quantité de l'article" step="0.1" min="0.1">
                   <!-- End quantite conditionnement -->
                 </div>
-                <div>
+
+                <div class="divForm">
                   <!-- Unite -->
-                  <label class="font-weight-bold">* Unité de la quantité :</label>
-                  <select class="form-control" id="unites" name="unites">
+                  <label class="">* Unité de la quantité :</label>
+                  <select class="field" id="unites" name="unites">
                     <option value="0">Choisir une unité</option>
                     <?php
                         for ($i=0; $i < count($listUnites); $i++) 
@@ -211,74 +223,70 @@
                   </select>
                   <!-- End unite -->
                 </div>
-                <div>
+
+                <div class="divForm">
                   <!-- Nombre d'articles -->
-                  <label class="font-weight-bold">* Nombre d'articles :</label>
-                  <input class="form-control validate" type="number" id="nbArticles" name="nbArticles" value="1" min="1">
+                  <label class="">* Nombre d'articles :</label>
+                  <input class="field" type="number" id="nbArticles" name="nbArticles" value="1" min="1">
                   <!-- End nombre d'articles -->
                 </div>
-                <div>
+
+                <div class="divForm">
                   <!-- Date péremption -->
-                  <label class="font-weight-bold">* Date de péremption :</label>
-                  <input class="form-control" type="date" id="dateP" name="dateP" required>
+                  <label class="">* Date de péremption :</label>
+                  <input class="field" type="date" id="dateP" name="dateP" required>
                   <!-- End date péremption -->
                 </div>
-                <div class="pt-3 text-center">
-                  <p class="text-danger">* champs obligatoires</p>
-                  <!-- Buttons -->
-                  <!-- window.history.back fait revenir sur la page précédemmente visité -->
-                  <button class="btn btn-secondary" type="button" onclick="window.history.back()">Quitter</button>
-                  <button class="btn btn-primary" type="button" onclick="addArticle()">Ajouter</button>
-                  <!-- End buttons -->
+
+                <div class="">
+                  <p class="">* champs obligatoires</p>
+                  
+                  <div class="actionsForm">
+                    <!-- Buttons -->
+                    <!-- window.history.back fait revenir sur la page précédemmente visité -->
+                    <button class="buttonExit" type="button" onclick="window.history.back()">Quitter</button>
+                    <button class="buttonAdd" type="button" onclick="addArticle()">Ajouter</button>
+                    <!-- End buttons -->
+                  </div>
                 </div>
-              </div>
+              
             </form>
             <!-- End formulaire -->
-          </div>
-          <div class="col-md-8 col-sm-12">
-            <!-- Tableau -->
-            <div class="table-responsive-md">
-              <table class="table table-bordered table-striped text-center">
-                <thead class="thead-dark">
-                  <tr>
-                    <th>Article</th>
-                    <th>Marque</th>
-                    <th>Provenance</th>
-                    <th>Type conditionnement</th>
-                    <th>Quantité conditionnement</th>
-                    <th>Unité</th>
-                    <th>Date péremption</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="tbody">
-                  <?php
-                    for ($i=0; $i < count($listProduitsAchetes); $i++) 
-                    { 
-                      ?>
-                        <tr>
-                          <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_leIngredient()->get_nom(); ?></td>
-                          <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_laMarque()->get_nom(); ?></td>
-                          <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_lePays()->get_nom(); ?></td>
-                          <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_leTypeConditionnement()->get_nom(); ?></td>
-                          <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_quantiteConditionnement(); ?></td>
-                          <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_laUnite()->get_nom(); ?></td>
-                          <td><?php echo $listProduitsAchetes[$i]->get_datePeremption(); ?></td>
-                          <td><button type="button" onclick="delArticle(<?php echo $listProduitsAchetes[$i]->get_id(); ?>)"><i class="fas fa-trash"></i>Supprimer</button></td>
-                        </tr>
-                      <?php
-                    }
-                  ?>
-                </tbody>
-              </table>
-            </div>
-            <!-- End tableau -->
-          </div>
+          
+            <table class="">
+              <thead class="">
+                <tr>
+                  <th>Article</th>
+                  <th>Marque</th>
+                  <th>Provenance</th>
+                  <th>Type conditionnement</th>
+                  <th>Quantité conditionnement</th>
+                  <th>Unité</th>
+                  <th>Date péremption</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+                <?php
+                  for ($i=0; $i < count($listProduitsAchetes); $i++) 
+                  { 
+                    ?>
+                      <tr>
+                        <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_leIngredient()->get_nom(); ?></td>
+                        <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_laMarque()->get_nom(); ?></td>
+                        <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_lePays()->get_nom(); ?></td>
+                        <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_leTypeConditionnement()->get_nom(); ?></td>
+                        <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_quantiteConditionnement(); ?></td>
+                        <td><?php echo $listProduitsAchetes[$i]->get_leProduit()->get_laUnite()->get_nom(); ?></td>
+                        <td><?php echo $listProduitsAchetes[$i]->get_datePeremption(); ?></td>
+                        <td><button class="buttonItemExit" type="button" onclick="delArticle(<?php echo $listProduitsAchetes[$i]->get_id(); ?>)"><i class="fas fa-trash"></i>Supprimer</button></td>
+                      </tr>
+                    <?php
+                  }
+                ?>
+              </tbody>
+            </table>
         </div>
-        <!--End row-->
-      </div>
-      <!--End container-->
     </div>
-    <!--End container_fluid-->
   </body>
 </html>

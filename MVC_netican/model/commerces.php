@@ -57,12 +57,31 @@
     {
       $bdd = BDD::getBDD();
       // Requête SQL
-      $sql = "SELECT * FROM commerces WHERE NOMCOMMERCE='".$name."'";
+      $sql = "SELECT * FROM commerces WHERE UCASE(NOMCOMMERCE)='".$name."'";
       // On execute la requête
       $result = $bdd->query($sql);
       // On récup les résultats dans un tableau
       $data = $result->fetch();
       // On renseigne les attributs
+      $this->_comm_id = $data['IDCOMMERCE'];
+      $this->_comm_nom = $data['NOMCOMMERCE'];
+    }
+
+    // Méthode retrieveLast
+    public function retrieveLast()
+    {
+      $bdd = BDD::getBDD();
+
+      // Requête SQL
+      $sql = "SELECT * 
+              FROM commerces 
+              ORDER BY IDCOMMERCE DESC LIMIT 1";
+      // On execute la requête
+      $result = $bdd->query($sql);
+      // On récup le résultat dans un tableau
+      $data = $result->fetch();
+
+      // Traitements
       $this->_comm_id = $data['IDCOMMERCE'];
       $this->_comm_nom = $data['NOMCOMMERCE'];
     }

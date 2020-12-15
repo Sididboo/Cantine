@@ -1,6 +1,8 @@
 <?php
+    // On vérifie que l'on reçoit un fichier et l'idTicket en méthode GET
     if (isset($_FILES['file']) && isset($_REQUEST['idTicket'])) 
     {
+        // On inclut la classe :
         include_once '../model/tickets.php';
 
         // Vérification de l'image et upload
@@ -38,20 +40,24 @@
             $isImage = false;
         }
 
-        // Si $isImage est true alors on upload et met à jour le ticket
+        // Si la variable isImage est true alors on upload et met à jour le ticket
         if ($isImage) 
         {
+            // On upload l'image
             move_uploaded_file($_FILES['file']["tmp_name"], $target_dir . $file);
 
+            // On créé un objet Tickets et on le renseigne avec idTicket qui est en paramètre GET
             $leTicket = new Tickets();
             $leTicket->retrieve($_REQUEST['idTicket']);
 
+            // On met à jour le ticket
             $leTicket->update($file);
 
-            // Affichage balises option
+            // Liste des tickets
             $listTickets = array();
             $listTickets = $leTicket->findAll();
 
+            // On parcours la liste pour construire les lignes du tableau
             for ($i=0; $i < count($listTickets); $i++) 
             { 
                 ?>
@@ -69,18 +75,19 @@
                                 {
                                     ?>
                                         <div>
-                                            <input type="file" name="file" id="file"/>
+                                            
+                                            <input class="buttonFile" type="file" name="file" id="file"/>
                                         </div>
                                         <div>
-                                            <button type="button" name="upload" onclick="upload(<?php echo $listTickets[$i]->get_id(); ?>)">Upload</button>
+                                            <button class="buttonUpload" type="button" name="upload" onclick="upload(<?php echo $listTickets[$i]->get_id(); ?>)">Upload</button>
                                         </div>
                                     <?php
                                 }
                             ?>
                         </td>
-                        <td>
-                            <button class="btn btn-primary" onclick="delTicket('<?php echo $listTickets[$i]->get_id(); ?>')"><i class="fas fa-trash"></i> Supprimer</button>
-                            <a href="./index.php?action=articles&idTicket=<?php echo $listTickets[$i]->get_id(); ?>"><button class="btn btn-secondary"><i class="fas fa-plus"></i> Ajouter articles</button></a>
+                        <td class="actions">
+                            <button class="buttonItemExit" onclick="delTicket('<?php echo $listTickets[$i]->get_id(); ?>')"><i class="fas fa-trash"></i> Supprimer</button>
+                            <a href="./index.php?action=articles&idTicket=<?php echo $listTickets[$i]->get_id(); ?>"><button class="buttonAddArticle"><i class="fas fa-plus"></i> Ajouter articles</button></a>
                         </td>
                     </tr>
                 <?php

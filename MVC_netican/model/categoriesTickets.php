@@ -51,12 +51,31 @@
       $this->_catt_nom = $data['NOMCATEGORIETICKET'];
     }
 
+    // Méthode retrieveLast
+    public function retrieveLast()
+    {
+      $bdd = BDD::getBDD();
+
+      // Requête SQL
+      $sql = "SELECT * 
+              FROM categoriestickets 
+              ORDER BY IDCATEGORIETICKET DESC LIMIT 1";
+      // On execute la requête
+      $result = $bdd->query($sql);
+      // On récup le résultat dans un tableau
+      $data = $result->fetch();
+
+      // Traitements
+      $this->_catt_id = $data['IDCATEGORIETICKET'];
+      $this->_catt_nom = $data['NOMCATEGORIETICKET'];
+    }
+
     // Méthode retrieveByName
     public function retrieveByName($name)
     {
       $bdd = BDD::getBDD();
       // Requête SQL
-      $sql = "SELECT * FROM categoriestickets WHERE NOMCATEGORIETICKET='".$name."'";
+      $sql = "SELECT * FROM categoriestickets WHERE UCASE(NOMCATEGORIETICKET)='".$name."'";
       // On execute la requête
       $result = $bdd->query($sql);
       // On récupère les données dans un tableau
