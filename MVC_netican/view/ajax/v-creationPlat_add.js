@@ -77,11 +77,6 @@ $(document).ready(function () {
         }
     });
 
-});
-
-// Function for hide form
-
-$(document).ready(function () {
     // Hide div form
     $('#divMyForm').hide();
 
@@ -93,8 +88,24 @@ $(document).ready(function () {
     //Hide div form on click
     $("#closeForm").on('click', function () {
         $('#divMyForm').hide();
-    })
+    });
 
-    // Check validity input
+
+    // Select row
+    $("#tableMain tbody tr").click(function(){
+        // get row content into a array
+
+        var tableData = $(this).children("td").map(function(){
+            return $(this).text();
+        }).get();
+        
+        var td=tableData[0]+'*'+tableData[1]+'*'+tableData[2];
+        console.log(td)
+    });
+
+    $('#deleteSomething').onclick(function(){
+
+
+    });
 
 });

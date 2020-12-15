@@ -1,7 +1,5 @@
 <?php 
-session_start();
 
-include './server/session.php';
 
 include_once 'model/produitsAchetes.php';
 include_once 'model/produits.php';

@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/390bd29166.js"></script>
+    <script src="https://kit.fontawesome.com/ce45170c32.js"></script>
 
     <script src="view/ajax/xhr_object.js"></script>
 

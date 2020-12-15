@@ -30,7 +30,7 @@
     // Méthode findAll
     public function findAll()
     {
-      $bdd = BDD::getBDD();
+      $bdd = BDD::getBDD();S
 
       $listPlats = array();
 
