@@ -1,7 +1,4 @@
-<?php
-    session_start();
-
-    include './server/session.php';
+<?php  
 
     include_once 'model/categoriesPlats.php';
     include_once 'model/plats.php';
@@ -26,8 +23,6 @@
 
     $contient = new Contient();
     $listContenants = $contient->findAll();
-
-
 
     $etat;
 
