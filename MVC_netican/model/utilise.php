@@ -116,6 +116,16 @@ class Utilise
     $bdd->exec($sql);
   }
 
+  // Méthode delete par rapport a un plat concerné
+  public function deleteByPlat()
+  {
+    $bdd = BDD::getBDD();
+    // Requête SQL
+    $sql = "DELETE FROM utilise WHERE IDPLAT= '" . $this->_util_lePlat->get_id() . "'";
+    // On execute la requête
+    $bdd->exec($sql);
+  }
+
   public function get_leIngredient()
   {
     return $this->_util_leIngredient;

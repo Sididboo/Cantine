@@ -68,7 +68,7 @@
           for ($i = 0; $i < count($selectLesPlats); $i++) {
           ?>
             <tr>
-              <td></td>
+              <td><input type="checkbox" id="checkboxSelect"></td>
               <td value='<?php echo $selectLesPlats[$i]->get_id() ?>'><?php echo $selectLesPlats[$i]->get_nom() ?></td>
               <td>
                 <?php $mesUtilisation = $utilise->findAllByIdPlat($selectLesPlats[$i]->get_id());

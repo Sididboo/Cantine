@@ -17,6 +17,10 @@ Problème à résoudre :
                 Un code-barre n'est pas unique (dans une boutique oui, mais il se peut qu'une autre boutique utilise le même).
             - Réponse
                 Un fabricant de produits courant, utilise le même code-barre (reste à confirmer).
+
+Proposition : 
+    - Pour la page des tickets peut-être faire un récapitulatif des aliments ajoutés.
+    
 Missions :
     - Design à faire sur toutes les pages pour la personne qui souhaite le faire.
     - Classe global à créer pour notamment les lists complète (listUnites, listPays ...).
