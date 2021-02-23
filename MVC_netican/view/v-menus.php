@@ -19,6 +19,7 @@
     <script src="view/ajax/v-menus_categorie.js"></script>
     <script src="view/ajax/v-search.js"></script>
     <script src="view/ajax/v-menus_add.js"></script>
+    <script src="view/ajax/v-ancien_menu.js"></script>
   </head>
     < 
         <!-- Header -->
@@ -144,6 +145,11 @@
 
             </div>
             <!--End row-->
+
+            <!-- Tableau ancien menu -->
+            <div class="col-md-8 table-responsive-md float-right">
+                <table id="tableAncienMenu" class="table table-bordered table-striped table-hover text-center">
+
         </div>
         <!--End container_fluid-->
     </body>
