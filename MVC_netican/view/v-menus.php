@@ -19,6 +19,7 @@
     <script src="view/ajax/v-menus_categorie.js"></script>
     <script src="view/ajax/v-search.js"></script>
     <script src="view/ajax/v-menus_add.js"></script>
+    <script src="view/ajax/v-ancien_menu.js"></script>
   </head>
     <body>
         
@@ -124,6 +125,7 @@
                         <div class="pt-3 text-center">
                             <!-- Buttons -->
                             <input class="btn btn-primary" type="button" value="Créer un menu" onclick="addMenus()">
+                            <input class="btn btn-primary" type="button" value="Ancien menu" onclick="ancien_menu()">
                             <!-- End buttons -->
                         </div>
                     </div>
@@ -166,6 +168,11 @@
 
             </div>
             <!--End row-->
+
+            <!-- Tableau ancien menu -->
+            <div class="col-md-8 table-responsive-md float-right">
+                <table id="tableAncienMenu" class="table table-bordered table-striped table-hover text-center">
+
         </div>
         <!--End container_fluid-->
     </body>
