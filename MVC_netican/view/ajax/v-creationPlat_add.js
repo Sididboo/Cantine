@@ -102,10 +102,4 @@ $(document).ready(function () {
         var td=tableData[0]+'*'+tableData[1]+'*'+tableData[2];
         console.log(td)
     });
-
-    $('#deleteSomething').onclick(function(){
-
-
-    });
-
 });

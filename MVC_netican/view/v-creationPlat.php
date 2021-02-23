@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="./habillage/styles/css-header.css">
-  <link rel="stylesheet" href="./habillage/styles/css-creationPlat.css">
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
   </script>
@@ -44,17 +43,18 @@
     <div class="container actionButton">
       <div class="row">
         <div class="col-2">
-          <a id="addSomething">Ajouter</a>
+          <a id="addSomething" onclick="">Ajouter</a>
         </div>
         <div class="col-2">
-          <a id="deleteSomething">Supprimer</a>
+          <a id="modifySomething" onclick="">Modifier</a>
+        </div>
+        <div class="col-2">
+          <a id="deleteSomething" onclick="">Supprimer</a>
         </div>
       </div>
     </div>
-
-    <!-- Table show plat and ingredient-->
     <div class="table-responsive mainInfo">
-      <table class="table table-borderless" id="tableMain">
+      <table class="table table-borderless">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -68,7 +68,7 @@
           for ($i = 0; $i < count($selectLesPlats); $i++) {
           ?>
             <tr>
-              <td></td>
+              <td><input type="checkbox" id="checkboxSelect"></td>
               <td value='<?php echo $selectLesPlats[$i]->get_id() ?>'><?php echo $selectLesPlats[$i]->get_nom() ?></td>
               <td>
                 <?php $mesUtilisation = $utilise->findAllByIdPlat($selectLesPlats[$i]->get_id());
@@ -89,7 +89,7 @@
 
     <form id="myForm" action="" method="POST">
 
-      <h2>Création d'un plat <i id="closeForm" class="fas fa-times" style="float: right; cursor: pointer;"></i></h2>
+      <h2>Création d'un plat <i id="closeForm" class="fas fa-times" style="float: right;"></i></h2>
 
       <div class="form-group">
         <label for="namePlat">Nom du plat</label>
@@ -100,7 +100,7 @@
             <i class="fas fa-minus"></i>
           </button>
 
-          <input type="text" id="quantity" name="quantity" class="form-control input-number" value="0" min="1" max="100" required>
+          <input type="text" id="quantity" name="quantity" class="form-control input-number" value="" min="1" max="100" required>
 
           <button type="button" class="quantity-right-plus" data-type="plus" data-field="">
             <i class="fas fa-plus"></i>
@@ -166,7 +166,7 @@
 
       <!-- Button for push ingredient in tableShowIng -->
 
-      <button type="button" name="bouton_add" id="bouton_add" onclick="validation()" formnovalidate>Valider</button>
+      <button type="button" id="bouton_add" onclick="validation()" formnovalidate>Valider</button>
 
       <!-- Table for show ingredient -->
 
@@ -185,7 +185,7 @@
 
       <!-- End table -->
 
-      <input type="submit" name="submit" value="Valider" />
+      <button type="submit">Valider</button>
     </form>
   </div>
 </body>
