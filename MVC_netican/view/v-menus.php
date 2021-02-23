@@ -95,33 +95,7 @@
                             </select>  
                             <span class="text-danger"><a href="./index.php?action=creationPlat">Cliquez ici, si le plat n'existe pas</a></span>
                         </div>
-                        <div class="pt-3 text-center">
-                            <!-- Buttons -->
-                            <input class="btn btn-primary" type="button" value="Ajouter" onclick="addRecap()">
-                            <!-- End buttons -->
-                        </div>
-                        <h4 class="pt-3 text-center font-weight-bold">Recapitulatif</h4>
-                        <div class="py-4">
-                            <label class="font-weight-bold">Catégorie du Plat </label>
-                        <!--Remplissage en PHP-->
-                        <?php
-                            for ($i=0; $i < count($listCategoriesPlats); $i++) 
-                            { 
-                                ?>
-                                    <tr>
-                                        <td><?php echo $listCategoriesPlats[$i]->get_nom(); ?></td>
-                                        
-                                    </tr>
-                                <?php
-                            }
-                            ?>
-                        </div>
-                        <div class="py-4">
-                            <label class="font-weight-bold">Plat </label>
-
-                        </div>
-
-
+                        
                         <div class="pt-3 text-center">
                             <!-- Buttons -->
                             <input class="btn btn-primary" type="button" value="Créer un menu" onclick="addMenus()">
