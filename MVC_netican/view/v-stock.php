@@ -40,10 +40,9 @@
                         <th>Marque</th>
                         <th>Origine</th>
                         <th>Conditionnement</th>
-                        <th>Volume unité</th>
+                        <th>Vol. unité</th>
                         <th>Péremption (AAAA/MM/JJ)</th>
                         <th>Stock</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
 
@@ -52,6 +51,7 @@
                         for ($i=0; $i < count($listProduitsAchetes); $i++) 
                         {
                     ?>
+                    <form action="" method="post">
                         <tr> 
                             <td><?php echo $listProduitsAchetes[$i][0]->get_leProduit()->get_leIngredient()->get_nom(); ?></td>
                             <td><?php echo $listProduitsAchetes[$i][0]->get_leProduit()->get_laMarque()->get_nom(); ?></td>
@@ -60,16 +60,12 @@
                             <td><?php echo $listProduitsAchetes[$i][0]->get_leProduit()->get_quantiteConditionnement(), 
                                 " ", $listProduitsAchetes[$i][0]->get_leProduit()->get_laUnite()->get_nom(), "(s)"; ?></td>
                             <td><?php echo $listProduitsAchetes[$i][0]->get_datePeremption(); ?></td>
-                            <td></td>
-                            <td><button class="buttonItemExit" type="button" onclick=""><i class="fas fa-trash"></i>Supprimer</button></td>
+                            <td><?php echo $listProduitsAchetes[$i][1]; ?></td>
                         </tr>
+                    </form>
                     <?php
                         }
                     ?>
-
-        <!--Actualiser le tableau (pas encore de méthode)-->
-            <button class="btn btn-secondary" onclick=""><i class="fas fa-circle-notch"></i> Actualiser</button>
-            <?php echo "à faire: bouton actualiser et colonne 'Stock'"?>
                     
                 </tbody>
             </table>
