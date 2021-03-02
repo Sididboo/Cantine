@@ -240,7 +240,7 @@
                 </div>
 
                 <div class="">
-                  <p class="">* champs obligatoires</p>
+                  <p class="">* Champs obligatoires</p>
                   
                   <div class="actionsForm">
                     <!-- Buttons -->

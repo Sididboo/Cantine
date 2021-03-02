@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="cell_date pt-2">
-                            <label class="font-weight-bold">nombre de convives :</label>
+                            <label class="font-weight-bold">Nombre de convives :</label>
                             <input class="form-control" type="number" name="nbConvives" id="nbConvives" required/>
                         </div>
                         <!-- Gestion du menu déroulant pour le choix de la catégorie du plat  -->
@@ -68,9 +68,9 @@
                             <span class="text-danger">Si la catégorie du plat n'existe pas : </span>
                             <button type="button" class="btn" onclick="openPopupCategoriePlat()"><i class="fas fa-folder-plus"></i></button>
                              <!-- Popup Catégorie -->
-                             <div id="popupCategoriePlat"  style="display: none;">
+                            <div id="popupCategoriePlat"  style="display: none;">
                                 <div>
-                                    <p>Avant d'ajouter une nouvelle catégorie, pensez à bien vérifier s'elle n'existe pas déjà.</p>
+                                    <p>Avant d'ajouter une nouvelle catégorie, pensez à bien vérifier si elle n'existe pas déjà.</p>
                                 </div>
                                 <div>
                                     <input type="text" class="form-control w-50" name="categoriePlat" id="categoriePlat" placeholder="Saisir nouvelle catégorie"/>
