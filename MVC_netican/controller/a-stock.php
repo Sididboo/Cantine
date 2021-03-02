@@ -13,4 +13,3 @@ $listProduitsAchetes = array();
 $etat = 'stock';
 
 ?>
-
