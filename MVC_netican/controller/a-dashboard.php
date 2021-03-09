@@ -1,4 +1,7 @@
 <?php
+
+    include_once 'model/menus.php';
+
     // On vérifie que le bouton 'submit' a été appuyé
     if (isset($_POST['submit']))
     {
@@ -33,4 +36,10 @@
     {
         $etat = 'init';    
     }
+
+
+    $menuDuJour = array();
+    $menu = new menus();
+
+    $menuDujour = $menu->findAll();      
 ?>

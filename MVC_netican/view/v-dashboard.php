@@ -24,11 +24,27 @@
 
     <!-- Contained -->
     <div class="containerDashboard">
-        Il faudrait mettre le menu du jour ici :)
         <div class="containerImg">
             <img class="img" src="./habillage/images/23154-ARS.jpg" alt="école d'Ars">
         </div>
     </div>
+
+    <table class="table table-bordered table-striped table-hover text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Menu du jour</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tbody">
+                    <form action="" method="post">
+                        <tr> 
+                            <td><?php echo "Affichage ici qd l'insertion menu journalier fonctionnera";/*array_values($menuDuJour)[0];*/ ?></td>
+                        </tr>
+                    </form>
+
+                </tbody>
+            </table>
 </body>
 
 </html>
