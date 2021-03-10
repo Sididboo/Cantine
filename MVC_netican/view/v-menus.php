@@ -21,7 +21,7 @@
     <script src="view/ajax/v-menus_add.js"></script>
     <script src="view/ajax/v-ancien_menu.js"></script>
   </head>
-    < 
+
         <!-- Header -->
         <?php include './header.html'; ?>
 
@@ -48,9 +48,7 @@
                         <input class="field" type="date" name="date" id="date" required/>
                     </div>
 
-                        <div class="cell_date pt-2">
-                            <label class="font-weight-bold">Nombre de convives :</label>
-                            <input class="form-control" type="number" name="nbConvives" id="nbConvives" required/>
+                        
                         <div class="divForm">
                             <label class="">nombre de convives :</label>
                             <input class="field" type="number" name="nbConvives" id="nbConvives" required/>
@@ -111,8 +109,7 @@
                     <!--End form-group-->
                 </form>
                 <!--End form-->
-            </div>
-            <div class="">
+            
                 <!-- Tableau qui réference tout les tickets ajoutés dans la base de donnée -->
                 <table class="">
                     <thead class="">
@@ -150,10 +147,7 @@
             <!--End row-->
 
             <!-- Tableau ancien menu -->
-            <div class="col-md-8 table-responsive-md float-right">
-                <table id="tableAncienMenu" class="table table-bordered table-striped table-hover text-center">
-
-        </div>
+            
         <!--End container_fluid-->
     </body>
 
