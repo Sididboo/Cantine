@@ -19,6 +19,7 @@
     <script src="view/ajax/v-menus_categorie.js"></script>
     <script src="view/ajax/v-search.js"></script>
     <script src="view/ajax/v-menus_add.js"></script>
+    <script src="view/ajax/v-menus_del.js"></script>
     <script src="view/ajax/v-ancien_menu.js"></script>
   </head>
 
@@ -45,7 +46,7 @@
                     <div class="divForm">
                     <div class="divForm">
                         <label class="">Date du service</label>
-                        <input class="field" type="date" name="date" id="date" required/>
+                        <input class="field" type="date" name="date" id="dateMenu" required/>
                     </div>
 
                         
@@ -74,7 +75,7 @@
                                     <p>Avant d'ajouter une nouvelle catégorie, pensez à bien vérifier si elle n'existe pas déjà.</p>
                                 </div>
                                 <div>
-                                <input class="field" type="text" name="categorie" id="categorie" placeholder="Nouvelle catégorie..."/>
+                                <input class="field" type="text" name="categorie" id="categoriePlat" placeholder="Nouvelle catégorie..."/>
                                 </div>
                                 <br>
                                 <div>
@@ -100,16 +101,13 @@
 
                         <div class="">
                             <!-- Buttons -->
-                            <input class="buttonAdd" type="button" value="Ajouter" onclick="addRecap()">
-                                    
-                            <input class="buttonAdd" type="button" value="Créer le menu " onclick="addMenus()">
+                            <input class="buttonAdd" type="button" value="Ajouter" onclick="addMenus()">
                             <!-- End buttons -->
                         </div>
                     </div>
                     <!--End form-group-->
                 </form>
                 <!--End form-->
-            
                 <!-- Tableau qui réference tout les tickets ajoutés dans la base de donnée -->
                 <table class="">
                     <thead class="">
@@ -133,7 +131,7 @@
                                         <td><?php echo $listContenants[$i]->get_lePlat()->get_nom(); ?></td>
                                         <td class="actions">
                                             <button class="buttonItemExit" onclick="delMenus('<?php echo $listContenants[$i]->get_leMenu()->get_dateMenu(); ?>')"><i class="fas fa-trash"></i> Supprimer</button>
-                            
+                                        </td>
                                     </tr>
                                 <?php
                             }

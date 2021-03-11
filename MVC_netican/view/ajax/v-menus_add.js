@@ -42,7 +42,7 @@ function addMenus()
 
         xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        var data = "dateMenu=" + date.value + "&nbConvive=" + nbConvives.value + "&plat=" + plats.value;
+        var data = "dateMenu=" + date.value + "&nbConvive=" + nbConvives.value + "&plat=" + plat.value;
         console.log(data);
         xhr_object.send(data);
 

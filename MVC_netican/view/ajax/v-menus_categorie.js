@@ -10,8 +10,8 @@ function closePopupCategoriePlat()
 
 function addCategoriePlat()
 {
-        var categories = document.getElementById("categoriesPlat");
         var categorie = document.getElementById("categoriePlat");
+        var categories = document.getElementById("categoriesPlat");
 
         xhr_object.open("POST","controller/a-menus_categorie.php", true);
 
