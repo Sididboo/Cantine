@@ -72,7 +72,7 @@
     {
       $bdd = BDD::getBDD();
       // Requête SQL
-      $sql = "DELETE FROM menu WHERE DATEMENU='".$this->_menu_dateMenu."'";
+      $sql = 'DELETE FROM menus WHERE DATEMENU="'.$this->_menu_dateMenu.'"';
       // On execute la requête
       $bdd->exec($sql);
     }

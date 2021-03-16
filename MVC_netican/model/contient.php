@@ -44,7 +44,32 @@
 
       return $listContient;
     }
+    //Méthode FindAllByDateMenu
+    public function findAllByDateMenu($dateMenu)
+    {
+      $bdd = BDD::getBDD();
 
+      $listContient = array();
+
+      // Requête SQL
+      $sql = 'SELECT * FROM contient WHERE DATEMENU ="'.$dateMenu.'"';
+      // On execute la requête
+      $result = $bdd->query($sql);
+
+      while ($row = $result->fetch()) 
+      {
+        $leMenu = new Menus();
+        $leMenu->retrieve($row['DATEMENU']);
+
+        $lePlat = new Plats();
+        $lePlat->retrieve($row['IDPLAT']);
+
+        $leContenant = new Contient($leMenu, $lePlat);
+        array_push($listContient, $leContenant);
+      }
+
+      return $listContient;
+    }
     // Méthode retrieve
     public function retrieve($dateMenu, $idPlat)
     {
@@ -72,7 +97,7 @@
     {
       $bdd = BDD::getBDD();
       // Requête SQL
-      $sql = "INSERT INTO contient VALUES ('".$this->_cont_leMenu->get_dateMenu()."','".$this->_cont_lePlat->get_id()."')";
+      $sql = 'INSERT INTO contient VALUES ("'.$this->_cont_leMenu->get_dateMenu().'","'.$this->_cont_lePlat->get_id().'")';
       // On execute la requête
       $bdd->exec($sql);
     }
@@ -82,7 +107,7 @@
     {
       $bdd = BDD::getBDD();
       // Requête SQL
-      $sql = "DELETE FROM contient WHERE DATEMENU='".$this->_cont_leMenu->get_dateMenu()."' AND IDPLAT='".$this->_cont_lePlat->get_id()."'";
+      $sql = 'DELETE FROM contient WHERE DATEMENU="'.$this->_cont_leMenu->get_dateMenu().'" AND IDPLAT="'.$this->_cont_lePlat->get_id().'"';
       // On execute la requête
       $bdd->exec($sql);
     }
