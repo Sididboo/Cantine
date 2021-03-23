@@ -32,7 +32,7 @@ function upload(idTicket)
             }  
         }
 
-        var formData = new FormData();
+        let formData = new FormData();
         formData.append("file", file.files[0]);
         formData.append("idTicket", idTicket);
 

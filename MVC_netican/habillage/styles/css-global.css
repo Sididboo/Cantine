@@ -2,3 +2,33 @@ body, html{
     font-family: 'Roboto','Poppins', sans-serif;
 }
 
+:root{
+    --white: white;
+    --shadow: #656565;
+    --error: red;
+    --fields: #ebebeb;
+    --buttons-negative: #ebebeb;
+    --buttons-negative-hover: #f1f1f1;
+    --button-positive: #7BED8D;
+    --button-positive-hover: #a7f1b2;
+    --tab-th: #454545;
+    --tr-child: #cecece;
+}
+
+*:focus {
+    outline: none;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+   }
+::-webkit-scrollbar-thumb {
+    background:var(--bar);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-track{
+    background: var(--form);
+    border-radius: 5px;
+    box-shadow: inset 7px 10px 12px #f0f0f0;
+}
+

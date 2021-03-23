@@ -9,7 +9,7 @@
     private $_user_password;
 
     // Constructeur de la classe Users
-    public function __construct($username, $password)
+    public function __construct($username='', $password='')
     {
       $this->_user_username = $username;
       $this->_user_password = $password;
@@ -38,7 +38,7 @@
       {
         // Récupère un tableau contenant les lignes du jeu d'enregistrements
         $data = $result->fetch();
-
+        
         // On vérifie que le mot de passe entré correspond au mot de passe de la BDD
         if (password_verify($this->_user_password, $data['PASSWORD']))
         {
@@ -54,39 +54,15 @@
     }
 
     // Méthode qui permet de changer les identifiants (username et password)
-    public function changeIdentifiers($newUsername, $password, $newPassword, $confPassword)
+    public function changeIdentifiers($oldUsername, $username, $password)
     {
-      $message = '';
-      // If password correspond bien au mot de passe actuellement enregistré
-      if ($password == $this->_user_password)
-      {
-        // If newPassword correspond bien à confPassword
-        if ($newPassword == $confPassword)
-        {
-          $this->_user_username = $newUsername;
-          $this->_user_password = $newPassword;
+      $hashPassword = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
 
-          $hashPassword = password_hash($this->_user_password, PASSWORD_DEFAULT, ['cost' => 14]);
+      $sql = "UPDATE users SET USERNAME = '".$username."', PASSWORD = '".$hashPassword."' WHERE USERNAME = '".$oldUsername."'";
 
-          $sql = "UPDATE users SET USERNAME = '$this->_user_username', PASSWORD = '$hashPassword'";
+      $bdd = BDD::getBDD();
 
-          $bdd = BDD::getBDD();
-
-          $result = $bdd->query($sql);
-
-          $message = 'Identifiants changés';
-        }
-          else
-          {
-            $message = 'Nouveau mot de passe et confirmation du nouveau mot de passe incorrect';
-          }
-      }
-        else
-        {
-          $message = 'Mot de passe actuel incorrect';
-        } // Fin if
-
-      return $message;
+      $result = $bdd->query($sql);
     }
 
     // Méthode get username

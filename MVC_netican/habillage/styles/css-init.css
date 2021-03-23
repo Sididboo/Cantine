@@ -3,7 +3,6 @@ body, html{
     padding: 0;
     width: 100%;
     height: 100vh;
-    font-family: 'Roboto','Poppins', sans-serif;
 
     display: flex;
     justify-content: center;
@@ -29,7 +28,7 @@ body, html{
 }
 
 .logo{
-    color: #7BED8D;
+    color: var(--button-positive);
 }
 
 .title{
@@ -54,7 +53,7 @@ body, html{
 }
 
 .error{
-    color: red;
+    color: var(--error);
 }
 
 .divInput{
@@ -67,7 +66,7 @@ body, html{
     flex-direction: row;
     align-items: center;
 
-    background-color: #ebebeb;
+    background-color: var(--fields);
 }
 
 i{
@@ -81,7 +80,7 @@ i{
     padding-top: 15px;
     padding-bottom: 15px;
 
-    background-color: #ebebeb;
+    background-color: var(--fields);
 
     border: none;
 }
@@ -92,9 +91,9 @@ i{
     margin-top: 30px;
     padding: 10px;
 
-    background-color: #7BED8D;
+    background-color: var(--button-positive);
 
-    color: white;
+    color: var(--white);
     font-weight: bold;
 
     border: none;
@@ -102,5 +101,5 @@ i{
 }
 
 .button:hover{
-    background-color: #a7f1b2;
+    background-color: var(--button-positive-hover);
 }

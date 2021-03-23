@@ -7,6 +7,7 @@
       <title>Netican/Articles</title>
 
       <!--CSS-->
+      <link rel="stylesheet" href="./habillage/styles/css-global.css">
       <link rel="stylesheet" href="./habillage/styles/css-articles.css">
 
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
