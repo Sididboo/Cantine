@@ -89,6 +89,32 @@
       return $listProduitsAchetes;
     }
 
+    public function findByIdProduit($idProduit)
+    {
+      $bdd = BDD::getBDD();
+
+      $listProduitsAchetes = array();
+
+      // Requête SQL
+      $sql = "SELECT * FROM produitsachetes WHERE IDPRODUIT='".$idProduit."'";
+      // On execute la requête
+      $result = $bdd->query($sql);
+
+      while ($row = $result->fetch()) 
+      {
+        $leTicket = new Tickets();
+        $leTicket->retrieve($row['IDTICKET']);
+
+        $leProduit = new Produits();
+        $leProduit->retrieve($row['IDPRODUIT']);
+
+        $leProduitAchete = new ProduitsAchetes($row['IDPRODUITACHETE'], $leTicket, $leProduit, $row['DATEACHAT'], $row['DATEPEREMPTION'], $row['DATEOUVERTURE'], $row['RESTE']);
+        array_push($listProduitsAchetes, $leProduitAchete);
+      }
+
+      return $listProduitsAchetes;
+    }
+
     // Méthode retrieve
     public function retrieve($id)
     {

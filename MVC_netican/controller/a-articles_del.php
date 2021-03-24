@@ -19,6 +19,14 @@
         // On le supprime
         $leProduitAchete->delete();
 
+        $lesProduitsAchetes = $leProduitAchete->findByIdProduit($leProduitAchete->get_leProduit()->get_id());
+        if (count($lesProduitsAchetes) < 1) 
+        {
+            $leProduit = new Produits();
+            $leProduit->retrieve($leProduitAchete->get_leProduit()->get_id());
+            $leProduit->delete($leProduit->get_id());
+        }
+
         // liste des produits achetés
         $listProduitsAchetes = array();
 
