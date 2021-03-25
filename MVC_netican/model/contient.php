@@ -44,6 +44,33 @@
 
       return $listContient;
     }
+
+    // Méthode findAll
+    public function findAllByDate($date)
+    {
+      $bdd = BDD::getBDD();
+
+      $listContient = array();
+
+      // On execute la requête
+      $result = $bdd->prepare('SELECT * FROM contient WHERE DATEMENU = ?');
+      $result->execute(array($date));
+
+      while ($row = $result->fetch()) 
+      {
+        $leMenu = new Menus();
+        $leMenu->retrieve($row['DATEMENU']);
+
+        $lePlat = new Plats();
+        $lePlat->retrieve($row['IDPLAT']);
+
+        $leContenant = new Contient($leMenu, $lePlat);
+        array_push($listContient, $leContenant);
+      }
+
+      return $listContient;
+    }
+
     //Méthode FindAllByDateMenu
     public function findAllByDateMenu($dateMenu)
     {

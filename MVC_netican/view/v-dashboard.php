@@ -37,21 +37,19 @@
                 </thead>
 
                 <tbody id="tbody">
-                    <form action="" method="post">
+                    <?php
+                    for ($i=0; $i < count($mesContenants); $i++) { 
+                    ?>
                         <tr> 
-                            <td><?php 
-                                include_once 'model/menus.php';
-                                
-                                $i = 0;
-
-                                /*while($i < count($mesBesoins)) {
-                                    echo $mesBesoins->$leMenu;
-                                }*/
-                                
-                            ?></td>
+                            <td>
+                                <?php 
+                                echo $mesContenants[$i]->get_lePlat()->get_nom();
+                                ?>
+                            </td>
                         </tr>
-                    </form>
-
+                    <?php
+                    }
+                    ?>
                 </tbody>
             </table>
 </body>
