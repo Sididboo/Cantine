@@ -39,7 +39,16 @@
                 <tbody id="tbody">
                     <form action="" method="post">
                         <tr> 
-                            <td><?php echo "Affichage ici qd l'insertion menu journalier fonctionnera";/*array_values($menuDuJour)[0];*/ ?></td>
+                            <td><?php 
+                                include_once 'model/menus.php';
+                                
+                                $i = 0;
+
+                                /*while($i < count($mesBesoins)) {
+                                    echo $mesBesoins->$leMenu;
+                                }*/
+                                
+                            ?></td>
                         </tr>
                     </form>
 

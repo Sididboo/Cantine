@@ -21,6 +21,12 @@
             // on stock le nom d'utilisateur
             $_SESSION['user'] = $username;
             
+            include_once 'model/menus.php';
+            // Date du jour
+            $dateJour = date('d-m-y');
+            /*$monBesoin = new Besoin();
+            $mesBesoins = $monBesoin->findBesoins();
+            */
             $etat = 'dashboard';
         }// Si c'est faux alors on redirige l'utilisateur avec le message d'erreur en methode GET
         else
@@ -30,16 +36,15 @@
     }// Si l'utilisateur click sur Accueil, on vérifie que la variable SESSION contient le nom de l'utilisateur
     elseif (isset($_SESSION['user'])) 
     {
+
         $etat = 'dashboard';
-    }// Sinon on dirigire l'utilisateur vers la page de connexion
+    }// Sinon on redirige l'utilisateur vers la page de connexion
     else 
     {
         $etat = 'init';    
     }
 
 
-    $menuDuJour = array();
-    $menu = new menus();
+    
 
-    $menuDujour = $menu->findAll();      
 ?>

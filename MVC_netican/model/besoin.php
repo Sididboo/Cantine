@@ -101,6 +101,34 @@
       $bdd->exec($sql);
     }
 
+    public function findBesoins()
+    {
+      $bdd = BDD::getBDD();
+
+      $listMenus = array();
+
+      // Requête SQL
+      $sql = "SELECT * FROM besoin;";
+      // On execute la requête
+      $result = $bdd->query($sql);
+      // On récup les résultats dans un tableau
+      $data = $result->fetch();
+
+      while ($row = $result->fetch())
+      {
+        $leMenu = new Menus();
+        $leMenu->retrieve($row['DATEMENU']);
+
+        $lePlat = new Plats();
+        $lePlat->retrieve($data['IDPLAT']);
+
+        $leBesoin = new Besoin($lePlat, $leMenu);
+        array_push($listMenus, $leBesoin);
+      }
+
+    return $listMenus;
+    }
+
     public function get_leProduitAchete()
     {
       return $this->_beso_leProduitAchete;
@@ -120,6 +148,9 @@
     {
       return $this->_beso_quantite;
     }
+
+    //Pour le findBesoins() :
+    //WHERE IDPLAT='".$idPlat."' AND DATEMENU='".$dateMenu."'
   }
 
 ?>
