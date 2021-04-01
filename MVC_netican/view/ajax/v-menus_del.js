@@ -1,6 +1,5 @@
-function delMenus(dateMenu)
+function delMenus(dateMenu,idplat)
 {
-    console.log("dateMenu" + dateMenu);
     var tbody = document.getElementById("tbody");
 
     xhr_object.open("POST","controller/a-menus_del.php", true);
@@ -17,6 +16,7 @@ function delMenus(dateMenu)
 
     xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    var data = "dateMenu=" + dateMenu;
+    var data = "dateMenu=" + dateMenu + "&idplat=" + idplat;
+    console.log(data);
     xhr_object.send(data);
 }

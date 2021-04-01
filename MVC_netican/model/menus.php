@@ -46,9 +46,10 @@
       $bdd = BDD::getBDD();
 
       // Requête SQL
-      $sql = "SELECT * FROM menus WHERE DATEMENU='".$dateMenu."'";
+      $sql = "SELECT * FROM menus WHERE DATEMENU=?";
       // On execute la requête
-      $result = $bdd->query($sql);
+      $result = $bdd->prepare($sql);
+      $result->execute(array($dateMenu));
       // On récup les résultats dans un tableau
       $data = $result->fetch();
 

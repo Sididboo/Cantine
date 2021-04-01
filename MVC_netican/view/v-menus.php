@@ -113,8 +113,9 @@
                                         <td><?php echo $listContenants[$i]->get_leMenu()->get_dateMenu(); ?></td>
                                         <td><?php echo $listContenants[$i]->get_leMenu()->get_nbConvive(); ?></td>
                                         <td><?php echo $listContenants[$i]->get_lePlat()->get_nom(); ?></td>
+                                        
                                         <td class="actions">
-                                            <button class="buttonItemExit" onclick="delMenus('<?php echo $listContenants[$i]->get_leMenu()->get_dateMenu(); ?>')"><i class="fas fa-trash"></i> Supprimer</button>
+                                            <button class="buttonItemExit" onclick="delMenus('<?= $listContenants[$i]->get_leMenu()->get_dateMenu() ?>', <?= $listContenants[$i]->get_lePlat()->get_id() ?>)"><i class="fas fa-trash"></i> Supprimer</button>
                                         </td>
                                     </tr>
                                 <?php
