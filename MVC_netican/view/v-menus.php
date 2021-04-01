@@ -36,17 +36,17 @@
                     <p class="error" id="erreur"></p>
 
                     <div class="divForm">
-                        <label class="">Date du service</label>
+                        <label class="">Date du service : </label>
                         <input class="field" type="date" name="date" id="dateMenu" required/>
                     </div>
                         
                     <div class="divForm">
-                        <label class="">nombre de convives :</label>
+                        <label class="">Nombre de convives :</label>
                         <input class="field" type="number" name="nbConvives" id="nbConvives" required/>
                     </div>
                         <!-- Gestion du menu déroulant pour le choix de la catégorie du plat  -->
                         <div class="divForm">
-                            <label class="">Catégorie du plat</label>
+                            <label class="">Catégorie du plat :</label>
                             <select class="field" name="categoriesPlat" id="categoriesPlat" onchange="searchPlats()" required>
                                 <option value="">Choisir une catégorie du plat</option>
                                 <?php
@@ -75,7 +75,7 @@
                         </div>
                         <!-- Gestion du menu déroulant pour le choix du plat -->
                         <div class="divForm">
-                            <label class="">Plat </label>
+                            <label class="">Plat :</label>
                             <select class="field" name="plat" id="plat" required>
                                     <?php
                                     for ($i=0; $i < count($listPlats); $i++) 
