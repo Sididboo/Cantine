@@ -25,10 +25,10 @@
             require_once 'model/contient.php';
 
             // Date du jour
-            $dateJour = date('y-m-d');
+            $dateJour = date('Y-m-d');
             $monContenant = new Contient();
             $mesContenants = $monContenant->findAllByDate($dateJour);
-            
+
             $etat = 'dashboard';
         }// Si c'est faux alors on redirige l'utilisateur avec le message d'erreur en methode GET
         else
@@ -42,7 +42,7 @@
         require_once 'model/contient.php';
 
         // Date du jour
-        $dateJour = date('y-m-d');
+        $dateJour = date('Y-m-d');
         $monContenant = new Contient();
         $mesContenants = $monContenant->findAllByDate($dateJour);
 

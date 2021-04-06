@@ -26,7 +26,7 @@
       $listContient = array();
 
       // Requête SQL
-      $sql = "SELECT * FROM contient";
+      $sql = "SELECT * FROM contient ORDER BY DATEMENU";
       // On execute la requête
       $result = $bdd->query($sql);
 
@@ -53,8 +53,14 @@
       $listContient = array();
 
       // On execute la requête
-      $result = $bdd->prepare('SELECT * FROM contient WHERE DATEMENU = ?');
-      $result->execute(array($date));
+      $result = $bdd->prepare('SELECT C.DATEMENU, C.IDPLAT
+      FROM contient C
+      NATURAL JOIN plats P
+      NATURAL JOIN categoriesplats CP
+      WHERE C.DATEMENU = ?
+      ORDER BY CP.IDCATEGORIEPLAT;');
+
+      $result->execute(array($date)); 
 
       while ($row = $result->fetch()) 
       {

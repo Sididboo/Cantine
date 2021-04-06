@@ -32,26 +32,43 @@
     <table class="table table-bordered table-striped table-hover text-center">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Menu du jour</th>
+                        <th colspan="3">Menu du jour</th> 
                     </tr>
                 </thead>
 
                 <tbody id="tbody">
                     <?php
+                    $categ = 0;
+                    
                     for ($i=0; $i < count($mesContenants); $i++) { 
-                    ?>
-                        <tr> 
-                            <td>
-                                <?php 
-                                echo $mesContenants[$i]->get_lePlat()->get_nom();
-                                ?>
-                            </td>
-                        </tr>
-                    <?php
+                        if($mesContenants[$i]->get_lePlat()->get_laCategorie()->get_id() != $categ){
+                            ?>
+                            <tr>
+                                <td>
+                                    <?php echo $mesContenants[$i]->get_lePlat()->get_nom(); ?>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        $categ = $mesContenants[$i]->get_lePlat()->get_laCategorie()->get_id();
                     }
                     ?>
                 </tbody>
             </table>
+        <div>
+        <?php
+            $categ = 0;
+            for ($i=0; $i < count($mesContenants); $i++) { 
+                if($mesContenants[$i]->get_lePlat()->get_laCategorie()->get_id() != $categ){
+                   ?> <div>Séparation visuelle</div> <?php
+                }
+                ?> <p> <?php
+                echo $mesContenants[$i]->get_lePlat()->get_nom();
+                ?> </p> <?php
+                $categ = $mesContenants[$i]->get_lePlat()->get_laCategorie()->get_id();
+            }
+        ?>
+        </div>
 </body>
 
 </html>
