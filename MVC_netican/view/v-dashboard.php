@@ -69,6 +69,7 @@
             }
         ?>
         </div>
+        <a href="index.php?action=pdf">Générer menu de la semaine</a>
 </body>
 
 </html>
