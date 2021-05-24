@@ -35,7 +35,7 @@
       $listPlats = array();
 
       // Requête SQL
-      $sql = "SELECT * FROM plats";
+      $sql = "SELECT * FROM plats ORDER BY IDPLAT DESC";
       // On execute la requête
       $result = $bdd->query($sql);
 

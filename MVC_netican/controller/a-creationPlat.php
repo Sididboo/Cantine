@@ -2,9 +2,10 @@
 include "model/categoriesPlats.php";
 include "model/categoriesIngredients.php";
 include "model/ingredients.php";
+include "model/unites.php";
 include "model/utilise.php";
-$etat = "creationPlat";
 
+/* 
 $categorieDesPlats = new CategoriesPlats();
 $tableStock = array();
 $tableStock = $categorieDesPlats->findAll();
@@ -17,10 +18,7 @@ $takeIngredient = new Ingredients();
 $tableIng = array();
 $tableIng = $takeIngredient->retrieve("getCatIngredient");
 
-$lesPlats = new Plats();
-$selectLesPlats = $lesPlats->findAll();
 
-$utilise = new Utilise();
 
 if (
   isset($_POST['namePlats']) &&
@@ -56,3 +54,34 @@ if (
   }
 
 }
+*/
+
+/* Création d'un objet Plat qui contiendra l'ensemble des plats contenu dans la base de donnée */
+/* Utilisation de la méthode findAll qui récupère l'ensemble des valeurs de la base de donnée */
+$lesPlats = new Plats();
+$selectLesPlats = $lesPlats->findAll();
+
+/* Permet l'affichage des catégories de plat dans le formulaire */
+$categorieDesPlats = new CategoriesPlats();
+$tableStock = [];
+$tableStock = $categorieDesPlats->findAll();
+
+/* Permet l'affichage des ingrédients */
+$categorieIngredient = new CategoriesIngredients();
+$tableStockIng = [];
+$tableStockIng = $categorieIngredient->findAll();
+
+
+/* Permet l'affichage de toute les unités */
+$uniteMesure = new Unites();
+$allUnite = [];
+$allUnite = $uniteMesure->findAll();
+
+$lesIngredients = new Utilise();
+$lesUtilisation = [];
+$lesUtilisation = $lesIngredients->findAll();
+
+
+
+
+$etat = "creationPlat";
