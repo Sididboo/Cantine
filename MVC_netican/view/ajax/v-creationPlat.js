@@ -8,8 +8,18 @@ let table = [];
 ! Function
 */
 
+/*
+ * * Cette function permet l'ajout d'un ingrédient dans un array (table) et dans un tableau d'affichage en HTML
+ */
+
 $(document).on("click", "#ajoutIngredient", function (event) {
   event.preventDefault();
+
+  /*
+  * * On vérifie si tout les champs sont remplis
+  ! Si un des champs est vide, un message d'erreur apparait
+  */
+
   if (
     $("#categories").val() <= 0 ||
     $("#sousCategories").val() <= 0 ||
@@ -18,12 +28,16 @@ $(document).on("click", "#ajoutIngredient", function (event) {
   ) {
     $("#erreur").html("Vérifier vos champs");
   } else {
+    /*
+     * * Si tout les paramètres sont correct, on push les informations
+     */
     table.push({
       ingredient: $("#ingredients").val(),
       qte: $("#qteIng").val(),
     });
-    console.log(table);
-    console.log($("#ingredients").val());
+
+    /*     console.log(table);
+    console.log($("#ingredients").val()); */
 
     tableIng = $("#tableIng");
     selectedIng = $("#ingredients option:selected");
@@ -46,8 +60,18 @@ $(document).on("click", "#ajoutIngredient", function (event) {
   }
 });
 
+/*
+ * * Cette function permet la suppression des éléments stocker dans l'array et le tableau html
+ */
+
 $(document).on("click", "#deleteRow", function () {
-  console.log("Button fonctionne");
+  /* console.log("Button fonctionne"); */
+
+  /*
+   * * On récupère les lignes du tableau et pour chaque ligne on vérifie si la checkbox = true
+   * * Si c'est la cas on supprime du tableau et de l'array les valeurs sélectionnées
+   */
+
   $("#tableIng")
     .find('input[name="record"]')
     .each(function () {
@@ -59,17 +83,24 @@ $(document).on("click", "#deleteRow", function () {
     });
 });
 
+/*
+ * * Cette function supprime entièrement le plat dans la base de donnée
+ */
+
 $(document).on("click", "#deletePlat", function () {
   $.ajax({
     url: "../../controller/a-creationPlat_delete.php",
     method: "POST",
     data: { idPlat: $("#deletePlat").val() },
-    beforeSend: function () {
-      console.log("envoie");
-    },
+
+    /*     beforeSend: function () {
+      console.log("");
+    }, */
+
     success: function () {
       window.location.reload();
     },
+
     error: function (xhr, ajaxOptions, thrownError) {
       console.log(xhr.status);
       console.log(thrownError);
@@ -88,7 +119,7 @@ function AjoutCategorie() {
     event.preventDefault();
     if ($("#categorieNewPlat").val() <= 0) {
       $("#error").html("error");
-      console.log($("#categorieNewPlat").val().length);
+      /* console.log($("#categorieNewPlat").val().length); */
     } else {
       $.ajax({
         url: "../../controller/a-creationPlat_categorie.php",
@@ -96,15 +127,19 @@ function AjoutCategorie() {
         data: {
           categorie: $("#categorieNewPlat").val(),
         },
-        beforeSend: function () {
+        /* beforeSend: function () {
           console.log("envoie");
           console.log($("#categorieNewPlat").val());
-        },
+        }, */
+
         success: function (response) {
           $("#popupCategorie").hide();
-          console.log(response);
-          console.log($("#categorieNewPlat").val().length);
+
+          /*           console.log(response);
+          console.log($("#categorieNewPlat").val().length); */
+
           window.location.reload();
+
           // $("#selectCateg").html($("#categorie".val()));
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -125,6 +160,10 @@ function closePopupCategorie() {
   document.getElementById("popupCategorie").style.display = "none";
 }
 
+/**
+ * * Cette function permet l'envoie de toute les valeurs sélectionnées par la personne.
+ * * Le déclencheur de la function est le boutton envoie du modal d'ajout d'un plat.
+ */
 function sendingAjax() {
   if (
     $("#nomPlat").val() <= 0 ||
@@ -141,15 +180,17 @@ function sendingAjax() {
         nbPersonne: $("#nbPersonne").val(),
         categoriePlat: $("#categoriesPlat").val(),
       },
-      beforeSend: function () {
+
+      /*       beforeSend: function () {
         console.log("prise en compte plat");
-      },
+      }, */
+
       success: function (response) {
-        console.log("Done!");
+        /*         console.log("Done!"); */
         alert("Ajout du plat");
       },
       complete: function (data) {
-        console.log("Plat" + data);
+        /*         console.log("Plat" + data); */
       },
       error: function (xhr, ajaxOptions, thrownError) {
         $("#error").html("Il y a un problème");
@@ -158,21 +199,25 @@ function sendingAjax() {
       },
     });
 
+    /**
+     * * On convertit l'array au format JSON pour un envoie plus simple vers les controllers
+     */
+
     let jsonString = JSON.stringify(table);
 
     $.ajax({
       url: "controller/a-creationPlat_ingredient.php",
       method: "POST",
       data: { data: jsonString },
-      beforeSend: function (data) {
+      /*       beforeSend: function (data) {
         console.log("prise en compte ingredient");
         console.log(data);
-      },
+      }, */
       success: function (response) {
-        console.log("Ingredient envoyé !");
+        /* console.log("Ingredient envoyé !"); */
       },
       complete: function (data) {
-        console.log("Ingredient" + data);
+        /* console.log("Ingredient" + data); */
         window.location.reload();
       },
       error: function (xhr, ajaxOptions, thrownError) {

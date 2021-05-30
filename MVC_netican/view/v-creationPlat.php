@@ -58,9 +58,7 @@
             <th scope="col">Nom des plats</th>
             <th scope="col">Nombre de personne</th>
             <th scope="col">Ingrédient</th>
-            <th scope="col">Quantité</th>
-            <th id="popOver" scope="col">Actions
-            </th>
+            <th id="popOver" scope="col">Actions</th>
           </tr>
         </thead>
 
@@ -83,13 +81,11 @@
                     echo "<strong> Il n'y a pas d'ingrédient pour ce plat</strong>";
                   } else {
                     echo "<ul class='list-group list-group-flush'>";
-                    echo "<li class='list-group-item'>" . $lesUtilisation[$j]->get_leIngredient()->get_nom() . "</li>";
+                    echo "<li class='list-group-item'>" . $lesUtilisation[$j]->get_leIngredient()->get_nom() . " | Qté : " . $lesUtilisation[$j]->get_dose() . "</li>";
                     echo "</ul>";
-                    echo "<td>" . $lesUtilisation[$j]->get_dose() . "</td>";
                   }
                 }
                 ?>
-              </td>
               <td>
                 <button value="<?php echo $selectLesPlats[$i]->get_id() ?>" class="btn btn-danger" type="button" id="deletePlat">Supprimer</button>
               </td>
