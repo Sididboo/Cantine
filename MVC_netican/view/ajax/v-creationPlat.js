@@ -89,7 +89,7 @@ $(document).on("click", "#deleteRow", function () {
 
 $(document).on("click", "#deletePlat", function () {
   $.ajax({
-    url: "../../controller/a-creationPlat_delete.php",
+    url: "./controller/a-creationPlat_delete.php",
     method: "POST",
     data: { idPlat: $("#deletePlat").val() },
 
@@ -122,7 +122,7 @@ function AjoutCategorie() {
       /* console.log($("#categorieNewPlat").val().length); */
     } else {
       $.ajax({
-        url: "../../controller/a-creationPlat_categorie.php",
+        url: "./controller/a-creationPlat_categorie.php",
         method: "POST",
         data: {
           categorie: $("#categorieNewPlat").val(),
@@ -173,7 +173,7 @@ function sendingAjax() {
     $("#erreur").html("Formulaire non valide");
   } else {
     $.ajax({
-      url: "controller/a-creationPlat_add.php",
+      url: "./controller/a-creationPlat_add.php",
       method: "POST",
       data: {
         nomPlat: $("#nomPlat").val(),
@@ -187,27 +187,11 @@ function sendingAjax() {
 
       success: function (response) {
         /*         console.log("Done!"); */
-        alert("Ajout du plat");
-      },
-      complete: function (data) {
-        /*         console.log("Plat" + data); */
-      },
-      error: function (xhr, ajaxOptions, thrownError) {
-        $("#error").html("Il y a un problème");
-        console.log(xhr.status);
-        console.log(thrownError);
-      },
-    });
-
-    /**
-     * * On convertit l'array au format JSON pour un envoie plus simple vers les controllers
-     */
-
-    let jsonString = JSON.stringify(monTableau);
+        let jsonString = JSON.stringify(monTableau);
     console.log(jsonString);
 
     $.ajax({
-      url: "controller/a-creationPlat_ingredient.php",
+      url: "./controller/a-creationPlat_ingredient.php",
       method: "POST",
       data: { data: jsonString },
             beforeSend: function (data) {
@@ -228,5 +212,21 @@ function sendingAjax() {
         console.log(thrownError);
       },
     });
+      },
+      complete: function (data) {
+        /*         console.log("Plat" + data); */
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        $("#error").html("Il y a un problème");
+        console.log(xhr.status);
+        console.log(thrownError);
+      },
+    });
+
+    /**
+     * * On convertit l'array au format JSON pour un envoie plus simple vers les controllers
+     */
+
+    
   }
 }

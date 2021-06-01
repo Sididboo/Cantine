@@ -88,7 +88,7 @@
                 ?>
               </td>
               <td>
-                <button value="<?php echo $selectLesPlats[$i]->get_id() ?>" class="btn btn-danger" type="button" id="deletePlat">Supprimer</button>
+                <button value="<?php echo $selectLesPlats[$i]->get_id(); ?>" class="btn btn-danger" type="button" id="deletePlat">Supprimer</button>
               </td>
             </tr>
           <?php } ?>
