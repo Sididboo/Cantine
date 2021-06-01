@@ -68,7 +68,6 @@
 
         <tbody id="tableShow">
           <?php
-
           for ($i = 0; $i < count($selectLesPlats); $i++) {
           ?>
             <tr>
@@ -76,23 +75,23 @@
               <td><?php echo $selectLesPlats[$i]->get_nbPersonne() ?></td>
               <td>
                 <?php
-                for ($j = 0; $j < count($lesUtilisation); $j++) {
-                  if ($lesUtilisation[$j]->findAllByIdPlat($selectLesPlats[$i]->get_id()) == null) {
-                    echo "<strong> Il n'y a pas d'ingrédient pour ce plat</strong>";
-                  } else {
-                    echo "<ul class='list-group list-group-flush'>";
-                    echo "<li class='list-group-item'>" . $lesUtilisation[$j]->get_leIngredient()->get_nom() . " | Qté : " . $lesUtilisation[$j]->get_dose() . "</li>";
-                    echo "</ul>";
-                  }
+
+
+                $tableauIng =  $lesIngredients->findAllByIdPlat($selectLesPlats[$i]->get_id());
+
+                echo "<ul class='list-group list-group-flush'>";
+                for ($j = 0; $j < count($tableauIng); $j++) {
+                  echo "<li class='list-group-item'>" . $tableauIng[$j]->get_leIngredient()->get_nom() . " | Qté : " . $tableauIng[$j]->get_dose() . "</li>";
                 }
+                echo "</ul>";
+
                 ?>
+              </td>
               <td>
                 <button value="<?php echo $selectLesPlats[$i]->get_id() ?>" class="btn btn-danger" type="button" id="deletePlat">Supprimer</button>
               </td>
-            <?php
-          }
-            ?>
             </tr>
+          <?php } ?>
         </tbody>
       </table>
     </div>

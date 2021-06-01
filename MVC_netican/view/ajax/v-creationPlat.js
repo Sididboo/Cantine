@@ -2,7 +2,7 @@
 ? Variable
 */
 
-let table = [];
+let monTableau = [];
 
 /* 
 ! Function
@@ -31,7 +31,7 @@ $(document).on("click", "#ajoutIngredient", function (event) {
     /*
      * * Si tout les paramètres sont correct, on push les informations
      */
-    table.push({
+    monTableau.push({
       ingredient: $("#ingredients").val(),
       qte: $("#qteIng").val(),
     });
@@ -61,7 +61,7 @@ $(document).on("click", "#ajoutIngredient", function (event) {
 });
 
 /*
- * * Cette function permet la suppression des éléments stocker dans l'array et le tableau html
+ * * Cette function permet la suppression des éléments stocker dans l'array et le monTableauau html
  */
 
 $(document).on("click", "#deleteRow", function () {
@@ -77,7 +77,7 @@ $(document).on("click", "#deleteRow", function () {
     .each(function () {
       if ($(this).is(":checked")) {
         let idInput = $(this).attr("id");
-        table = table.filter((item) => item.ingredient !== idInput);
+        monTableau = monTableau.filter((item) => item.ingredient !== idInput);
         $(this).parents("tr").remove();
       }
     });
@@ -203,22 +203,24 @@ function sendingAjax() {
      * * On convertit l'array au format JSON pour un envoie plus simple vers les controllers
      */
 
-    let jsonString = JSON.stringify(table);
+    let jsonString = JSON.stringify(monTableau);
+    console.log(jsonString);
 
     $.ajax({
       url: "controller/a-creationPlat_ingredient.php",
       method: "POST",
       data: { data: jsonString },
-      /*       beforeSend: function (data) {
-        console.log("prise en compte ingredient");
-        console.log(data);
-      }, */
+            beforeSend: function (data) {
+       /*  console.log("prise en compte ingredient");
+        console.log(data); */
+      },
       success: function (response) {
-        /* console.log("Ingredient envoyé !"); */
+        /* console.log("Ingredient envoyé ! " + response); */
+        window.location.reload();
+        table = [];
       },
       complete: function (data) {
-        /* console.log("Ingredient" + data); */
-        window.location.reload();
+        console.log("Ingredient" + data);
       },
       error: function (xhr, ajaxOptions, thrownError) {
         console.log("Il y a un problème");

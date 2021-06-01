@@ -23,6 +23,8 @@ for ($i = 0; $i < count($sendInfo = $_REQUEST["table"]); $i++) {
 
 $data = json_decode(stripslashes($_REQUEST["data"]));
 
+echo var_dump($data);
+
 foreach ($data as $key => $value) {
    /*     echo var_dump($value->ingredient);
  */

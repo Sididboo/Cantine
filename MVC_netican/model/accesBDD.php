@@ -16,7 +16,7 @@
         // Identifiant
         $id = 'root';
         // Mot de passe
-        $mdp = '';
+        $mdp = 'caribou23';
         // Nom de la BDD
         $bdd = 'cantine_ppe';
         // Adresse du serveur

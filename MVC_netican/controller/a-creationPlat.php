@@ -78,10 +78,5 @@ $allUnite = [];
 $allUnite = $uniteMesure->findAll();
 
 $lesIngredients = new Utilise();
-$lesUtilisation = [];
-$lesUtilisation = $lesIngredients->findAll();
-
-
-
 
 $etat = "creationPlat";
